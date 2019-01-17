@@ -1,0 +1,1 @@
+Add a suitable .gitignore and README.md and a NetBeans Project called the <animal-name> of your Pair Programming Group
