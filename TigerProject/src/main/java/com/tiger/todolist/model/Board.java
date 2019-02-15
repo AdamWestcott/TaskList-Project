@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Board {
    //Create list on board
-    private ArrayList<List> list; 
+    private ArrayList<List> list = new ArrayList<List>(); 
     
     public void createList(List listName){      //Creating a instance of list in board.
         this.list.add(listName);  
