@@ -16,6 +16,24 @@ public class Task {
   private String endDate;
   private int priority; 
   private String name;
+  
+  public Task (boolean checkbox, String description, String startDate, String endDate, int priority, String name){
+      this.checkbox = checkbox;
+      this.startDate = startDate;
+      this.description = description;
+      this.endDate = endDate;
+      this.priority = priority;
+      this.name = name;
+  }
+  
+  public Task(){
+      this.checkbox = false;
+      this.description = "default";
+      this.startDate = "";
+      this.endDate = "000000";
+      this.priority = 0;
+      this.name = "task";
+  }
 
     public String getName() {
         return name;

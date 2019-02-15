@@ -16,10 +16,12 @@ public class List {
     private ArrayList<Task> task = new ArrayList<Task>();
     
     public List(){
-        
+        this.title = "List Name";
     }
     
-    
+    public List(String title, ArrayList<Task> task){
+        
+    }
 
     public String getTitle() {
         return title;
