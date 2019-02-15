@@ -13,14 +13,37 @@ import java.util.ArrayList;
  */
 public class List {
     private String title;
-    private ArrayList<Task> task = new ArrayList<Task>();
+    private static ArrayList<Task> task = new ArrayList<Task>();
+    private static ArrayList<Task> backupList = new ArrayList<Task>();
     
     public List(){
         this.title = "List Name";
     }
     
-    public List(String title, ArrayList<Task> task){
-        
+    public List(String title){
+        this.title = title;
+    }
+    
+    public void addTask(Task taskObject){
+        task.add(taskObject);
+        System.out.println("Task added to List");
+    }
+    
+    public void removeTask(Task taskObject){
+        if(task.contains(taskObject)){
+            backupList.add(taskObject);
+            task.remove(taskObject); 
+        }
+        else System.out.println("Task does not exist in list");
+    }
+    
+    public void restoreTask(Task taskObject){
+        if(backupList.contains(taskObject)){
+            task.add(taskObject);
+            backupList.remove(taskObject);
+            System.out.println("Task restored");
+        }
+        else System.out.println("Task does not exist in list");
     }
 
     public String getTitle() {

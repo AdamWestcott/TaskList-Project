@@ -18,9 +18,7 @@ public class Board {
             System.out.println(list.size());
         
     }
-    
    
-    
     public void removeList(List list){
         this.list.remove(list); 
     }
