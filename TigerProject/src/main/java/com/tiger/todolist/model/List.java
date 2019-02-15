@@ -13,7 +13,13 @@ import java.util.ArrayList;
  */
 public class List {
     private String title;
-    private ArrayList<Task> task;
+    private ArrayList<Task> task = new ArrayList<Task>();
+    
+    public List(){
+        
+    }
+    
+    
 
     public String getTitle() {
         return title;
