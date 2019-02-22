@@ -5,22 +5,23 @@
  */
 package com.tiger.todolist.model;
 import java.util.ArrayList; 
+import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
  * @author K1732912
  */
 public class Task {
-    private boolean checkbox;
+  private boolean checkbox;
   private String description;
-  private String startDate;
-  private String dueDate;
+  private Date dueDate;
   private int priority; 
   private String name;
   private ArrayList<SubTask> SubTasks  = new ArrayList<SubTask>();
 
   
-  public Task (boolean checkbox, String description, String dueDate, int priority, String name){
+  public Task (boolean checkbox, String description, Date dueDate, int priority, String name){
       this.checkbox = checkbox;
       this.description = description;
       this.dueDate = dueDate;
@@ -31,8 +32,6 @@ public class Task {
   public Task(){
       this.checkbox = false;
       this.description = "default";
-      this.startDate = "";
-      this.dueDate = "000000";
       this.priority = 0;
       this.name = "task";
   }
@@ -76,4 +75,39 @@ public class Task {
     public void setPriority(int priority) {
         this.priority = priority;
     }
+    
+    
+    public void editSubtask(SubTask SubtaskObject)
+    {
+        Scanner input = new Scanner(System.in);
+       if(SubTasks.contains(SubtaskObject))
+             {
+                 System.out.println("Enter in new Description");
+                 String newDescription = input.nextLine();
+                 this.setDescription(newDescription);
+                 
+                 System.out.println("");
+               
+             
+             }
+    }
+    
+    public void addSubTask(SubTask SubtaskObject)
+    {
+     SubTasks.add(SubtaskObject);
+     System.out.println("SubTask added to Task");
+    }
+    
+    public void removeSubTask(SubTask SubtaskObject)
+    {
+     if(SubTasks.contains(SubtaskObject))
+             {
+              SubTasks.remove(SubtaskObject);
+             }
+     else System.out.println("SubTask not in Task");
+    }
+       
+    
+  
+    
 }
