@@ -10,8 +10,18 @@ package com.tiger.todolist.model;
  * @author K1732912
  */
 public class User {
+
     private String username;
     private String password;
+    private int userLevel;
+
+    public int getUserLevel() {
+        return userLevel;
+    }
+
+    public void setUserLevel(int userLevel) {
+        this.userLevel = userLevel;
+    }
     
     public String getUsername() {
         return username;
