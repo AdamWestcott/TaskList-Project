@@ -14,6 +14,12 @@ public class User {
     private String username;
     private String password;
     private int userLevel;
+    
+    public User(String username, String password, int userLevel) {
+        this.username = username;
+        this.password = password;
+        this.userLevel = userLevel;
+    }
 
     public int getUserLevel() {
         return userLevel;
