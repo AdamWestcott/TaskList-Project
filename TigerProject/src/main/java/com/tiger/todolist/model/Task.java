@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class Task {
   private boolean checkbox;
   private String description;
-  private Date dueDate;
+  private Date dueDate = new Date();
   private int priority; 
   private String name;
   private ArrayList<SubTask> SubTasks  = new ArrayList<SubTask>();
@@ -32,6 +32,7 @@ public class Task {
   public Task(){
       this.checkbox = false;
       this.description = "default";
+      this.dueDate = dueDate;
       this.priority = 0;
       this.name = "task";
   }
@@ -60,13 +61,15 @@ public class Task {
         this.description = description;
     }
 
-       public String getDueDate() {
+      
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
+    
 
     public int getPriority() {
         return priority;

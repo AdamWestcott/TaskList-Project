@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.tiger.todolist.model;
+import java.util.Date;
 
 /**
  *
@@ -18,6 +19,10 @@ public class Main {
         userBoard.createList(a);
         userBoard.createList(b);
         
+        Task newTask = new Task();
+        System.out.println(newTask.getDueDate()); 
+        newTask.setDueDate(new Date(119, 0, 28)); //(year+1900, month jan = 0 e.g., day)  
+        System.out.println(newTask.getDueDate()); 
     }
     
 }
