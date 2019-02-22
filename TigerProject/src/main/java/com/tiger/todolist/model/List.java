@@ -24,6 +24,11 @@ public class List {
         this.title = title;
     }
     
+    public void editTaskTitle(String newTitle, Task currentTask){
+        if(task.contains(currentTask)){ 
+             
+        }
+    }
     public void addTask(Task taskObject){
         task.add(taskObject);
         System.out.println("Task added to List");
