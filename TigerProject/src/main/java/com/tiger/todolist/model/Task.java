@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.tiger.todolist.model;
+import java.util.ArrayList; 
 
 /**
  *
@@ -13,15 +14,16 @@ public class Task {
     private boolean checkbox;
   private String description;
   private String startDate;
-  private String endDate;
+  private String dueDate;
   private int priority; 
   private String name;
+  private ArrayList<SubTask> SubTasks  = new ArrayList<SubTask>();
+
   
-  public Task (boolean checkbox, String description, String startDate, String endDate, int priority, String name){
+  public Task (boolean checkbox, String description, String dueDate, int priority, String name){
       this.checkbox = checkbox;
-      this.startDate = startDate;
       this.description = description;
-      this.endDate = endDate;
+      this.dueDate = dueDate;
       this.priority = priority;
       this.name = name;
   }
@@ -30,7 +32,7 @@ public class Task {
       this.checkbox = false;
       this.description = "default";
       this.startDate = "";
-      this.endDate = "000000";
+      this.dueDate = "000000";
       this.priority = 0;
       this.name = "task";
   }
@@ -59,20 +61,12 @@ public class Task {
         this.description = description;
     }
 
-    public String getStartDate() {
-        return startDate;
+       public String getDueDate() {
+        return dueDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 
     public int getPriority() {
