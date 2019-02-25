@@ -18,7 +18,7 @@ public class User {
     public User(String username, String password, int userLevel) {
         this.username = username;
         this.password = password;
-        this.userLevel = userLevel;
+        this.userLevel = userLevel;  //0 = gneneral User // 1 = Admin User
     }
 
     public int getUserLevel() {
