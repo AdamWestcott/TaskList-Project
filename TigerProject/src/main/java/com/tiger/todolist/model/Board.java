@@ -11,7 +11,6 @@ import java.util.ArrayList;
  */
 public class Board {
    //Create list on board
-    private ArrayList<List> list = new ArrayList<List>();
     private ArrayList<User> users = new ArrayList<User>();
     
     public void addUser(User user){
@@ -24,24 +23,11 @@ public class Board {
         System.out.println(user.getUsername()+" User removed");
     }
     
-    public void createList(List listName){      //Creating a instance of list in board.
-        this.list.add(listName);  
-            System.out.println(list.size());
-        
-    }
-   
-    public void removeList(List list){
-        this.list.remove(list); 
-    }
-    
     
     public void showUsers(){
     users.forEach((user) -> System.out.println(user.getUsername()));
     }
     
-    public void showLists(){
-    list.forEach((list) -> System.out.println(list.getTitle()));
-    }
     
     
     
