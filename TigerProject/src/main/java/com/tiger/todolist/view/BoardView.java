@@ -6,10 +6,12 @@
 package com.tiger.todolist.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
     import javax.swing.JFrame;
     import javax.swing.JLabel;
     import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import javax.swing.BoxLayout;
     import javax.swing.JButton;
     import javax.swing.JCheckBox;
     import javax.swing.JComboBox;
@@ -53,14 +55,37 @@ public class BoardView {
 //        testWindow.setVisible(true);                                    //Making window visible
 
         JFrame mainWindow = new JFrame("To Do Application");
-        mainWindow.setLayout(new GridLayout(3,1));
-        mainWindow.add(new JLabel("Home"));
-        mainWindow.add(new JLabel("List"));        
-        mainWindow.add(new JButton("Lists"));
+        //mainWindow.setLayout(new GridLayout(2,1));
+       
+        
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.Y_AXIS));
+        
+        JPanel listTitles = new JPanel();
+        listTitles.setLayout(new FlowLayout());
+        listTitles.add(new JLabel("Lists"));
+        listTitles.add(new JButton("Button1"));
+        listTitles.add(new JButton("Button2"));
+        listTitles.setPreferredSize(new Dimension(100,100));
+        
+           
+        mainPanel.add(listTitles);
+        
+        mainWindow.setContentPane(mainPanel);
         
         
         
-        mainWindow.pack();
+        
+        
+        
+        
+        
+       // mainWindow.add(new JLabel("List"));        
+        //mainWindow.add(new JButton("Lists"));
+        
+        
+        
+        mainWindow.setSize(400,400);
         mainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainWindow.setVisible(true);
     }
