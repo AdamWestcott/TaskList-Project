@@ -5,6 +5,7 @@
  */
 package com.tiger.todolist.view;
 
+import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -24,6 +25,17 @@ public class TaskBoard extends JPanel{
     private JLabel dueDate = new JLabel("A date");
     private JRadioButton checkBox = new JRadioButton("Complete"); 
 
+    public TaskBoard(){
+        this.setLayout( new GridLayout (7,1));
+        this.add(currentList);
+        this.add(tasks);
+        this.add(taskTitle);
+        this.add(taskDescription);
+        this.add(priority);
+        this.add(dueDate);
+        this.add(checkBox); 
+    }
+    
     public JLabel getCurrentList() {
         return currentList;
     }

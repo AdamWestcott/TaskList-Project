@@ -11,6 +11,7 @@ package com.tiger.todolist.view;
  */
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,6 +19,17 @@ import javax.swing.JTextArea;
 
 public class ListBoard extends JPanel {
 
+    public ListBoard()
+    {
+        this.setLayout(new GridLayout(2,1));
+        JScrollPane scroll = new JScrollPane(lists);
+        this.add(list);
+        this.add(scroll,BorderLayout.CENTER);
+        
+        lists.setLineWrap(true);
+        lists.setEditable(false);
+    }
+    
     private JLabel list= new JLabel ("Lists");  
     private JTextArea lists = new JTextArea();
     
@@ -37,14 +49,6 @@ public class ListBoard extends JPanel {
         this.lists = lists;
     }
 
-    public ListBoard()
-    {
-        this.setLayout(new FlowLayout());
-        JScrollPane scroll =new JScrollPane(lists);
-        this.add(scroll,BorderLayout.CENTER);
-        this.add(list);
-        lists.setLineWrap(true);
-        lists.setEditable(false);
-    }
+    
 
 }
