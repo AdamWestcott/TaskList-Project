@@ -5,6 +5,8 @@
  */
 package com.tiger.todolist.model;
 import  com.tiger.todolist.view.mainWindow;
+import  com.tiger.todolist.view.taskWindow;
+import  com.tiger.todolist.view.subtaskWindow;
 import java.util.Date;
 
 /**
@@ -15,7 +17,9 @@ public class Main {
 
     public static void main(String[] args) {
     
-        mainWindow a = new mainWindow();
+       // mainWindow a = new mainWindow();
+        //taskWindow b = new taskWindow();
+        subtaskWindow c = new subtaskWindow(); 
     }
     
 }

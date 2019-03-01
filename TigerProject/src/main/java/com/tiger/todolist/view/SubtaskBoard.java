@@ -5,7 +5,9 @@
  */
 package com.tiger.todolist.view;
 
+import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -13,5 +15,14 @@ import javax.swing.JLabel;
  */
 public class SubtaskBoard extends TaskBoard{
     private JLabel subTasks = new JLabel("Subtasks");
+    private JLabel taskName = new JLabel("Task Name");
+    private JRadioButton checkBox = new JRadioButton("Complete");;
     
+    public SubtaskBoard(){
+        this.setLayout(new GridLayout(2,1));
+        super.add(getTaskTitle());
+        this.add(taskName);
+        this.add(checkBox);
+        
+    }
 }

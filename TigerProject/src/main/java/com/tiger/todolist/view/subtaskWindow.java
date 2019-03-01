@@ -5,26 +5,21 @@
  */
 package com.tiger.todolist.view;
 
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /**
  *
  * @author k1732912
  */
-public class taskWindow extends JFrame {
+public class subtaskWindow extends JFrame {
+    private SubtaskBoard stb = new SubtaskBoard();
     
-    private TaskBoard tb = new TaskBoard();
-    private JButton showSt = new JButton("Show Subtasks"); 
-    
-    public taskWindow(){
-        super("To Do List: Tasks");
-        this.setLayout(new FlowLayout());
+    public subtaskWindow(){
+        super("To Do List: Subtasks");
+        setLayout(new FlowLayout());
         
-        this.add(tb);
-        this.add(showSt);
+        this.add(stb);
         
         this.setSize(500, 400);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

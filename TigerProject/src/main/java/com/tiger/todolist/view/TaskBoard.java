@@ -33,7 +33,7 @@ public class TaskBoard extends JPanel{
         this.add(taskDescription);
         this.add(priority);
         this.add(dueDate);
-        this.add(checkBox); 
+        this.add(checkBox);
     }
     
     public JLabel getCurrentList() {
