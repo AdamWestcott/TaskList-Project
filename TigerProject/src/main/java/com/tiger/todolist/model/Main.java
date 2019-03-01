@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.tiger.todolist.model;
+import  com.tiger.todolist.view.mainWindow;
 import java.util.Date;
 
 /**
@@ -14,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
     
-        
+        mainWindow a = new mainWindow();
     }
     
 }
