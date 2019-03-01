@@ -5,8 +5,6 @@
  */
 package com.tiger.todolist.view;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,9 +23,8 @@ public class mainWindow extends JFrame{
     public mainWindow(){
         super("To Do List");
         this.setLayout(new FlowLayout());
-        signInButton.setMaximumSize(new Dimension (50,50));
         this.add(lists);
-        this.add(signInButton,new FlowLayout());
+        this.add(signInButton,new FlowLayout(FlowLayout.RIGHT));
         
         this.setSize(500,400);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
