@@ -12,10 +12,12 @@ import java.util.ArrayList;
  * @author K1732912
  */
 public class Category {
+    //PROPERTIES
     private String title;
     private static ArrayList<Task> task = new ArrayList<Task>();
     private static ArrayList<Task> backupList = new ArrayList<Task>();
     
+    //CONSTRUCTORS
     public Category(){
         this.title = "List Name";
     }
@@ -24,6 +26,7 @@ public class Category {
         this.title = title;
     }
     
+    //FUNCTIONS
     public void editTaskTitle(String newTitle, Task currentTask){
         if(task.contains(currentTask)){ 
              
@@ -51,6 +54,7 @@ public class Category {
         else System.out.println("Task does not exist in list");
     }
 
+    //GETTERS AND SETTERS
     public String getTitle() {
         return title;
     }

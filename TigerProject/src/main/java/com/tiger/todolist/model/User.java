@@ -16,7 +16,7 @@ public class User {
     private String username;
     private String password;
     private int userLevel;
-    private ArrayList<List> list = new ArrayList<List>();
+    private ArrayList<Category> list = new ArrayList<Category>();
  //CONSTRUCTORS
     public User(){
         this.username = "default";
@@ -53,13 +53,13 @@ public class User {
         this.password = password;
     }
    //FUNCTIONS 
-    public void addList(List listName){      // Adding a instance of list.
+    public void addList(Category listName){      // Adding a instance of list.
         this.list.add(listName);  
             System.out.println(list.size());
         
     }
    
-    public void removeList(List list){
+    public void removeList(Category list){
         this.list.remove(list); 
     }
     

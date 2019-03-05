@@ -14,8 +14,18 @@ public class Board {
     
     //PROPERTIES
     private ArrayList<User> users = new ArrayList<User>();
+    private static Board status = null; 
     
+    //SINGLETON
+    private Board(){}; 
+    
+
     //FUNCTIONS
+    public static Board getStatus(){
+        if(Board.status == null) Board.status = new Board();
+                return Board.status; 
+    }
+    
     public void addUser(User user){
         users.add(user);
         System.out.println(user.getUsername()+" added to board");
