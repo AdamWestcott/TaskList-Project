@@ -12,12 +12,12 @@ import java.util.ArrayList;
  * @author K1732912
  */
 public class User {
-
+//PROPERTIES
     private String username;
     private String password;
     private int userLevel;
     private ArrayList<List> list = new ArrayList<List>();
-    
+ //CONSTRUCTORS
     public User(){
         this.username = "default";
         this.password = "defaultPass";
@@ -28,7 +28,7 @@ public class User {
         this.password = password;
         this.userLevel = userLevel;  //0 = gneneral User // 1 = Admin User
     }
-
+//GETTERS AND SETTERS
     public int getUserLevel() {
         return userLevel;
     }
@@ -52,7 +52,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+   //FUNCTIONS 
     public void addList(List listName){      // Adding a instance of list.
         this.list.add(listName);  
             System.out.println(list.size());

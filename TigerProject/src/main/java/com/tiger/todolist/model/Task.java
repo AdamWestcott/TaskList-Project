@@ -13,6 +13,7 @@ import java.util.Scanner;
  * @author K1732912
  */
 public class Task {
+    //PROPERTIES
   private boolean checkbox;
   private String description;
   private Date dueDate = new Date();
@@ -20,7 +21,7 @@ public class Task {
   private String name;
   private ArrayList<SubTask> SubTasks  = new ArrayList<SubTask>();
 
-  
+  //CONSTRUCTORS
   public Task (boolean checkbox, String description, Date dueDate, int priority, String name){
       this.checkbox = checkbox;
       this.description = description;
@@ -28,7 +29,6 @@ public class Task {
       this.priority = priority;
       this.name = name;
   }
-  
   public Task(){
       this.checkbox = false;
       this.description = "default";
@@ -36,7 +36,8 @@ public class Task {
       this.priority = 0;
       this.name = "task";
   }
-
+  
+//GETTERS AND SETTERS
     public String getName() {
         return name;
     }
@@ -79,7 +80,7 @@ public class Task {
         this.priority = priority;
     }
     
-    
+    //FUNCTIONS
     public void editSubtask(SubTask SubtaskObject)
     {
         Scanner input = new Scanner(System.in);

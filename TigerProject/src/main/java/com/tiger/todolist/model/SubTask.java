@@ -11,10 +11,12 @@ package com.tiger.todolist.model;
  */
 public class SubTask extends Task {   
    
+    //PROPERTIES
    private String task;
    private Boolean checkBox;
    private String subTaskTitle;
    
+   //FUNCTIONS
    public SubTask()
    {
        this.task=super.getName();

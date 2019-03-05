@@ -12,10 +12,12 @@ import java.util.ArrayList;
  * @author K1732912
  */
 public class List {
+    //PROPERTIES
     private String title;
     private static ArrayList<Task> task = new ArrayList<Task>();
     private static ArrayList<Task> backupList = new ArrayList<Task>();
     
+    //FUNCTIONS
     public List(){
         this.title = "List Name";
     }
@@ -50,7 +52,8 @@ public class List {
         }
         else System.out.println("Task does not exist in list");
     }
-
+    
+    //GETTERS AND SETTERS
     public String getTitle() {
         return title;
     }

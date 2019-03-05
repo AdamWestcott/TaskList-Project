@@ -11,8 +11,11 @@ import java.util.ArrayList;
  */
 public class Board {
    //Create list on board
+    
+    //PROPERTIES
     private ArrayList<User> users = new ArrayList<User>();
     
+    //FUNCTIONS
     public void addUser(User user){
         users.add(user);
         System.out.println(user.getUsername()+" added to board");
