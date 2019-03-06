@@ -26,6 +26,10 @@ public class Board {
                 return Board.status; 
     }
     
+    public void createUser(String user, String pass, int userLvl){
+        addUser(new User(user,pass,userLvl));
+    }
+    
     public void addUser(User user){
         users.add(user);
         System.out.println(user.getUsername()+" added to board");

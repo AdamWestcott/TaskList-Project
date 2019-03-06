@@ -5,40 +5,37 @@
  */
 package com.tiger.todolist.controller;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import com.tiger.todolist.model.Board;
+import com.tiger.todolist.view.SignIn;
+import com.tiger.todolist.view.mainWindow;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author Lewys
  */
-public class mainListener implements MouseListener {
+public class mainListener implements ActionListener {
 // This class will listen for events in the mainWindow
 // Each component has it's own action command, "If 'command' == something, do this...."
     
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        
-    }
+    
 
     @Override
-    public void mousePressed(MouseEvent e) {
-        
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("addListBut")){
+            JOptionPane.showMessageDialog(null, "Clicked add List");
+        }
+        else if(e.getActionCommand().equals("signInButton")){
+            SignIn signInForm = new SignIn();
+        }
+        else if(e.getActionCommand().equals("confirm")){
+                JOptionPane.showMessageDialog(null, "Clicked Confirm");
+            }
     }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        
-    }
+            
+   
     
 }

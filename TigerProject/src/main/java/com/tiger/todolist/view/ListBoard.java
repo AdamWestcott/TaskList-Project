@@ -19,6 +19,9 @@ import javax.swing.JTextArea;
 
 public class ListBoard extends JPanel {
 
+    private JLabel list= new JLabel ("Lists");  
+    private JTextArea lists = new JTextArea();
+    
     public ListBoard()
     {
         this.setLayout(new GridLayout(2,1));
@@ -30,8 +33,7 @@ public class ListBoard extends JPanel {
         lists.setEditable(false);
     }
     
-    private JLabel list= new JLabel ("Lists");  
-    private JTextArea lists = new JTextArea();
+    
     
     public JLabel getList() {
         return list;

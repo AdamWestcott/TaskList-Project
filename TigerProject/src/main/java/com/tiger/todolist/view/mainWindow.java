@@ -5,6 +5,7 @@
  */
 package com.tiger.todolist.view;
 
+import com.tiger.todolist.controller.mainListener;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,6 +26,8 @@ public class mainWindow extends JFrame{
     private JButton removeList = new JButton("Remove List");
     private ListBoard lists = new ListBoard();
     
+    private mainListener listener = new mainListener(); 
+    
     public mainWindow(){
         super("To Do List");
         this.setLayout(new FlowLayout());
@@ -34,10 +37,15 @@ public class mainWindow extends JFrame{
         this.add(editList,new FlowLayout(FlowLayout.RIGHT));
         this.add(removeList,new FlowLayout(FlowLayout.RIGHT));
         this.add(signInButton,new FlowLayout(FlowLayout.RIGHT)); 
+        
+        
+        addList.addActionListener(listener);
+        addList.setActionCommand("addListBut");
+        signInButton.addActionListener(listener);
+        signInButton.setActionCommand("signInButton"); 
+        
         this.setSize(500,400);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true); 
-        
-        
     }
 }
