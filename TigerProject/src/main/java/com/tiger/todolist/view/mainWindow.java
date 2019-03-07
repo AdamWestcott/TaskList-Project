@@ -24,7 +24,7 @@ public class mainWindow extends JFrame{
     private JButton addList = new JButton("Add List");
     private JButton editList = new JButton("Edit List");
     private JButton removeList = new JButton("Remove List");
-    private ListBoard lists = new ListBoard();
+    private ListBoard lists = new ListBoard(); 
     
     private mainListener listener = new mainListener(); 
     

@@ -17,7 +17,7 @@ public class Board {
     private static Board status = null; 
     
     //SINGLETON
-    private Board(){}; 
+    private Board(){};  
     
 
     //FUNCTIONS

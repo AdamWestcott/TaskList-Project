@@ -34,7 +34,7 @@ public class ListBoard extends JPanel {
             JLabel name = new JLabel();
             name.setText(listsNames[i]); 
             scroll.add(name);
-        }
+        } 
         
         this.add(scroll,BorderLayout.CENTER);
     }
