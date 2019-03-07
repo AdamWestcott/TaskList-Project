@@ -28,15 +28,15 @@ public class ListBoard extends JPanel {
         this.setLayout(new GridLayout(10,1));
         this.add(list, BorderLayout.NORTH);
         
-        JScrollPane scroll = new JScrollPane(category);
+        
         String[] listsNames = mainListener.getListNames();
         for(int i = 0; i < listsNames.length; i++){
             JLabel name = new JLabel();
             name.setText(listsNames[i]); 
-            scroll.add(name);
+            this.add(name);
         } 
         
-        this.add(scroll,BorderLayout.CENTER);
+        
     }
     
 
