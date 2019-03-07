@@ -45,6 +45,13 @@ public class Board {
     users.forEach((user) -> System.out.println(user.getUsername()));
     }
     
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
+    }
     
     
     

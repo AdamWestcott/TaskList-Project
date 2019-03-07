@@ -17,6 +17,8 @@ public class User {
     private String password;
     private int userLevel;
     private ArrayList<Category> list = new ArrayList<Category>();
+
+    
  //CONSTRUCTORS
     public User(){
         this.username = "default";
@@ -52,6 +54,11 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public ArrayList<Category> getList() {
+        return list;
+    }
+    
    //FUNCTIONS 
     public void addList(Category listName){      // Adding a instance of list.
         this.list.add(listName);  
@@ -63,14 +70,16 @@ public class User {
         this.list.remove(list); 
     }
     
-    public String showLists(){
+    public String[] showLists(){
         
     //list.forEach((list) -> System.out.println(list.getTitle()));
     String storeName = "";
-    for(int i = 0; i < list.size();i++){
-        storeName = list.get(i).getTitle(); 
+    for(int i = 0; i < list.size(); i++){
+        storeName += list.get(i).getTitle() + "," ; 
     }
+    String[] listName = storeName.split("'");
     
+    return listName; 
     }
     
 }

@@ -7,6 +7,8 @@
 
 import com.tiger.todolist.controller.mainListener;
 import com.tiger.todolist.model.Board;
+import com.tiger.todolist.model.Category;
+import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.mainWindow;
 import java.util.Date;
 
@@ -17,7 +19,23 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-    
+        
+        Board.getStatus().createUser("time", "doa", 1);
+        Board.getStatus().createUser("time", "fafa", 1);
+        Board.getStatus().createUser("time", "dgag", 1);
+        Board.getStatus().createUser("time", "dhshs", 1);
+        
+        User a = new User();
+        Board.getStatus().addUser(a);
+        
+        
+        Category sgs = new Category("asga");
+        Category fs = new Category("fwsgs"); 
+        Category gs = new Category("afa");
+        
+        Board.getStatus().getUsers().get(0).addList(sgs); 
+        Board.getStatus().getUsers().get(0).addList(fs);
+        Board.getStatus().getUsers().get(0).addList(gs);
         
         Board.getStatus(); 
         //Board.getStatus().createUser("Tim","Tim27",1);
@@ -26,8 +44,8 @@ public class Main {
         mainWindow window = new mainWindow(); 
         mainListener mainController = new mainListener();
         
-
-// mainWindow a = new mainWindow();
+       
+        // mainWindow a = new mainWindow();
         //taskWindow b = new taskWindow();
        // subtaskWindow c = new subtaskWindow();
        

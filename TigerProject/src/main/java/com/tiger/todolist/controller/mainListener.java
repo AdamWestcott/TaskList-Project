@@ -6,6 +6,7 @@
 package com.tiger.todolist.controller;
 
 import com.tiger.todolist.model.Board;
+import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.mainWindow;
 import java.awt.event.ActionEvent;
@@ -34,8 +35,16 @@ public class mainListener implements ActionListener {
         else if(e.getActionCommand().equals("confirm")){
                 JOptionPane.showMessageDialog(null, "Clicked Confirm");
             }
-    }
+        if(e.getActionCommand().equals("")){
             
+        }
+    }
+    
+    public static String[] getListNames(){
+        String[] store = Board.getStatus().getUsers().get(0).showLists();
+       
+        return store;
+    }
    
     
 }
