@@ -63,8 +63,14 @@ public class User {
         this.list.remove(list); 
     }
     
-    public void showLists(){
-    list.forEach((list) -> System.out.println(list.getTitle()));
+    public String showLists(){
+        
+    //list.forEach((list) -> System.out.println(list.getTitle()));
+    String storeName = "";
+    for(int i = 0; i < list.size();i++){
+        storeName = list.get(i).getTitle(); 
+    }
+    
     }
     
 }
