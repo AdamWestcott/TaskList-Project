@@ -42,7 +42,7 @@ public class Main {
         
         
         mainWindow window = new mainWindow(); 
-        mainListener mainController = new mainListener();
+        mainListener mainController = new mainListener(); 
         
        
         // mainWindow a = new mainWindow();
