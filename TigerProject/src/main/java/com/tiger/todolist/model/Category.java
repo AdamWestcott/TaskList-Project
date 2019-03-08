@@ -32,6 +32,36 @@ public class Category {
              
         }
     }
+    
+    public void createTask(boolean checkbox, String description, String dueDate, int priority, String name){
+        task.add(new Task(checkbox,description,dueDate,priority,name));
+    }
+    
+    public String[] showTasks(){
+        
+    String storeName = "";
+    for(int i = 0; i < task.size(); i++){
+        storeName += task.get(i).getName() + "," ; 
+    }
+    String[] taskNames = storeName.split(",");
+    
+    return taskNames; 
+    }
+    
+    public String[] getTaskDetails(){
+        String storeTask = "";
+        for(int i = 0; i < task.size(); i++){
+            storeTask += task.get(i).getName()+ ",";
+            storeTask += task.get(i).getDescription()+ ",";
+            storeTask += task.get(i).getDueDate()+ ",";
+            storeTask += task.get(i).getPriority()+ ",";
+            storeTask += " ";
+        }
+        String[] taskNames = storeTask.split(" ");
+        
+        return taskNames; 
+    }
+    
     public void addTask(Task taskObject){
         task.add(taskObject);
         System.out.println("Task added to List");

@@ -16,13 +16,14 @@ public class Task {
     //PROPERTIES
   private boolean checkbox;
   private String description;
-  private Date dueDate = new Date();
+  //private Date dueDate = new Date();
+  private String dueDate; 
   private int priority; 
   private String name;
   private ArrayList<SubTask> SubTasks  = new ArrayList<SubTask>();
 
   //CONSTRUCTORS
-  public Task (boolean checkbox, String description, Date dueDate, int priority, String name){
+  public Task (boolean checkbox, String description, String dueDate, int priority, String name){
       this.checkbox = checkbox;
       this.description = description;
       this.dueDate = dueDate;
@@ -63,11 +64,11 @@ public class Task {
     }
 
       
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
     

@@ -5,6 +5,7 @@
  */
 package com.tiger.todolist.view;
 
+import com.tiger.todolist.controller.mainListener;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,17 +24,24 @@ public class TaskBoard extends JPanel{
     private JTextArea taskDescription = new JTextArea ("Task Descripton");
     private JLabel priority = new JLabel ("...Number...");
     private JLabel dueDate = new JLabel("A date");
-    private JRadioButton checkBox = new JRadioButton("Complete"); 
+    private JRadioButton checkBox = new JRadioButton("Complete");
+    
+    private mainListener listner = new mainListener(); 
 
     public TaskBoard(){
         this.setLayout( new GridLayout (7,1));
-        this.add(currentList);
-        this.add(tasks);
-        this.add(taskTitle);
-        this.add(taskDescription);
-        this.add(priority);
-        this.add(dueDate);
-        this.add(checkBox);
+        
+        String[] tasks = listner.getTaskDetails();
+        for(int i = 0; i < tasks.length; i++){
+            
+        }
+//        this.add(currentList);
+//        this.add(tasks);
+//        this.add(taskTitle);
+//        this.add(taskDescription);
+//        this.add(priority);
+//        this.add(dueDate);
+//        this.add(checkBox);
     }
     
     public JLabel getCurrentList() {
