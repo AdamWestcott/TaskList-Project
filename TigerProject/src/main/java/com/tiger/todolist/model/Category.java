@@ -51,13 +51,14 @@ public class Category {
     public String[] getTaskDetails(){
         String storeTask = "";
         for(int i = 0; i < task.size(); i++){
+            storeTask += this.getTitle() + ","; 
             storeTask += task.get(i).getName()+ ",";
             storeTask += task.get(i).getDescription()+ ",";
             storeTask += task.get(i).getDueDate()+ ",";
             storeTask += task.get(i).getPriority()+ ",";
-            storeTask += " ";
+            storeTask += "#";
         }
-        String[] taskNames = storeTask.split(" ");
+        String[] taskNames = storeTask.split("#");
         
         return taskNames; 
     }

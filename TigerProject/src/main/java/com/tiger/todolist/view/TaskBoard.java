@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
  */
 public class TaskBoard extends JPanel{
     
-    private JLabel currentList = new JLabel("This will say list name");
+    private JLabel currentList = new JLabel("");
     private JLabel tasks = new JLabel ("Tasks");
     private JLabel taskTitle = new JLabel ("Task title");
     private JTextArea taskDescription = new JTextArea ("Task Descripton");
@@ -26,15 +26,33 @@ public class TaskBoard extends JPanel{
     private JLabel dueDate = new JLabel("A date");
     private JRadioButton checkBox = new JRadioButton("Complete");
     
-    private mainListener listner = new mainListener(); 
+    private mainListener listener = new mainListener(); 
 
     public TaskBoard(){
         this.setLayout( new GridLayout (7,1));
         
-        String[] tasks = listner.getTaskDetails();
+        String[] tasks = listener.getTaskDetails();             // Getting tasks details
+        String[] seperateTasks = new String[tasks.length];      // Setting array outside loop[
         for(int i = 0; i < tasks.length; i++){
-            
+           seperateTasks = tasks[i].split(",");
+           for(int x = 0; x < seperateTasks.length; x++){
+                taskTitle.setText(seperateTasks[0]);
+                taskDescription.setText(seperateTasks[1]);
+                dueDate.setText(seperateTasks[2]);
+                checkBox.setText(seperateTasks[3]);
+                priority.setText(seperateTasks[4]);
+                if(currentList.getText().equals("")){
+                    currentList.setText(seperateTasks[0]);
+                    this.add(currentList);
+            }
+           this.add(taskTitle);
+           this.add(taskDescription);
+           this.add(dueDate);
+           this.add(checkBox);
+           this.add(priority);
         }
+        }
+        //currentList.setText(seperateTasks[0]);
 //        this.add(currentList);
 //        this.add(tasks);
 //        this.add(taskTitle);

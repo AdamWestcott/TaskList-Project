@@ -16,6 +16,7 @@ public class User {
     private String username;
     private String password;
     private int userLevel;
+    private static int id = 0;  
     private ArrayList<Category> list = new ArrayList<Category>();
 
     
@@ -24,13 +25,19 @@ public class User {
         this.username = "default";
         this.password = "defaultPass";
         this.userLevel = 0;
+        this.id = id;
+        id ++; 
     }
     public User(String username, String password, int userLevel) {
         this.username = username;
         this.password = password;
         this.userLevel = userLevel;  //0 = gneneral User // 1 = Admin User
+        this.id = id;
+        id ++;
     }
 //GETTERS AND SETTERS
+    
+    
     public int getUserLevel() {
         return userLevel;
     }

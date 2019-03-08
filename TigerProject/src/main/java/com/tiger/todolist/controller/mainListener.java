@@ -37,8 +37,8 @@ public class mainListener implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Clicked Confirm");
             }
         else if(e.getActionCommand().equals("thisList")){
-            taskWindow taskWindow = new taskWindow();
-             
+            taskWindow abc = new taskWindow();
+            
         }
     }
     

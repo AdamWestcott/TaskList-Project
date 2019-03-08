@@ -8,6 +8,7 @@
 import com.tiger.todolist.controller.mainListener;
 import com.tiger.todolist.model.Board;
 import com.tiger.todolist.model.Category;
+import com.tiger.todolist.model.Task;
 import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.mainWindow;
 import java.util.Date;
@@ -29,18 +30,32 @@ public class Main {
         Board.getStatus().addUser(a);
         
         
-        Category sgs = new Category("asga");
-        Category fs = new Category("fwsgs"); 
-        Category gs = new Category("afa");
-        Category gsa = new Category("afaafa");
+        Category Csgs = new Category("asga");
+        Category Cfs = new Category("fwsgs"); 
+        Category Cgs = new Category("afa");
+        Category Cgsa = new Category("afaafa");
         
-        Board.getStatus().getUsers().get(0).addList(sgs); 
-        Board.getStatus().getUsers().get(0).addList(fs);
-        Board.getStatus().getUsers().get(0).addList(gs);
-        Board.getStatus().getUsers().get(0).addList(gsa);
+        Task ava = new Task(false,"A task afa","2/2/29",3,"Get milk");
+        Task sg = new Task(false,"Another task ","2/2/29",3,"Get the code working"); 
+        Task deh = new Task(false,"A third task","2/2/29",3,"Get Apples"); 
+        Task hsh = new Task(false,"A task afa","2/2/29",3,"Do something"); 
+        
+        
+        Board.getStatus().getUsers().get(0).addList(Csgs); 
+        Board.getStatus().getUsers().get(0).addList(Cfs);
+        Board.getStatus().getUsers().get(0).addList(Cgs);
+        Board.getStatus().getUsers().get(0).addList(Cgsa);
         Board.getStatus(); 
         //Board.getStatus().createUser("Tim","Tim27",1);
-        
+//        Board.getStatus().getUsers().get(0).getList().get(1).createTask(false,"A task description","2/2/29",3,"Get milk");
+//        Board.getStatus().getUsers().get(0).getList().get(0).createTask(false,"Another task ","2/2/29",3,"Get the code working");
+//        Board.getStatus().getUsers().get(0).getList().get(0).createTask(false,"A third task","2/2/29",3,"Get Apples");
+        //Board.getStatus().getUsers().get(0).getList().get(0).createTask(false,"A task afa","2/2/29",3,"Do something");
+        Csgs.addTask(ava);
+        Csgs.addTask(sg);
+        Cfs.addTask(sg);
+        Cgs.addTask(deh);
+        Cgsa.addTask(hsh);
         
         mainWindow window = new mainWindow(); 
         mainListener mainController = new mainListener(); 
