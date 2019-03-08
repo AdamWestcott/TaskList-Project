@@ -44,7 +44,7 @@ public class SignIn extends JFrame {
         this.setPreferredSize(newDim);
         this.setMaximumSize(newDim);
         this.setSize(newDim);
-        this.revalidate();
+        this.revalidate();//Calling all is an instruction to tell the layout manager to reset based on the new component list 
         this.setResizable(false);
         this.add(form);
         this.setVisible(true);
