@@ -13,6 +13,7 @@ import com.tiger.todolist.controller.mainListener;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -30,7 +31,8 @@ public class ListBoard extends JPanel {
         
         String[] listsNames = mainListener.getListNames();
         for(int i = 0; i < listsNames.length; i++){
-            JLabel name = new JLabel();
+            JButton name = new JButton();
+            name.setBorderPainted(false); //removes border from JButton
             name.setText(listsNames[i]); 
             this.add(name);
         } 
