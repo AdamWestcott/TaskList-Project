@@ -30,7 +30,7 @@ public class mainListener implements ActionListener {
             JOptionPane.showMessageDialog(null, "Clicked add List");
         }
         else if(e.getActionCommand().equals("signInButton")){
-            SignIn signInForm = new SignIn();
+            SignIn signInForm = new SignIn();   
         }
         else if(e.getActionCommand().equals("confirm")){
                 JOptionPane.showMessageDialog(null, "Clicked Confirm");
