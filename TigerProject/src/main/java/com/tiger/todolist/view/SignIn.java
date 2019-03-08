@@ -11,6 +11,7 @@ package com.tiger.todolist.view;
  */
 import com.tiger.todolist.controller.mainListener;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,7 +25,7 @@ public class SignIn extends JFrame {
     
     private JTextField userName = new JTextField("User Name");
     private JTextField password = new JTextField("Password");
-    private JButton SignIn = new JButton("Submit");
+    private JButton SignInButton = new JButton("Submit");
 
     mainListener listener = new mainListener(); 
     
@@ -33,13 +34,19 @@ public class SignIn extends JFrame {
         form.setLayout(new GridLayout(3,1));
         form.add(userName);
         form.add(password);
-        form.add(SignIn);
+        form.add(SignInButton);
         
-        SignIn.addActionListener(listener);
-        SignIn.setActionCommand("confirm");
+        SignInButton.addActionListener(listener);
+        SignInButton.setActionCommand("confirm");
         
+        Dimension newDim= new Dimension(300,150);
+        
+        this.setPreferredSize(newDim);
+        this.setMaximumSize(newDim);
+        this.setSize(newDim);
+        this.revalidate();
+        this.setResizable(false);
         this.add(form);
-        this.setSize(500,400);
         this.setVisible(true);
     }
     
@@ -60,11 +67,11 @@ public class SignIn extends JFrame {
     }
 
     public JButton getSignIn() {
-        return SignIn;
+        return SignInButton;
     }
 
     public void setSignIn(JButton SignIn) {
-        this.SignIn = SignIn;
+        this.SignInButton = SignIn;
     }
     
 
