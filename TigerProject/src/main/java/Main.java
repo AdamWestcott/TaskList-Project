@@ -32,11 +32,12 @@ public class Main {
         Category sgs = new Category("asga");
         Category fs = new Category("fwsgs"); 
         Category gs = new Category("afa");
+        Category gsa = new Category("afaafa");
         
         Board.getStatus().getUsers().get(0).addList(sgs); 
         Board.getStatus().getUsers().get(0).addList(fs);
         Board.getStatus().getUsers().get(0).addList(gs);
-        
+        Board.getStatus().getUsers().get(0).addList(gsa);
         Board.getStatus(); 
         //Board.getStatus().createUser("Tim","Tim27",1);
         

@@ -7,8 +7,10 @@ package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.mainListener;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -24,7 +26,8 @@ public class mainWindow extends JFrame{
     private JButton addList = new JButton("Add List");
     private JButton editList = new JButton("Edit List");
     private JButton removeList = new JButton("Remove List");
-    private ListBoard lists = new ListBoard(); 
+    //private ListBoard lists = new ListBoard(); 
+    private JLabel list= new JLabel ("Lists");
     
     private mainListener listener = new mainListener(); 
     
@@ -32,11 +35,24 @@ public class mainWindow extends JFrame{
         super("To Do List");
         this.setLayout(new FlowLayout());
         this.add(search, new FlowLayout(FlowLayout.LEFT)); 
-        this.add(lists);
         this.add(addList,new FlowLayout(FlowLayout.RIGHT));
         this.add(editList,new FlowLayout(FlowLayout.RIGHT));
         this.add(removeList,new FlowLayout(FlowLayout.RIGHT));
-        this.add(signInButton,new FlowLayout(FlowLayout.RIGHT)); 
+        this.add(signInButton,new FlowLayout(FlowLayout.RIGHT));
+        
+        this.setLayout(new GridLayout(10,1));
+        this.add(list);
+        
+        
+        String[] listsNames = mainListener.getListNames();
+        for(int i = 0; i < listsNames.length; i++){
+            JButton name = new JButton();
+            name.setBorderPainted(false); //removes border from JButton
+            name.setText(listsNames[i]); 
+            name.addActionListener(listener);
+            name.setActionCommand("thisList");
+            this.add(name);
+        } 
         
         
         addList.addActionListener(listener);
