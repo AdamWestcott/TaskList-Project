@@ -21,7 +21,8 @@ import javax.swing.JTextArea;
 
 public class ListBoard extends JPanel {
 
-    private JLabel list= new JLabel ("Lists");  
+    private JLabel list= new JLabel ("Lists");
+    private mainListener listener = new mainListener();
     
     public ListBoard()
     {
@@ -34,6 +35,8 @@ public class ListBoard extends JPanel {
             JButton name = new JButton();
             name.setBorderPainted(false); //removes border from JButton
             name.setText(listsNames[i]); 
+            name.addActionListener(listener);
+            name.setActionCommand("thisList");
             this.add(name);
         } 
         

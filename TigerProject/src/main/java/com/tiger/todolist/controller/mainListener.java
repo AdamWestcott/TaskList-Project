@@ -35,8 +35,8 @@ public class mainListener implements ActionListener {
         else if(e.getActionCommand().equals("confirm")){
                 JOptionPane.showMessageDialog(null, "Clicked Confirm");
             }
-        if(e.getActionCommand().equals("")){
-             
+        else if(e.getActionCommand().equals("thisList")){
+             JOptionPane.showMessageDialog(null, "Clicked a list next stage is gonna be to get all elements fun");
         }
     }
     
