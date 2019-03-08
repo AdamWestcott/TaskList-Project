@@ -77,7 +77,7 @@ public class User {
     for(int i = 0; i < list.size(); i++){
         storeName += list.get(i).getTitle() + "," ; 
     }
-    String[] listName = storeName.split("'");
+    String[] listName = storeName.split(",");
     
     return listName; 
     }

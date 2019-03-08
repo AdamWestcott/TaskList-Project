@@ -110,8 +110,17 @@ public class Task {
              }
      else System.out.println("SubTask not in Task");
     }
-       
     
-  
+     public String[] showSubTasks(){
+        
+    //list.forEach((list) -> System.out.println(list.getTitle()));
+    String storeName = "";
+    for(int i = 0; i < SubTasks.size(); i++){
+        storeName += SubTasks.get(i).getName() + "," ; 
+    }
+    String[] SubTaskName = storeName.split(",");
+    
+    return SubTaskName; 
+    }
     
 }

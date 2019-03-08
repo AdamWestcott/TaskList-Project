@@ -21,12 +21,11 @@ import javax.swing.JTextArea;
 public class ListBoard extends JPanel {
 
     private JLabel list= new JLabel ("Lists");  
-    private JLabel category;
     
     public ListBoard()
     {
         this.setLayout(new GridLayout(10,1));
-        this.add(list, BorderLayout.NORTH);
+        this.add(list);
         
         
         String[] listsNames = mainListener.getListNames();
