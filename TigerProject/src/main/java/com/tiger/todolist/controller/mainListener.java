@@ -47,15 +47,11 @@ public class mainListener implements ActionListener {
         return store;
     }
     
-//    public static String[] getTaskNames(){
-//        String[] store = Board.getStatus().getUsers().get(0).getList().get(0).showTasks();
-//        return store;
-//    }
    
      public static String[] getTaskDetails(){
          String[] taskDetails = Board.getStatus().getUsers().get(0).getList().get(0).getTaskDetails();
          
          return taskDetails; 
      }
-    
+     
 }

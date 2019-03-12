@@ -16,14 +16,20 @@ public class Category {
     private String title;
     private static ArrayList<Task> task = new ArrayList<Task>();
     private static ArrayList<Task> backupList = new ArrayList<Task>();
-    
+    private static int id = 0;
+
+  
     //CONSTRUCTORS
     public Category(){
         this.title = "List Name";
+        this.id = id;
+        id++;
     }
     
     public Category(String title){
         this.title = title;
+        this.id = id;
+        id++;
     }
     
     //FUNCTIONS
@@ -100,6 +106,9 @@ public class Category {
 
     public void setTask(ArrayList<Task> task) {
         this.task = task;
+    }
+      public static int getId() {
+        return id;
     }
     
     

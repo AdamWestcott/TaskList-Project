@@ -66,6 +66,9 @@ public class User {
         return list;
     }
     
+    public static int getId() {
+        return id;
+    }
    //FUNCTIONS 
     public void addList(Category listName){      // Adding a instance of list.
         this.list.add(listName);  
@@ -79,7 +82,6 @@ public class User {
     
     public String[] showLists(){
         
-    //list.forEach((list) -> System.out.println(list.getTitle()));
     String storeName = "";
     for(int i = 0; i < list.size(); i++){
         storeName += list.get(i).getTitle() + "," ; 

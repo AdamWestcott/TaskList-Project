@@ -48,9 +48,9 @@ public class mainWindow extends JFrame{
         for(int i = 0; i < listsNames.length; i++){
             JButton name = new JButton();
             name.setBorderPainted(false); //removes border from JButton
-            name.setText(listsNames[i]); 
+            name.setText(listsNames[i]);
             name.addActionListener(listener);
-            name.setActionCommand("thisList");
+            name.setActionCommand("thisList"+i);
             this.add(name);
         } 
         
