@@ -22,14 +22,15 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class SignIn extends JFrame {
-    
-    private JTextField userName = new JTextField("User Name");
-    private JTextField password = new JTextField("Password");
+     
+    private static JTextField userName = new JTextField("");
+    private static JTextField password = new JTextField("");
     private JButton SignInButton = new JButton("Submit");
-
     mainListener listener = new mainListener(); 
     
+    
     public SignIn(){
+        this.setTitle("SignIn");
         JPanel form = new JPanel();
         form.setLayout(new GridLayout(3,1));
         form.add(userName);
@@ -38,6 +39,7 @@ public class SignIn extends JFrame {
         
         SignInButton.addActionListener(listener);
         SignInButton.setActionCommand("confirm");
+        
         
         Dimension newDim= new Dimension(300,150);
         
@@ -50,7 +52,8 @@ public class SignIn extends JFrame {
         this.setVisible(true);
     }
     
-    public JTextField getUserName() {
+    
+    public static JTextField getUserName() {
         return userName;
     }
 
@@ -58,11 +61,11 @@ public class SignIn extends JFrame {
         this.userName = userName;
     }
 
-    public JTextField getPassword() {
+    public static JTextField getPassword() {
         return password;
     }
 
-    public void setPassword(JTextField password) {
+    public  void setPassword(JTextField password) {
         this.password = password;
     }
 

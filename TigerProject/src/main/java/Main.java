@@ -10,6 +10,7 @@ import com.tiger.todolist.model.Board;
 import com.tiger.todolist.model.Category;
 import com.tiger.todolist.model.Task;
 import com.tiger.todolist.model.User;
+import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.mainWindow;
 import java.util.Date;
 
@@ -21,10 +22,10 @@ public class Main {
 
     public static void main(String[] args) {
         
-        Board.getStatus().createUser("time", "doa", 1);
-        Board.getStatus().createUser("time", "fafa", 1);
-        Board.getStatus().createUser("time", "dgag", 1);
-        Board.getStatus().createUser("time", "dhshs", 1);
+        //Board.getStatus().createUser("time", "doa", 1);
+        //Board.getStatus().createUser("time", "fafa", 1);
+        //Board.getStatus().createUser("time", "dgag", 1);
+        //Board.getStatus().createUser("time", "dhshs", 1);
         
         User a = new User();
         Board.getStatus().addUser(a);
@@ -57,7 +58,11 @@ public class Main {
         Cgs.addTask(deh);
         Cgsa.addTask(hsh);
         
-        mainWindow window = new mainWindow(); 
+        User Paul = new User("Paul","Neve",0);
+        Board.getStatus().addUser(Paul);
+        
+        SignIn signInForm = new SignIn();   
+        //mainWindow window = new mainWindow(); 
         mainListener mainController = new mainListener(); 
         
        

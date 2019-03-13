@@ -53,6 +53,16 @@ public class Board {
         this.users = users;
     }
     
-    
-    
+    public int findUser (String un, String pn) {
+        for(int i = 0 ; i < users.size(); i++){
+           System.out.println(i);
+            if (users.get(i).getUsername().equals(un)&& users.get(i).getPassword().equals(pn)){
+                int userIndex = i;
+                return userIndex;
+            }
+            
+        
+    }
+    return -1;
+    }
 }

@@ -13,6 +13,7 @@ import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import java.util.EventObject;
 
 
 /**
@@ -30,11 +31,17 @@ public class mainListener implements ActionListener {
         if(e.getActionCommand().equals("addListBut")){
             JOptionPane.showMessageDialog(null, "Clicked add List");
         }
-        else if(e.getActionCommand().equals("signInButton")){
-            SignIn signInForm = new SignIn();   
-        }
+        
         else if(e.getActionCommand().equals("confirm")){
-                JOptionPane.showMessageDialog(null, "Clicked Confirm");
+            String un = SignIn.getUserName().getText();
+            String pn = SignIn.getPassword().getText();
+            
+            if(Board.getStatus().findUser(un,pn) != -1){
+                mainWindow window = new mainWindow(); 
+            }
+                    
+                    else
+                JOptionPane.showMessageDialog(null, "error");
             }
         else if(e.getActionCommand().equals("thisList")){
             taskWindow abc = new taskWindow();
