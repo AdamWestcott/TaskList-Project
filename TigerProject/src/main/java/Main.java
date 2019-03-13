@@ -60,6 +60,9 @@ public class Main {
         
         User Paul = new User("Paul","Neve",0);
         Board.getStatus().addUser(Paul);
+        Paul.createList("Cats dates");
+        Paul.createList("EH RAW");
+        Paul.createList("Work");
         
         SignIn signInForm = new SignIn();   
         //mainWindow window = new mainWindow(); 

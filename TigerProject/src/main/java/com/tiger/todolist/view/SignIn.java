@@ -77,9 +77,5 @@ public class SignIn extends JFrame {
         this.SignInButton = SignIn;
     }
     
-
-
-
-
     
 }

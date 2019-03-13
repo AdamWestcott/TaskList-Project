@@ -37,11 +37,11 @@ public class mainListener implements ActionListener {
             String pn = SignIn.getPassword().getText();
             
             if(Board.getStatus().findUser(un,pn) != -1){
-                mainWindow window = new mainWindow(); 
-            }
-                    
-                    else
-                JOptionPane.showMessageDialog(null, "error");
+                mainWindow window = new mainWindow();
+                
+            }    
+            else
+                JOptionPane.showMessageDialog(null, "Incorrect login details");
             }
         else if(e.getActionCommand().equals("thisList")){
             taskWindow abc = new taskWindow();
@@ -49,7 +49,12 @@ public class mainListener implements ActionListener {
     }
     
     public static String[] getListNames(){
-        String[] store = Board.getStatus().getUsers().get(0).showLists();
+        //String[] store = Board.getStatus().getUsers().get(0).showLists();
+        String un = SignIn.getUserName().getText();
+        String pn = SignIn.getPassword().getText();
+        int userIndex = Board.getStatus().findUser(un,pn);
+        String[] store = Board.getStatus().getUsers().get(userIndex).showLists();
+        
         return store;
     }
     
