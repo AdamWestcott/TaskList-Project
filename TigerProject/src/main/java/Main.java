@@ -64,6 +64,12 @@ public class Main {
         Paul.createList("EH RAW");
         Paul.createList("Work");
         
+        User Tim = new User("Tim","password",0);
+        Board.getStatus().addUser(Tim);
+        Tim.createList("Tims dates");
+        Tim.createList("Works");
+        Tim.createList("Personal");
+        
         SignIn signInForm = new SignIn();   
         //mainWindow window = new mainWindow(); 
         mainListener mainController = new mainListener(); 
