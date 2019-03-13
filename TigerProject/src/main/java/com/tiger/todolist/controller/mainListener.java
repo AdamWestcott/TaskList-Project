@@ -38,7 +38,6 @@ public class mainListener implements ActionListener {
             }
         else if(e.getActionCommand().equals("thisList")){
             taskWindow abc = new taskWindow();
-            
         }
     }
     

@@ -26,7 +26,6 @@ public class mainWindow extends JFrame{
     private JButton addList = new JButton("Add List");
     private JButton editList = new JButton("Edit List");
     private JButton removeList = new JButton("Remove List");
-    //private ListBoard lists = new ListBoard(); 
     private JLabel list= new JLabel ("Lists");
     
     private mainListener listener = new mainListener(); 
@@ -50,7 +49,7 @@ public class mainWindow extends JFrame{
             name.setBorderPainted(false); //removes border from JButton
             name.setText(listsNames[i]);
             name.addActionListener(listener);
-            name.setActionCommand("thisList"+i);
+            name.setActionCommand("thisList");
             this.add(name);
         } 
         
