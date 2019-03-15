@@ -60,7 +60,7 @@ public class mainWindow extends JFrame{
         signInButton.setActionCommand("signInButton"); 
         
         this.setSize(500,400);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setVisible(true); 
     }
 }
