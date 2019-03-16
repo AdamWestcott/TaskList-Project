@@ -16,10 +16,10 @@ import javax.swing.JFrame;
  */
 public class taskWindow extends JFrame {
     
-    private TaskBoard tb = new TaskBoard();
+    private TaskBoard tb; 
     private JButton showSt = new JButton("Show Subtasks"); 
     
-    public taskWindow(){
+    public taskWindow(TaskBoard tb){
         super("To Do List: Tasks");
         this.setLayout(new FlowLayout());
         
@@ -27,7 +27,17 @@ public class taskWindow extends JFrame {
         this.add(showSt);
         
         this.setSize(500, 400);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setVisible(true);
+    }
+
+
+    public TaskBoard getTb() {
+        return tb;
+    }
+    
+    
+    public void setTb(TaskBoard tb) {
+        this.tb = tb;
     }
 }

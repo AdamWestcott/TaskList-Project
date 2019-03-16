@@ -6,14 +6,14 @@
 package com.tiger.todolist.controller;
 
 import com.tiger.todolist.model.Board;
-import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
+import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.mainWindow;
 import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import java.util.EventObject;
+
 
 
 /**
@@ -28,28 +28,42 @@ public class mainListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("addListBut")){
-            JOptionPane.showMessageDialog(null, "Clicked add List");
-        }
-        
-        else if(e.getActionCommand().equals("confirm")){
-            String un = SignIn.getUserName().getText();
-            String pn = SignIn.getPassword().getText();
+         String un = SignIn.getUserName().getText();
+         String pn = SignIn.getPassword().getText();
+         int currentUser = Board.getStatus().findUser(un,pn);
+         
+        if(e.getActionCommand().equals("confirm")){
             
             if(Board.getStatus().findUser(un,pn) != -1){
                 mainWindow window = new mainWindow();
-                
-            }    
-            else
-                JOptionPane.showMessageDialog(null, "Incorrect login details");
             }
-        else if(e.getActionCommand().equals("thisList")){
-            taskWindow abc = new taskWindow();
-        }
+            else JOptionPane.showMessageDialog(null, "Incorrect login details");
+        }    
+         //DISPLAYING USER TASKS
+         for(int i = 0; i < getListNames().length; i++){
+                if(e.getActionCommand().equals("thisList"+i)){
+                    JOptionPane.showMessageDialog(null, i+": This list clicked");
+                    TaskBoard taskView = new TaskBoard(i);
+                    
+                    taskWindow mainTask = new taskWindow(taskView);
+                    
+                 
+                    
+                    }
+                }  
+        
+        
     }
     
-    public static String[] getListNames(){
-        //String[] store = Board.getStatus().getUsers().get(0).showLists();
+    public String getListTitle(int listId){
+        String un = SignIn.getUserName().getText();
+        String pn = SignIn.getPassword().getText();
+        int userIndex = Board.getStatus().findUser(un,pn);
+        String listName = Board.getStatus().getUsers().get(userIndex).getList().get(listId).getTitle();
+        return listName;
+    }
+    
+    public String[] getListNames(){  // Retrieves the list names of of user
         String un = SignIn.getUserName().getText();
         String pn = SignIn.getPassword().getText();
         int userIndex = Board.getStatus().findUser(un,pn);
@@ -59,8 +73,12 @@ public class mainListener implements ActionListener {
     }
     
    
-     public static String[] getTaskDetails(){
-         String[] taskDetails = Board.getStatus().getUsers().get(0).getList().get(0).getTaskDetails();
+     public String[] getTaskDetails(int listId){
+        String un = SignIn.getUserName().getText();
+        String pn = SignIn.getPassword().getText();
+        int userIndex = Board.getStatus().findUser(un,pn);
+        
+         String[] taskDetails = Board.getStatus().getUsers().get(userIndex).getList().get(listId).getTaskDetails();
          
          return taskDetails; 
      }

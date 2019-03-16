@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Category {
     //PROPERTIES
     private String title;
-    private static ArrayList<Task> task = new ArrayList<Task>();
-    private static ArrayList<Task> backupList = new ArrayList<Task>();
+    private ArrayList<Task> task = new ArrayList<Task>();
+    private  ArrayList<Task> backupList = new ArrayList<Task>();
     private static int id = 0;
 
   
@@ -89,6 +89,15 @@ public class Category {
             System.out.println("Task restored");
         }
         else System.out.println("Task does not exist in list");
+    }
+    
+    public String[] loadTasks(){                        //Puts tasks of this list into an array
+        String[] taskNames = new String[task.size()];
+        for(int i = 0; i < task.size(); i++){
+            taskNames[i] = task.get(i).getName();
+            System.out.println(taskNames[i]);
+        }
+        return taskNames; 
     }
 
     //GETTERS AND SETTERS
