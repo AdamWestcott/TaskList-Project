@@ -46,7 +46,7 @@ public class mainListener implements ActionListener {
                     TaskBoard taskView = new TaskBoard(i);
                     
                     taskWindow mainTask = new taskWindow(taskView);
-                    
+                
                  
                     
                     }

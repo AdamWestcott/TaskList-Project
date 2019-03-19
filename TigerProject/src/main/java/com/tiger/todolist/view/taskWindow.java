@@ -5,6 +5,7 @@
  */
 package com.tiger.todolist.view;
 
+import com.tiger.todolist.controller.popupWindows;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -17,7 +18,10 @@ import javax.swing.JFrame;
 public class taskWindow extends JFrame {
     
     private TaskBoard tb; 
-    private JButton showSt = new JButton("Show Subtasks"); 
+    private JButton showSt = new JButton("Show Subtasks");
+    private JButton addTask = new JButton("Add task");
+    
+    private popupWindows listener = new popupWindows(); 
     
     public taskWindow(TaskBoard tb){
         super("To Do List: Tasks");
@@ -25,6 +29,9 @@ public class taskWindow extends JFrame {
         
         this.add(tb);
         this.add(showSt);
+        this.add(addTask);
+        addTask.setActionCommand("addTask");
+        
         
         this.setSize(500, 400);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);

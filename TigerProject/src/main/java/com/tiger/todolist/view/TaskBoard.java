@@ -29,7 +29,10 @@ public class TaskBoard extends JPanel{
     
     
     private mainListener listener = new mainListener(); 
-
+    
+    public TaskBoard(){
+        
+    }
     public TaskBoard(int i){
         int listIndex = i; 
         this.setLayout( new GridLayout (7,1));
