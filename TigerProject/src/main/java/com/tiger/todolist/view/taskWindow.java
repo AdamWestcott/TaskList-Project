@@ -30,7 +30,9 @@ public class taskWindow extends JFrame {
         this.add(tb);
         this.add(showSt);
         this.add(addTask);
+        addTask.addActionListener(listener); 
         addTask.setActionCommand("addTask");
+        
         
         
         this.setSize(500, 400);
