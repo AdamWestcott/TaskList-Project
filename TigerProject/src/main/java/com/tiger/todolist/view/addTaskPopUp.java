@@ -26,13 +26,12 @@ public class addTaskPopUp extends JFrame{
     private JLabel dueDate = new JLabel("Due Date:");
     private JLabel priority = new JLabel("Select Priority:");
 
-  
-
-    private JTextArea entTaskName = new JTextArea("");
-    private JTextArea entDescript = new JTextArea("");
-    private JTextArea entDueDate = new JTextArea("");
+   
+    private JTextArea entTaskName = new JTextArea();
+    private JTextArea entDescript = new JTextArea();
+    private JTextArea entDueDate = new JTextArea();
     private String[] priotityLvls = new String[]{"1","2","3","4","5","6","7","8","9","10"}; 
-    private JComboBox<String> priorities = new JComboBox<String>(priotityLvls);
+    private JComboBox<String>  priorities = new JComboBox<String>(priotityLvls);
     private JButton confirm = new JButton("Add task");
     
     private popupWindows listener = new popupWindows(); 
@@ -51,7 +50,7 @@ public class addTaskPopUp extends JFrame{
         this.add(priorities);
         
         confirm.addActionListener(listener);
-        confirm.setActionCommand("confirm");
+        confirm.setActionCommand("add");
         this.add(confirm);
         
         this.setSize(500,400);
@@ -68,12 +67,12 @@ public class addTaskPopUp extends JFrame{
         return entDescript;
     }
 
-    public JTextArea getEntDueDate() {
+    public  JTextArea getEntDueDate() {
         return entDueDate;
     }
 
-    public JComboBox<String> getPriorities() {
+    public  JComboBox<String> getPriorities() {
         return priorities;
     }
-    
+   
 }

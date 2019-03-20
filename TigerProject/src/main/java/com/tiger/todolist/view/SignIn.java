@@ -30,7 +30,7 @@ public class SignIn extends JFrame {
     
     
     public SignIn(){
-        this.setTitle("SignIn");
+        this.setTitle("Sign In");
         JPanel form = new JPanel();
         form.setLayout(new GridLayout(3,1));
         form.add(userName);

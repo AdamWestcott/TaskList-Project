@@ -15,34 +15,32 @@ import javax.swing.JOptionPane;
  * @author k1732912
  */
 public class popupWindows implements ActionListener {
-    addTaskPopUp over = null;
+    
+    addTaskPopUp over; 
     
     @Override
     public void actionPerformed(ActionEvent e) {
-    
-    
-        
-            if(e.getActionCommand().equals("addTask")){             //TaskBoard "Add list" button listener
-            over = new addTaskPopUp();
-            }
-        
-            else if(e.getActionCommand().equals("confirm")){
-            String passTaskName = over.getEntTaskName().getText();
-            String passTaskDesc = over.getEntDescript().getText();
-            String passDueDate = over.getEntDueDate().getText();
-            String passPriority = over.getPriorities().getSelectedItem().toString();
-            System.out.println(1);
-            System.out.println(passTaskName);
-            System.out.println(passTaskDesc);
-            System.out.println(passDueDate);
-            System.out.println(passPriority);
-        }
-        
-        
-        
-        
-    }
- }
-        
-        
+       if(e.getActionCommand().equals("addTask") ){ //TaskBoard "Add list" button listener
+         over = new addTaskPopUp();
+            
+       }
+       else if(e.getActionCommand().equals("add")){
+          System.out.println("Pressed");
+         
+          String passTaskName = over.getEntTaskName().getText();
+//          String passTaskDesc = over.getEntDescript().getText();
+//          String passDueDate = over.getEntDueDate().getText();
+//          String passPriority = over.getPriorities().getSelectedItem().toString();
 
+          
+           //System.out.println(passTaskName);
+//           System.out.println(passTaskDesc);
+//           System.out.println(passDueDate);
+//           System.out.println(passPriority);
+          
+           
+                
+        }
+    }
+      
+ }
