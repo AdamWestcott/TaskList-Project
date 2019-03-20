@@ -27,16 +27,16 @@ public class popupWindows implements ActionListener {
        else if(e.getActionCommand().equals("add")){
           System.out.println("Pressed");
          
-          String passTaskName = over.getEntTaskName().getText();
-//          String passTaskDesc = over.getEntDescript().getText();
-//          String passDueDate = over.getEntDueDate().getText();
-//          String passPriority = over.getPriorities().getSelectedItem().toString();
+          String passTaskName = addTaskPopUp.getEntTaskName().getText();
+          String passTaskDesc = addTaskPopUp.getEntDescript().getText();
+          String passDueDate = addTaskPopUp.getEntDueDate().getText();
+          String passPriority = addTaskPopUp.getPriorities().getSelectedItem().toString();
 
           
-           //System.out.println(passTaskName);
-//           System.out.println(passTaskDesc);
-//           System.out.println(passDueDate);
-//           System.out.println(passPriority);
+           System.out.println(passTaskName);
+           System.out.println(passTaskDesc);
+           System.out.println(passDueDate);
+           System.out.println(passPriority);
           
            
                 

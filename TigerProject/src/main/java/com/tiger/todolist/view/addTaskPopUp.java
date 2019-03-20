@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 /**
@@ -27,11 +28,11 @@ public class addTaskPopUp extends JFrame{
     private JLabel priority = new JLabel("Select Priority:");
 
    
-    private JTextArea entTaskName = new JTextArea();
-    private JTextArea entDescript = new JTextArea();
-    private JTextArea entDueDate = new JTextArea();
-    private String[] priotityLvls = new String[]{"1","2","3","4","5","6","7","8","9","10"}; 
-    private JComboBox<String>  priorities = new JComboBox<String>(priotityLvls);
+    private static JTextField entTaskName = new JTextField();
+    private static JTextArea entDescript = new JTextArea();
+    private static JTextField entDueDate = new JTextField();
+    private static String[] priotityLvls = new String[]{"1","2","3","4","5","6","7","8","9","10"}; 
+    private static JComboBox<String>  priorities = new JComboBox<String>(priotityLvls);
     private JButton confirm = new JButton("Add task");
     
     private popupWindows listener = new popupWindows(); 
@@ -59,19 +60,19 @@ public class addTaskPopUp extends JFrame{
         
         
     }
-      public JTextArea getEntTaskName() {
-        return entTaskName;
+      public static JTextField getEntTaskName() {
+          return entTaskName;
     }
 
-    public JTextArea getEntDescript() {
+    public static JTextArea getEntDescript() {
         return entDescript;
     }
 
-    public  JTextArea getEntDueDate() {
+    public static JTextField getEntDueDate() {
         return entDueDate;
     }
 
-    public  JComboBox<String> getPriorities() {
+    public static JComboBox<String> getPriorities() {
         return priorities;
     }
    
