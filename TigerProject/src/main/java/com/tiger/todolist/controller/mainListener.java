@@ -32,6 +32,7 @@ public class mainListener implements ActionListener {
          String pn = SignIn.getPassword().getText();
          int currentUser = Board.getStatus().findUser(un,pn);
          
+         //
         if(e.getActionCommand().equals("confirm")){
             
             if(Board.getStatus().findUser(un,pn) != -1){
@@ -44,11 +45,7 @@ public class mainListener implements ActionListener {
                 if(e.getActionCommand().equals("thisList"+i)){
                     JOptionPane.showMessageDialog(null, i+": This list clicked");
                     TaskBoard taskView = new TaskBoard(i);
-                    
                     taskWindow mainTask = new taskWindow(taskView);
-                
-                 
-                    
                     }
                 }  
         

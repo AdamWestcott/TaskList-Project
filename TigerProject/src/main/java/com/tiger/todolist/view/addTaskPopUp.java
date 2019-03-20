@@ -5,6 +5,8 @@
  */
 package com.tiger.todolist.view;
 
+import com.tiger.todolist.controller.mainListener;
+import com.tiger.todolist.controller.popupWindows;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,12 +26,16 @@ public class addTaskPopUp extends JFrame{
     private JLabel dueDate = new JLabel("Due Date:");
     private JLabel priority = new JLabel("Select Priority:");
 
-    private JTextArea entTaskName = new JTextArea();
-    private JTextArea entDescript = new JTextArea();
-    private JTextArea entDueDate = new JTextArea();
+  
+
+    private JTextArea entTaskName = new JTextArea("");
+    private JTextArea entDescript = new JTextArea("");
+    private JTextArea entDueDate = new JTextArea("");
     private String[] priotityLvls = new String[]{"1","2","3","4","5","6","7","8","9","10"}; 
     private JComboBox<String> priorities = new JComboBox<String>(priotityLvls);
     private JButton confirm = new JButton("Add task");
+    
+    private popupWindows listener = new popupWindows(); 
     
     public addTaskPopUp(){
         this.setLayout(new GridLayout(10,1));
@@ -43,6 +49,9 @@ public class addTaskPopUp extends JFrame{
         this.add(entDueDate);
         this.add(priority);
         this.add(priorities);
+        
+        confirm.addActionListener(listener);
+        confirm.setActionCommand("confirm");
         this.add(confirm);
         
         this.setSize(500,400);
@@ -50,6 +59,21 @@ public class addTaskPopUp extends JFrame{
         this.setVisible(true);
         
         
+    }
+      public JTextArea getEntTaskName() {
+        return entTaskName;
+    }
+
+    public JTextArea getEntDescript() {
+        return entDescript;
+    }
+
+    public JTextArea getEntDueDate() {
+        return entDueDate;
+    }
+
+    public JComboBox<String> getPriorities() {
+        return priorities;
     }
     
 }
