@@ -7,6 +7,7 @@ package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.mainListener;
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -25,7 +26,7 @@ public class TaskBoard extends JPanel{
     private JLabel currentList = new JLabel("");
     private JLabel tasks = new JLabel ("Tasks");
     private JLabel taskTitle = new JLabel ("Task title");
-    private JTextArea taskDescription = new JTextArea ("Task Descripton");
+    private JLabel taskDescription = new JLabel ("Task Descripton");
     private JLabel priority = new JLabel ("...Number...");
     private JLabel dueDate = new JLabel("A date");
     
@@ -41,16 +42,48 @@ public class TaskBoard extends JPanel{
                     
         String[] taskDetails =  listener.getTaskDetails(listIndex);
         JPanel BottomPanel = new JPanel();
-       BottomPanel.setLayout( new GridLayout(10,1));;
-        
+        JPanel middlePanel = new JPanel();
+        middlePanel.setLayout( new GridLayout(1,4));
+        int GridNumber =0;
+                      taskTitle.setText("Task");      
+                      taskDescription.setText("Description");
+                      priority.setText("Priority");
+                      dueDate.setText("Due Date");
+                      Font font = new Font("Courier", Font.BOLD,12);
+                      JLabel first = new JLabel();
+                      first.setText(taskTitle.getText());
+                      JTextArea second = new JTextArea();
+                      second.setText(taskDescription.getText());
+                      JLabel third= new JLabel();
+                      third.setText(priority.getText());
+                      JLabel fourth = new JLabel();
+                      fourth.setText(dueDate.getText());
+                      
+                      
+                      first.setFont(font);
+                      second.setFont(font);
+                      third.setFont(font);
+                      fourth.setFont(font);
+                      
+                      middlePanel.add(first);
+                      middlePanel.add(second);
+                      middlePanel.add(third);
+                      middlePanel.add(fourth);
+                      
         for(int x = 0; x < taskDetails.length; x++){
                     String splitElements = taskDetails[x];
                     String[] specificDetails = splitElements.split(",");
-                        
+                    GridNumber++;
+                    BottomPanel.setLayout( new GridLayout(GridNumber,1));; 
                     if(this.currentList.getText().equals("")){
                         this.currentList.setText(specificDetails[0]);
                         
                     }
+                     if(this.currentList.getText().equals("")){
+                        this.currentList.setText(specificDetails[0]);
+                        
+                    }
+                    
                       taskTitle.setText(specificDetails[1]);      
                       taskDescription.setText(specificDetails[2]);
                       priority.setText(specificDetails[3]);
@@ -79,6 +112,7 @@ public class TaskBoard extends JPanel{
                         TopPanel.add(tasks);
                         TopPanel.add(currentList);
                         this.add(TopPanel, BorderLayout.CENTER);
+                        this.add(middlePanel, BorderLayout.PAGE_START);
                         this.add(BottomPanel, BorderLayout.PAGE_END);
  
         
@@ -108,11 +142,11 @@ public class TaskBoard extends JPanel{
         this.taskTitle = taskTitle;
     }
 
-    public JTextArea getTaskDescription() {
+    public JLabel getTaskDescription() {
         return taskDescription;
     }
 
-    public void setTaskDescription(JTextArea taskDescription) {
+    public void setTaskDescription(JLabel taskDescription) {
         this.taskDescription = taskDescription;
     }
 

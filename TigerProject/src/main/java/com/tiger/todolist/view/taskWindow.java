@@ -27,7 +27,7 @@ public class taskWindow extends JFrame {
     
     public taskWindow(TaskBoard tb){
         super("To Do List: Tasks");
-        this.setLayout(new FlowLayout());
+        this.setLayout(new GridLayout(1,10));
         JPanel LeftPanel = new JPanel();
         LeftPanel.add(tb);
         LeftPanel.add(showSt);
