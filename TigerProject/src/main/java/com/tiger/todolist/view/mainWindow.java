@@ -29,6 +29,12 @@ public class mainWindow extends JFrame{
     private JLabel list= new JLabel ("Lists");
     
     private mainListener listener = new mainListener(); 
+    public static mainWindow instance = null;
+    
+    public static mainWindow getInstance(){
+        if(mainWindow.instance == null) mainWindow.instance = new mainWindow();
+                return mainWindow.instance;
+    }
     
     public mainWindow(){
         super("To Do List");

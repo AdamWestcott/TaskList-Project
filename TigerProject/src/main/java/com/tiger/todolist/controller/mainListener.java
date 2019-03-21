@@ -24,7 +24,7 @@ public class mainListener implements ActionListener {
 // This class will listen for events in the mainWindow
 // Each component has it's own action command, "If 'command' == something, do this...."
     
-    
+    static int pastList = 0;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -34,7 +34,7 @@ public class mainListener implements ActionListener {
         if(e.getActionCommand().equals("confirm")){
             
             if(Board.getStatus().findUser(getUserName(),getPassword()) != -1){
-                mainWindow window = new mainWindow();
+                mainWindow.getInstance();
             }
             else JOptionPane.showMessageDialog(null, "Incorrect login details");
         }    
@@ -44,6 +44,7 @@ public class mainListener implements ActionListener {
                     JOptionPane.showMessageDialog(null, i+": This list clicked");
                     TaskBoard taskView = new TaskBoard(i);
                     taskWindow mainTask = new taskWindow(taskView);
+                    pastList = i; 
                     }
                 }  
         
