@@ -28,14 +28,20 @@ public class addTaskPopUp extends JFrame{
     private JLabel priority = new JLabel("Select Priority:");
 
    
-    private static JTextField entTaskName = new JTextField();
-    private static JTextArea entDescript = new JTextArea();
-    private static JTextField entDueDate = new JTextField();
-    private static String[] priotityLvls = new String[]{"1","2","3","4","5","6","7","8","9","10"}; 
-    private static JComboBox<String>  priorities = new JComboBox<String>(priotityLvls);
+    private JTextField entTaskName = new JTextField();
+    private JTextArea entDescript = new JTextArea();
+    private JTextField entDueDate = new JTextField();
+    private String[] priotityLvls = new String[]{"1","2","3","4","5","6","7","8","9","10"}; 
+    private JComboBox<String>  priorities = new JComboBox<String>(priotityLvls);
     private JButton confirm = new JButton("Add task");
     
     private popupWindows listener = new popupWindows(); 
+    private static addTaskPopUp instance = null; 
+    
+    public static addTaskPopUp getInstance(){
+        if(addTaskPopUp.instance == null) addTaskPopUp.instance = new addTaskPopUp();
+                return addTaskPopUp.instance; 
+    }
     
     public addTaskPopUp(){
         this.setLayout(new GridLayout(10,1));
@@ -60,19 +66,19 @@ public class addTaskPopUp extends JFrame{
         
         
     }
-      public static JTextField getEntTaskName() {
+      public JTextField getEntTaskName() {
           return entTaskName;
     }
 
-    public static JTextArea getEntDescript() {
+    public JTextArea getEntDescript() {
         return entDescript;
     }
 
-    public static JTextField getEntDueDate() {
+    public JTextField getEntDueDate() {
         return entDueDate;
     }
 
-    public static JComboBox<String> getPriorities() {
+    public JComboBox<String> getPriorities() {
         return priorities;
     }
    

@@ -15,30 +15,22 @@ import javax.swing.JOptionPane;
  * @author k1732912
  */
 public class popupWindows implements ActionListener {
-    
-    addTaskPopUp over; 
+     
     
     @Override
     public void actionPerformed(ActionEvent e) {
        if(e.getActionCommand().equals("addTask") ){ //TaskBoard "Add list" button listener
-         over = new addTaskPopUp();
+         addTaskPopUp.getInstance();
             
        }
        else if(e.getActionCommand().equals("add")){
-          System.out.println("Pressed");
-         
-          String passTaskName = addTaskPopUp.getEntTaskName().getText();
-          String passTaskDesc = addTaskPopUp.getEntDescript().getText();
-          String passDueDate = addTaskPopUp.getEntDueDate().getText();
-          String passPriority = addTaskPopUp.getPriorities().getSelectedItem().toString();
+          
+          String passTaskName = addTaskPopUp.getInstance().getEntTaskName().getText();
+          String passTaskDesc = addTaskPopUp.getInstance().getEntDescript().getText();
+          String passDueDate = addTaskPopUp.getInstance().getEntDueDate().getText();
+          String passPriority = addTaskPopUp.getInstance().getPriorities().getSelectedItem().toString();
 
           
-           System.out.println(passTaskName);
-           System.out.println(passTaskDesc);
-           System.out.println(passDueDate);
-           System.out.println(passPriority);
-          
-           
                 
         }
     }
