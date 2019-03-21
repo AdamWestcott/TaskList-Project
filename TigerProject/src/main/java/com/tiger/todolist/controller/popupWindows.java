@@ -8,7 +8,9 @@ package com.tiger.todolist.controller;
 import com.tiger.todolist.model.Board;
 import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
+import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.addTaskPopUp;
+import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -33,8 +35,11 @@ public class popupWindows implements ActionListener {
           String passDueDate = addTaskPopUp.getInstance().getEntDueDate().getText();
           int passPriority = Integer.parseInt(addTaskPopUp.getInstance().getPriorities().getSelectedItem().toString());
           user.getList().get(mainListener.pastList).createTask(false, passTaskDesc, passDueDate, passPriority, passTaskName);
-          
-                
+          addTaskPopUp.getInstance().dispose();
+          //NOTES TO TEAM: IDEA IS TO MAKE TASK WINDOW SINGLETON - SO WHEN 
+          //::addTaskPopUP CLOSES A NEW TASKWINDOW OPENS on press of "add"
+//          TaskBoard taskView = new TaskBoard(mainListener.pastList);
+//          taskWindow mainTask = new taskWindow(taskView);    
         }
     }
      
