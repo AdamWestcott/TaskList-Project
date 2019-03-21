@@ -10,6 +10,7 @@ import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.addTaskPopUp;
+import com.tiger.todolist.view.mainWindow;
 import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,17 +26,25 @@ public class popupWindows implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
        if(e.getActionCommand().equals("addTask") ){ //TaskBoard "Add list" button listener
-         addTaskPopUp.getInstance();
-            
+           taskWindow.getInstance().dispose();
+           taskWindow.deleteObject(); 
+           addTaskPopUp.getInstance();
+       }
+       else if(e.getActionCommand().equals("back") ){
+           taskWindow.getInstance().dispose();
+           taskWindow.deleteObject();
+           mainWindow.getInstance();
+           
        }
        else if(e.getActionCommand().equals("add")){
-          
           String passTaskName = addTaskPopUp.getInstance().getEntTaskName().getText();
           String passTaskDesc = addTaskPopUp.getInstance().getEntDescript().getText();
           String passDueDate = addTaskPopUp.getInstance().getEntDueDate().getText();
           int passPriority = Integer.parseInt(addTaskPopUp.getInstance().getPriorities().getSelectedItem().toString());
           user.getList().get(mainListener.pastList).createTask(false, passTaskDesc, passDueDate, passPriority, passTaskName);
           addTaskPopUp.getInstance().dispose();
+          addTaskPopUp.deleteObject();
+          taskWindow.getInstance(); 
           //NOTES TO TEAM: IDEA IS TO MAKE TASK WINDOW SINGLETON - SO WHEN 
           //::addTaskPopUP CLOSES A NEW TASKWINDOW OPENS on press of "add"
 //          TaskBoard taskView = new TaskBoard(mainListener.pastList);

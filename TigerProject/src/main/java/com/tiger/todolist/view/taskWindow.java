@@ -5,6 +5,7 @@
  */
 package com.tiger.todolist.view;
 
+import com.tiger.todolist.controller.mainListener;
 import com.tiger.todolist.controller.popupWindows;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -19,19 +20,33 @@ import javax.swing.JPanel;
  */
 public class taskWindow extends JFrame {
     
-    private TaskBoard tb; 
+    private TaskBoard tb = new TaskBoard(mainListener.pastList); 
     private JButton showSt = new JButton("Show Subtasks");
     private JButton addTask = new JButton("Add task");
+    private JButton back = new JButton("Back");
     
-    private popupWindows listener = new popupWindows(); 
+    private popupWindows listener = new popupWindows();
+    private static taskWindow instance = null;
     
-    public taskWindow(TaskBoard tb){
+    public static taskWindow getInstance(){
+        if(taskWindow.instance == null) taskWindow.instance = new taskWindow();
+                return taskWindow.instance;
+    }
+   
+    public static void deleteObject(){
+        taskWindow.instance = null; 
+    }
+    
+    public taskWindow(){
         super("To Do List: Tasks");
         this.setLayout(new GridLayout(1,10));
         JPanel LeftPanel = new JPanel();
         LeftPanel.add(tb);
         LeftPanel.add(showSt);
         LeftPanel.add(addTask);
+        LeftPanel.add(back);
+        back.addActionListener(listener); 
+        back.setActionCommand("back");
         addTask.addActionListener(listener); 
         addTask.setActionCommand("addTask");
         this.add(LeftPanel, BorderLayout.LINE_END);
@@ -41,14 +56,6 @@ public class taskWindow extends JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setVisible(true);
     }
-
-
-    public TaskBoard getTb() {
-        return tb;
-    }
     
-    
-    public void setTb(TaskBoard tb) {
-        this.tb = tb;
-    }
+
 }

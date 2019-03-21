@@ -18,6 +18,7 @@ public class SubtaskBoard extends TaskBoard{
     private JLabel taskName = new JLabel("Task Name");
     private JRadioButton checkBox = new JRadioButton("Complete");;
     
+    
     public SubtaskBoard(){
         this.setLayout(new GridLayout(2,1));
         super.add(getTaskTitle());

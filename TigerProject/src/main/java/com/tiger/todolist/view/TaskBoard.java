@@ -30,13 +30,12 @@ public class TaskBoard extends JPanel{
     private JLabel priority = new JLabel ("...Number...");
     private JLabel dueDate = new JLabel("A date");
     
-    
-    
+
     private mainListener listener = new mainListener(); 
     
-    public TaskBoard(){
-        
-    }
+    
+    public TaskBoard()
+    {}
     public TaskBoard(int i){
         int listIndex = i; 
                     

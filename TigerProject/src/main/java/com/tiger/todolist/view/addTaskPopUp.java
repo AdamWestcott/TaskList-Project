@@ -43,6 +43,10 @@ public class addTaskPopUp extends JFrame{
                 return addTaskPopUp.instance; 
     }
     
+    public static void deleteObject(){
+         addTaskPopUp.instance = null; 
+    }
+    
     public addTaskPopUp(){
         this.setLayout(new GridLayout(10,1));
         
