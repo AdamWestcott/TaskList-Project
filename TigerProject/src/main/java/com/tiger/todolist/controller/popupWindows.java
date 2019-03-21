@@ -29,7 +29,8 @@ public class popupWindows implements ActionListener {
           String passTaskDesc = addTaskPopUp.getInstance().getEntDescript().getText();
           String passDueDate = addTaskPopUp.getInstance().getEntDueDate().getText();
           String passPriority = addTaskPopUp.getInstance().getPriorities().getSelectedItem().toString();
-
+          
+          //Board.getStatus;
           
                 
         }

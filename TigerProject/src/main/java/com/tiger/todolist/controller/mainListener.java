@@ -28,14 +28,12 @@ public class mainListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       String un = SignIn.getInstance().getUserName().getText();
-    String pn = SignIn.getInstance().getPassword().getText();
-         int currentUser = Board.getStatus().findUser(un,pn);
+         int currentUser = Board.getStatus().findUser(getUserName(),getPassword());
          
          //
         if(e.getActionCommand().equals("confirm")){
             
-            if(Board.getStatus().findUser(un,pn) != -1){
+            if(Board.getStatus().findUser(getUserName(),getPassword()) != -1){
                 mainWindow window = new mainWindow();
             }
             else JOptionPane.showMessageDialog(null, "Incorrect login details");
@@ -53,17 +51,13 @@ public class mainListener implements ActionListener {
     }
     
     public String getListTitle(int listId){
-        String un = SignIn.getInstance().getUserName().getText();
-    String pn = SignIn.getInstance().getPassword().getText();
-        int userIndex = Board.getStatus().findUser(un,pn);
+        int userIndex = Board.getStatus().findUser(getUserName(),getPassword());
         String listName = Board.getStatus().getUsers().get(userIndex).getList().get(listId).getTitle();
         return listName;
     }
     
     public String[] getListNames(){  // Retrieves the list names of of user
-        String un = SignIn.getInstance().getUserName().getText();
-    String pn = SignIn.getInstance().getPassword().getText();
-        int userIndex = Board.getStatus().findUser(un,pn);
+        int userIndex = Board.getStatus().findUser(getUserName(),getPassword());
         String[] store = Board.getStatus().getUsers().get(userIndex).showLists();
         
         return store;
@@ -71,13 +65,21 @@ public class mainListener implements ActionListener {
     
    
      public String[] getTaskDetails(int listId){
-         String un = SignIn.getInstance().getUserName().getText();
-    String pn = SignIn.getInstance().getPassword().getText();
-        int userIndex = Board.getStatus().findUser(un,pn);
+        int userIndex = Board.getStatus().findUser(getUserName(),getPassword());
         
          String[] taskDetails = Board.getStatus().getUsers().get(userIndex).getList().get(listId).getTaskDetails();
          
          return taskDetails; 
+     }
+     
+     public String getUserName(){
+         String un = SignIn.getInstance().getUserName().getText();
+         return un;
+     }
+     
+     public String getPassword(){
+         String pn = SignIn.getInstance().getPassword().getText();
+         return pn;
      }
      
 }
