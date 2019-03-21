@@ -23,11 +23,16 @@ import javax.swing.WindowConstants;
 
 public class SignIn extends JFrame {
      
-    private static JTextField userName = new JTextField("");
-    private static JTextField password = new JTextField("");
+    private JTextField userName = new JTextField("");
+    private JTextField password = new JTextField("");
     private JButton SignInButton = new JButton("Submit");
-    mainListener listener = new mainListener(); 
+    mainListener listener = new mainListener();
+    private static SignIn instance = null;
     
+    public static SignIn getInstance(){
+        if(SignIn.instance == null) SignIn.instance = new SignIn();
+                return SignIn.instance; 
+    } 
     
     public SignIn(){
         this.setTitle("Sign In");
@@ -53,7 +58,7 @@ public class SignIn extends JFrame {
     }
     
     
-    public static JTextField getUserName() {
+    public JTextField getUserName() {
         return userName;
     }
 
@@ -61,7 +66,7 @@ public class SignIn extends JFrame {
         this.userName = userName;
     }
 
-    public static JTextField getPassword() {
+    public JTextField getPassword() {
         return password;
     }
 

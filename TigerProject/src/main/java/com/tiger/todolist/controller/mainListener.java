@@ -28,8 +28,8 @@ public class mainListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-         String un = SignIn.getUserName().getText();
-         String pn = SignIn.getPassword().getText();
+       String un = SignIn.getInstance().getUserName().getText();
+    String pn = SignIn.getInstance().getPassword().getText();
          int currentUser = Board.getStatus().findUser(un,pn);
          
          //
@@ -53,16 +53,16 @@ public class mainListener implements ActionListener {
     }
     
     public String getListTitle(int listId){
-        String un = SignIn.getUserName().getText();
-        String pn = SignIn.getPassword().getText();
+        String un = SignIn.getInstance().getUserName().getText();
+    String pn = SignIn.getInstance().getPassword().getText();
         int userIndex = Board.getStatus().findUser(un,pn);
         String listName = Board.getStatus().getUsers().get(userIndex).getList().get(listId).getTitle();
         return listName;
     }
     
     public String[] getListNames(){  // Retrieves the list names of of user
-        String un = SignIn.getUserName().getText();
-        String pn = SignIn.getPassword().getText();
+        String un = SignIn.getInstance().getUserName().getText();
+    String pn = SignIn.getInstance().getPassword().getText();
         int userIndex = Board.getStatus().findUser(un,pn);
         String[] store = Board.getStatus().getUsers().get(userIndex).showLists();
         
@@ -71,8 +71,8 @@ public class mainListener implements ActionListener {
     
    
      public String[] getTaskDetails(int listId){
-        String un = SignIn.getUserName().getText();
-        String pn = SignIn.getPassword().getText();
+         String un = SignIn.getInstance().getUserName().getText();
+    String pn = SignIn.getInstance().getPassword().getText();
         int userIndex = Board.getStatus().findUser(un,pn);
         
          String[] taskDetails = Board.getStatus().getUsers().get(userIndex).getList().get(listId).getTaskDetails();

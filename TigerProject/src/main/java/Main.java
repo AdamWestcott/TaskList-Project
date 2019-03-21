@@ -79,7 +79,7 @@ public class Main {
         Tim.createList("Works");
         Tim.createList("Personal");
         
-        SignIn signInForm = new SignIn();   
+        SignIn.getInstance();    
         //mainWindow window = new mainWindow(); 
         mainListener mainController = new mainListener(); 
         
