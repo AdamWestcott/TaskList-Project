@@ -41,7 +41,7 @@ public class mainListener implements ActionListener {
          //DISPLAYING USER TASKS
          for(int i = 0; i < getListNames().length; i++){
                 if(e.getActionCommand().equals("thisList"+i)){
-                    JOptionPane.showMessageDialog(null, i+": This list clicked");
+                    //JOptionPane.showMessageDialog(null, i+": This list clicked");
                     TaskBoard taskView = new TaskBoard(i);
                     taskWindow mainTask = new taskWindow(taskView);
                     pastList = i; 
