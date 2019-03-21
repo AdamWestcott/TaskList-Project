@@ -8,8 +8,10 @@ package com.tiger.todolist.view;
 import com.tiger.todolist.controller.popupWindows;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -26,17 +28,17 @@ public class taskWindow extends JFrame {
     public taskWindow(TaskBoard tb){
         super("To Do List: Tasks");
         this.setLayout(new FlowLayout());
-        
-        this.add(tb);
-        this.add(showSt);
-        this.add(addTask);
+        JPanel LeftPanel = new JPanel();
+        LeftPanel.add(tb);
+        LeftPanel.add(showSt);
+        LeftPanel.add(addTask);
         addTask.addActionListener(listener); 
         addTask.setActionCommand("addTask");
-        
+        this.add(LeftPanel, BorderLayout.LINE_END);
         
         
         this.setSize(500, 400);
-        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setVisible(true);
     }
 

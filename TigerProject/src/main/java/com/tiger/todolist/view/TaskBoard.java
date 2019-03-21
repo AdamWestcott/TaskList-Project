@@ -6,7 +6,11 @@
 package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.mainListener;
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -24,7 +28,6 @@ public class TaskBoard extends JPanel{
     private JTextArea taskDescription = new JTextArea ("Task Descripton");
     private JLabel priority = new JLabel ("...Number...");
     private JLabel dueDate = new JLabel("A date");
-    private JRadioButton checkBox = new JRadioButton("Complete");
     
     
     
@@ -35,10 +38,10 @@ public class TaskBoard extends JPanel{
     }
     public TaskBoard(int i){
         int listIndex = i; 
-        this.setLayout( new GridLayout (7,1));
                     
         String[] taskDetails =  listener.getTaskDetails(listIndex);
-       this.add(tasks);
+        JPanel BottomPanel = new JPanel();
+       BottomPanel.setLayout( new GridLayout(10,1));;
         
         for(int x = 0; x < taskDetails.length; x++){
                     String splitElements = taskDetails[x];
@@ -46,13 +49,13 @@ public class TaskBoard extends JPanel{
                         
                     if(this.currentList.getText().equals("")){
                         this.currentList.setText(specificDetails[0]);
-                        this.add(currentList);
+                        
                     }
                       taskTitle.setText(specificDetails[1]);      
                       taskDescription.setText(specificDetails[2]);
                       priority.setText(specificDetails[3]);
                       dueDate.setText(specificDetails[4]);
-                       
+                      JCheckBox checkBox = new JCheckBox("Complete");
                       JLabel one = new JLabel();
                       one.setText(taskTitle.getText());
                       JTextArea two = new JTextArea();
@@ -62,15 +65,22 @@ public class TaskBoard extends JPanel{
                       JLabel four = new JLabel();
                       four.setText(dueDate.getText());
                       
-                        
-                        this.add(one);
-                        this.add(two);
-                        this.add(three);
-                        this.add(four); 
-//                        this.add(checkBox); 
+                      
+                        BottomPanel.add(one);
+                        BottomPanel.add(two);
+                        BottomPanel.add(three);
+                        BottomPanel.add(four); 
+                        BottomPanel.add(checkBox); 
 
         }
-        
+        JPanel TopPanel = new JPanel();
+        TopPanel.setLayout( new GridLayout(2,1));
+                      
+                        TopPanel.add(tasks);
+                        TopPanel.add(currentList);
+                        this.add(TopPanel, BorderLayout.CENTER);
+                        this.add(BottomPanel, BorderLayout.PAGE_END);
+ 
         
         }
      
@@ -122,13 +132,7 @@ public class TaskBoard extends JPanel{
         this.dueDate = dueDate;
     }
 
-    public JRadioButton getCheckBox() {
-        return checkBox;
-    }
-
-    public void setCheckBox(JRadioButton checkBox) {
-        this.checkBox = checkBox;
-    }
+    
             
 
     
