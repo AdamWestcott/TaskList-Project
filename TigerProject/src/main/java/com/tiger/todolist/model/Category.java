@@ -63,7 +63,9 @@ public class Category {
             storeTask += task.get(i).getDueDate()+ ",";
             storeTask += task.get(i).getPriority()+ ",";
             storeTask += task.get(i).isCheckbox()+ ",";
+            storeTask += task.get(i).getId();
             storeTask += "#";
+            System.out.println(storeTask);
         }
         String[] taskNames = storeTask.split("#");
         
@@ -117,7 +119,8 @@ public class Category {
     public void setTask(ArrayList<Task> task) {
         this.task = task;
     }
-      public static int getId() {
+     
+    public static int getId() {
         return id;
     }
     

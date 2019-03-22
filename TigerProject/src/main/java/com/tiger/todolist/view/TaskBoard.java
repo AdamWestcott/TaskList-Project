@@ -12,6 +12,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,7 +32,8 @@ public class TaskBoard extends JPanel{
     private JLabel priority = new JLabel ("...Number...");
     private JLabel dueDate = new JLabel("A date");
     private JCheckBox checkBox = new JCheckBox("Complete",false);
-    
+    private JLabel storesTaskId = new JLabel(); 
+
     private popupWindows popupListener = new popupWindows();
     private mainListener listener = new mainListener(); 
     
@@ -75,7 +77,7 @@ public class TaskBoard extends JPanel{
                     String splitElements = taskDetails[x];
                     String[] specificDetails = splitElements.split(",");
                     GridNumber++;
-                    BottomPanel.setLayout( new GridLayout(GridNumber,1));; 
+                    BottomPanel.setLayout( new GridLayout(GridNumber,1)); 
                     if(this.currentList.getText().equals("")){
                         this.currentList.setText(specificDetails[0]);
                         
@@ -90,6 +92,9 @@ public class TaskBoard extends JPanel{
                       priority.setText(specificDetails[3]);
                       dueDate.setText(specificDetails[4]);
                       checkBox.setText(specificDetails[5]);
+                      storesTaskId.setText(specificDetails[6]);
+                      System.out.println(storesTaskId.getText()+"WS");
+                      
                       JLabel one = new JLabel();
                       one.setText(taskTitle.getText());
                       JLabel two = new JLabel();
@@ -104,12 +109,16 @@ public class TaskBoard extends JPanel{
                       five.addActionListener(popupListener);
                       five.setActionCommand("isComplete");
                       
-                      
+                      JButton deleteTask = new JButton("Delete"); 
+                      deleteTask.addActionListener(popupListener);
+                      deleteTask.setActionCommand("deleteTask"+x);
+                              
                         BottomPanel.add(one);
                         BottomPanel.add(two);
                         BottomPanel.add(three);
                         BottomPanel.add(four); 
-                        BottomPanel.add(five); 
+                        BottomPanel.add(five);
+                        BottomPanel.add(deleteTask);
                         
         }
         JPanel TopPanel = new JPanel();
@@ -180,6 +189,15 @@ public class TaskBoard extends JPanel{
         this.checkBox = checkBox;
     }
 
+    public JLabel getStoresTaskId() {
+        return storesTaskId;
+    }
+
+    public void setStoresTaskId(JLabel storesTaskId) {
+        this.storesTaskId = storesTaskId;
+    }
+    
+    
     
             
 

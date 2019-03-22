@@ -21,6 +21,7 @@ public class Task {
   private int priority; 
   private String name;
   private ArrayList<SubTask> SubTasks  = new ArrayList<SubTask>();
+  private int id = 0;
 
   //CONSTRUCTORS
   public Task (boolean checkbox, String description, String dueDate, int priority, String name){
@@ -29,6 +30,7 @@ public class Task {
       this.dueDate = dueDate;
       this.priority = priority;
       this.name = name;
+      id++; 
   }
   public Task(){
       this.checkbox = false;
@@ -36,9 +38,18 @@ public class Task {
       this.dueDate = dueDate;
       this.priority = 0;
       this.name = "task";
+      id++;
   }
   
 //GETTERS AND SETTERS
+      public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

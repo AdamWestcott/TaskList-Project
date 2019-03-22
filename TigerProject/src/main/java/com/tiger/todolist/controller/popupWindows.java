@@ -6,6 +6,7 @@
 package com.tiger.todolist.controller;
 
 import com.tiger.todolist.model.Board;
+import com.tiger.todolist.model.Task;
 import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.TaskBoard;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
  * @author k1732912
  */
 public class popupWindows implements ActionListener {
+    private mainListener listener = new mainListener();
     int currentUser = Board.getStatus().findUser(getUserName(),getPassword());
     User user = Board.getStatus().getUsers().get(currentUser); 
     @Override
@@ -54,6 +56,13 @@ public class popupWindows implements ActionListener {
           addTaskPopUp.deleteObject();
           taskWindow.getInstance(); 
           
+        }
+       
+       else if(e.getActionCommand().equals("deleteTask"+mainListener.pastList)){
+          Task taskId = user.getList().get(mainListener.pastList).getTask().get(Integer.parseInt(taskWindow.getInstance().getTb().getStoresTaskId().getText()));
+          if(user.getList().get(mainListener.pastList).getTask().contains(taskId)){
+              user.getList().get(mainListener.pastList).getTask().remove(taskId); 
+         }
         }
        
     }
