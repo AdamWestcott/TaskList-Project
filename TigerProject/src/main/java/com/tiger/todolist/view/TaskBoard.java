@@ -6,6 +6,7 @@
 package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.mainListener;
+import com.tiger.todolist.controller.popupWindows;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -29,9 +30,9 @@ public class TaskBoard extends JPanel{
     private JLabel taskDescription = new JLabel ("Task Descripton");
     private JLabel priority = new JLabel ("...Number...");
     private JLabel dueDate = new JLabel("A date");
-    private JCheckBox checkBox = new JCheckBox("Complete", false);
+    private JCheckBox checkBox = new JCheckBox("Complete",false);
     
-
+    private popupWindows popupListener = new popupWindows();
     private mainListener listener = new mainListener(); 
     
     
@@ -88,7 +89,7 @@ public class TaskBoard extends JPanel{
                       taskDescription.setText(specificDetails[2]);
                       priority.setText(specificDetails[3]);
                       dueDate.setText(specificDetails[4]);
-                      checkBox = new JCheckBox("Complete", false);
+                      checkBox.setText(specificDetails[5]);
                       JLabel one = new JLabel();
                       one.setText(taskTitle.getText());
                       JLabel two = new JLabel();
@@ -97,15 +98,19 @@ public class TaskBoard extends JPanel{
                       three.setText(priority.getText());
                       JLabel four = new JLabel();
                       four.setText(dueDate.getText());
+                      JCheckBox five = new JCheckBox();
+                      five.setText("Complete");
+                      five.setSelected(Boolean.valueOf(checkBox.getText()));
+                      five.addActionListener(popupListener);
+                      five.setActionCommand("isComplete");
                       
                       
                         BottomPanel.add(one);
                         BottomPanel.add(two);
                         BottomPanel.add(three);
                         BottomPanel.add(four); 
-                        BottomPanel.add(checkBox); 
-                        checkBox.addActionListener(listener);
-                        checkBox.setActionCommand("isComplete");
+                        BottomPanel.add(five); 
+                        
         }
         JPanel TopPanel = new JPanel();
         TopPanel.setLayout( new GridLayout(2,1));

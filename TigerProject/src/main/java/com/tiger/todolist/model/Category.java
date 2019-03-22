@@ -62,6 +62,7 @@ public class Category {
             storeTask += task.get(i).getDescription()+ ",";
             storeTask += task.get(i).getDueDate()+ ",";
             storeTask += task.get(i).getPriority()+ ",";
+            storeTask += task.get(i).isCheckbox()+ ",";
             storeTask += "#";
         }
         String[] taskNames = storeTask.split("#");

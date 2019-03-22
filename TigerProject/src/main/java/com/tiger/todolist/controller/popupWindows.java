@@ -30,6 +30,14 @@ public class popupWindows implements ActionListener {
            taskWindow.deleteObject(); 
            addTaskPopUp.getInstance();
        }
+       else if(e.getActionCommand().equals("isComplete") ){
+            boolean checkBox = taskWindow.getInstance().getTb().getCheckBox().isSelected();
+            //System.out.println("you have clicked a checkbox 2");
+              if(checkBox == false){
+                    System.out.println("you have clicked a checkbox");
+          
+                          }
+       }
        else if(e.getActionCommand().equals("back") ){
            taskWindow.getInstance().dispose();
            taskWindow.deleteObject();
@@ -47,13 +55,6 @@ public class popupWindows implements ActionListener {
           taskWindow.getInstance(); 
           
         }
-//       else if(e.getActionCommand().equals("isComplete")){
-//       String checkBox = taskWindow.getInstance().getTb().get
-//           if(taskWindow.getInstance()){
-//               
-//          
-//           }
-//       }
        
     }
      

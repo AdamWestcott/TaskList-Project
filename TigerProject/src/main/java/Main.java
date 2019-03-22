@@ -64,7 +64,7 @@ public class Main {
         Paul.createList("EH RAW");
         Paul.createList("Work");
         
-        Paul.getList().get(0).createTask(true, "Description: of task 0 ", "today", 1, "Task 0");            
+        Paul.getList().get(0).createTask(false, "Description: of task 0 ", "today", 1, "Task 0");            
         Paul.getList().get(0).createTask(true, "Description: of task 1 ", "Tomorrow", 1, "Task 1"); //Add two tasks to list "cat dates"
         
         Paul.getList().get(1).createTask(true, "EH RAW TASK 0 ", "today", 1, "Task 0");            
