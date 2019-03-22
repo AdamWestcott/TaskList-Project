@@ -29,6 +29,7 @@ public class TaskBoard extends JPanel{
     private JLabel taskDescription = new JLabel ("Task Descripton");
     private JLabel priority = new JLabel ("...Number...");
     private JLabel dueDate = new JLabel("A date");
+    private JCheckBox checkBox = new JCheckBox("Complete", false);
     
 
     private mainListener listener = new mainListener(); 
@@ -51,7 +52,7 @@ public class TaskBoard extends JPanel{
                       Font font = new Font("Courier", Font.BOLD,12);
                       JLabel first = new JLabel();
                       first.setText(taskTitle.getText());
-                      JTextArea second = new JTextArea();
+                      JLabel second = new JLabel();
                       second.setText(taskDescription.getText());
                       JLabel third= new JLabel();
                       third.setText(priority.getText());
@@ -87,10 +88,10 @@ public class TaskBoard extends JPanel{
                       taskDescription.setText(specificDetails[2]);
                       priority.setText(specificDetails[3]);
                       dueDate.setText(specificDetails[4]);
-                      JCheckBox checkBox = new JCheckBox("Complete");
+                      checkBox = new JCheckBox("Complete", false);
                       JLabel one = new JLabel();
                       one.setText(taskTitle.getText());
-                      JTextArea two = new JTextArea();
+                      JLabel two = new JLabel();
                       two.setText(taskDescription.getText());
                       JLabel three = new JLabel();
                       three.setText(priority.getText());
@@ -103,7 +104,8 @@ public class TaskBoard extends JPanel{
                         BottomPanel.add(three);
                         BottomPanel.add(four); 
                         BottomPanel.add(checkBox); 
-
+                        checkBox.addActionListener(listener);
+                        checkBox.setActionCommand("isComplete");
         }
         JPanel TopPanel = new JPanel();
         TopPanel.setLayout( new GridLayout(2,1));
@@ -163,6 +165,14 @@ public class TaskBoard extends JPanel{
 
     public void setDueDate(JLabel dueDate) {
         this.dueDate = dueDate;
+    }
+    
+    public JCheckBox getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(JCheckBox checkBox) {
+        this.checkBox = checkBox;
     }
 
     

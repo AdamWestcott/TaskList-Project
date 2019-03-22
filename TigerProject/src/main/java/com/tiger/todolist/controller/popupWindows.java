@@ -45,11 +45,16 @@ public class popupWindows implements ActionListener {
           addTaskPopUp.getInstance().dispose();
           addTaskPopUp.deleteObject();
           taskWindow.getInstance(); 
-          //NOTES TO TEAM: IDEA IS TO MAKE TASK WINDOW SINGLETON - SO WHEN 
-          //::addTaskPopUP CLOSES A NEW TASKWINDOW OPENS on press of "add"
-//          TaskBoard taskView = new TaskBoard(mainListener.pastList);
-//          taskWindow mainTask = new taskWindow(taskView);    
+          
         }
+//       else if(e.getActionCommand().equals("isComplete")){
+//       String checkBox = taskWindow.getInstance().getTb().get
+//           if(taskWindow.getInstance()){
+//               
+//          
+//           }
+//       }
+       
     }
      
     public String getUserName(){

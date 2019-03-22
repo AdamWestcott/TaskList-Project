@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 public class taskWindow extends JFrame {
     
     private TaskBoard tb = new TaskBoard(mainListener.pastList); 
+
     private JButton showSt = new JButton("Show Subtasks");
     private JButton addTask = new JButton("Add task");
     private JButton back = new JButton("Back");
@@ -55,6 +56,13 @@ public class taskWindow extends JFrame {
         this.setSize(500, 400);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setVisible(true);
+    }
+    public TaskBoard getTb() {
+        return tb;
+    }
+
+    public void setTb(TaskBoard tb) {
+        this.tb = tb;
     }
     
 
