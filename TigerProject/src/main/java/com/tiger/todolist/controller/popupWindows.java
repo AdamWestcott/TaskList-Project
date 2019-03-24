@@ -57,13 +57,20 @@ public class popupWindows implements ActionListener {
           taskWindow.getInstance(); 
           
         }
-       
-       else if(e.getActionCommand().equals("deleteTask"+mainListener.pastList)){
-          Task taskId = user.getList().get(mainListener.pastList).getTask().get(Integer.parseInt(taskWindow.getInstance().getTb().getStoresTaskId().getText()));
-          if(user.getList().get(mainListener.pastList).getTask().contains(taskId)){
-              user.getList().get(mainListener.pastList).getTask().remove(taskId); 
-         }
-        }
+       else
+       for(int i = 0; i < listener.getTaskDetails(mainListener.pastList).length;i++){
+           if(e.getActionCommand().equals("deleteTask"+i)){
+               Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
+               System.out.println(taskId);
+               if(user.getList().get(mainListener.pastList).getTask().contains(taskId)){
+                   user.getList().get(mainListener.pastList).getTask().remove(taskId);
+                   taskWindow.getInstance().dispose();
+                   taskWindow.deleteObject();
+                   taskWindow.getInstance(); 
+               }
+             }
+          }
+           
        
     }
      
