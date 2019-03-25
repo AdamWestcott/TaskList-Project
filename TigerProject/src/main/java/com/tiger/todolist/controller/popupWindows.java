@@ -63,7 +63,7 @@ public class popupWindows implements ActionListener {
           String newTaskName = editTaskPopUp.getInstance().getEntTaskName().getText();
           String newTaskDesc = editTaskPopUp.getInstance().getEntDescript().getText();
           String newDueDate = editTaskPopUp.getInstance().getEntDueDate().getText();
-          int passPriority = Integer.parseInt(addTaskPopUp.getInstance().getPriorities().getSelectedItem().toString());
+          int passPriority = Integer.parseInt(editTaskPopUp.getInstance().getPriorities().getSelectedItem().toString());
           
           user.getList().get(mainListener.pastList).getTask().get(currentTask).setName(newTaskName);
           user.getList().get(mainListener.pastList).getTask().get(currentTask).setDescription(newTaskDesc);
