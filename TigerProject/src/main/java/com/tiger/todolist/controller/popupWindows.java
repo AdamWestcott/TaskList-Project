@@ -71,8 +71,17 @@ public class popupWindows implements ActionListener {
                     taskWindow.getInstance().dispose();
                     taskWindow.deleteObject();
                     TaskBoard tb = new TaskBoard(mainListener.pastList,inputAsInt);
+                    taskWindow.getInstance(tb);    
+                }
+                else{
+                    taskWindow.getInstance().dispose();
+                    taskWindow.deleteObject();
+                    TaskBoard tb = new TaskBoard(mainListener.pastList,input);
                     taskWindow.getInstance(tb);
-            }
+                    
+                }
+                        
+                
              
         }
       
