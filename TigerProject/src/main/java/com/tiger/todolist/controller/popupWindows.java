@@ -57,6 +57,25 @@ public class popupWindows implements ActionListener {
           taskWindow.getInstance(); 
           
         }
+        else if(e.getActionCommand().equals("search")){
+            String input = taskWindow.getInstance().getSearch().getText();
+            boolean isNumber = true;
+            int inputAsInt = 0; 
+            try{
+              inputAsInt = Integer.parseInt(input);  
+            }
+            catch(NumberFormatException err){
+                    isNumber = false;    
+            }
+                if(isNumber && inputAsInt <= 10 &&  inputAsInt >0) {//Its a priority
+                    taskWindow.getInstance().dispose();
+                    taskWindow.deleteObject();
+                    TaskBoard tb = new TaskBoard(mainListener.pastList,inputAsInt);
+                    taskWindow.getInstance(tb);
+            }
+             
+        }
+      
        else
        for(int i = 0; i < listener.getTaskDetails(mainListener.pastList).length;i++){
            if(e.getActionCommand().equals("deleteTask"+i)){
@@ -70,9 +89,9 @@ public class popupWindows implements ActionListener {
                }
              }
           }
-           
+        }
+    
        
-    }
      
     public String getUserName(){
          String un = SignIn.getInstance().getUserName().getText();
