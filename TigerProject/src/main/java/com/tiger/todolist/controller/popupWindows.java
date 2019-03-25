@@ -25,7 +25,8 @@ import javax.swing.JOptionPane;
 public class popupWindows implements ActionListener {
     private mainListener listener = new mainListener();
     int currentUser = Board.getStatus().findUser(getUserName(),getPassword());
-    User user = Board.getStatus().getUsers().get(currentUser); 
+    User user = Board.getStatus().getUsers().get(currentUser);
+    public static int currentTask = 0; 
     @Override
     public void actionPerformed(ActionEvent e) {
        if(e.getActionCommand().equals("addTask") ){ //TaskBoard "Add list" button listener
@@ -59,6 +60,16 @@ public class popupWindows implements ActionListener {
           
         }
         else if(e.getActionCommand().equals("edit") ){
+          String newTaskName = editTaskPopUp.getInstance().getEntTaskName().getText();
+          String newTaskDesc = editTaskPopUp.getInstance().getEntDescript().getText();
+          String newDueDate = editTaskPopUp.getInstance().getEntDueDate().getText();
+          int passPriority = Integer.parseInt(addTaskPopUp.getInstance().getPriorities().getSelectedItem().toString());
+          
+          user.getList().get(mainListener.pastList).getTask().get(currentTask).setName(newTaskName);
+          user.getList().get(mainListener.pastList).getTask().get(currentTask).setDescription(newTaskDesc);
+          user.getList().get(mainListener.pastList).getTask().get(currentTask).setDueDate(newDueDate);
+          user.getList().get(mainListener.pastList).getTask().get(currentTask).setPriority(passPriority);
+          
           editTaskPopUp.getInstance().dispose();
           editTaskPopUp.deleteObject();
           taskWindow.getInstance(); 
@@ -104,6 +115,7 @@ public class popupWindows implements ActionListener {
                }
              }
            else if(e.getActionCommand().equals("editTask"+i)){ 
+               currentTask = i; 
             Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
             String taskName = user.getList().get(mainListener.pastList).getTask().get(i).getName();
             if(user.getList().get(mainListener.pastList).getTask().contains(taskId)){
