@@ -11,6 +11,7 @@ import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.addTaskPopUp;
+import com.tiger.todolist.view.editTaskPopUp;
 import com.tiger.todolist.view.mainWindow;
 import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
@@ -57,6 +58,11 @@ public class popupWindows implements ActionListener {
           taskWindow.getInstance(); 
           
         }
+        else if(e.getActionCommand().equals("edit") ){
+          editTaskPopUp.getInstance().dispose();
+          editTaskPopUp.deleteObject();
+          taskWindow.getInstance(); 
+        }
         else if(e.getActionCommand().equals("search")){
             String input = taskWindow.getInstance().getSearch().getText();
             boolean isNumber = true;
@@ -97,6 +103,16 @@ public class popupWindows implements ActionListener {
                    taskWindow.getInstance(); 
                }
              }
+           else if(e.getActionCommand().equals("editTask"+i)){ 
+            Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
+            String taskName = user.getList().get(mainListener.pastList).getTask().get(i).getName();
+            if(user.getList().get(mainListener.pastList).getTask().contains(taskId)){
+                taskWindow.getInstance().dispose();
+                taskWindow.deleteObject();
+                editTaskPopUp.getInstance(taskName);
+                
+            }
+           }
           }
         }
     
