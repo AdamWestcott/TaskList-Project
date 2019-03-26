@@ -18,6 +18,8 @@ public class subtaskWindow extends JFrame {
     
     
     private JButton backBut = new JButton("Back");
+    private JButton addBut = new JButton("Add");
+    
     
     private popupWindows listener = new popupWindows();
     private SubtaskBoard sTboard = new SubtaskBoard(); 
@@ -38,9 +40,11 @@ public class subtaskWindow extends JFrame {
         setLayout(new FlowLayout());
         
         this.add(sTboard);
-        
+        addBut.addActionListener(listener);
+        addBut.setActionCommand("addButOnSub");
         backBut.addActionListener(listener);
         backBut.setActionCommand("backButOnSub");
+        this.add(addBut);
         this.add(backBut);
         
         
