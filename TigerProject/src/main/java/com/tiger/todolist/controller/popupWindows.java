@@ -34,14 +34,8 @@ public class popupWindows implements ActionListener {
            taskWindow.deleteObject(); 
            addTaskPopUp.getInstance();
        }
-       else if(e.getActionCommand().equals("isComplete") ){
-            boolean checkBox = taskWindow.getInstance().getTb().getCheckBox().isSelected();
-            //System.out.println("you have clicked a checkbox 2");
-              if(checkBox == false){
-                    System.out.println("you have clicked a checkbox");
-          
-                          }
-       }
+       
+       
        else if(e.getActionCommand().equals("back") ){
            taskWindow.getInstance().dispose();
            taskWindow.deleteObject();
@@ -125,9 +119,22 @@ public class popupWindows implements ActionListener {
                 
             }
            }
+           else if(e.getActionCommand().equals("isComplete"+i) ){
+            boolean checkBox = user.getList().get(mainListener.pastList).getTask().get(i).isCheckbox();
+            //System.out.println("you have clicked a checkbox 2");
+              if(checkBox){
+                    user.getList().get(mainListener.pastList).getTask().get(i).setCheckbox(false);
+                    taskWindow.getInstance().getTb().getCheckBox().setSelected(false);
+                    System.out.println(user.getList().get(mainListener.pastList).getTask().get(i).isCheckbox()+"f");
+                          }
+              else if(!checkBox) {
+              user.getList().get(mainListener.pastList).getTask().get(i).setCheckbox(true);
+              taskWindow.getInstance().getTb().getCheckBox().setSelected(true);
+              System.out.println(user.getList().get(mainListener.pastList).getTask().get(i).isCheckbox()+"t");
+       }
           }
-        }
-    
+       }
+    }
        
      
     public String getUserName(){

@@ -34,7 +34,7 @@ public class TaskBoard extends JPanel{
     private JLabel taskDescription = new JLabel ("Task Descripton");
     private JLabel priority = new JLabel ("...Number...");
     private JLabel dueDate = new JLabel("A date");
-    private JCheckBox checkBox = new JCheckBox("Complete",false);
+    private JCheckBox checkBox = new JCheckBox();
     private JLabel storesTaskId = new JLabel();
     
     private JButton[] butForTasks;
@@ -116,7 +116,7 @@ public class TaskBoard extends JPanel{
                       five.setText("Complete");
                       five.setSelected(Boolean.valueOf(checkBox.getText()));
                       five.addActionListener(popupListener);
-                      five.setActionCommand("isComplete");
+                      five.setActionCommand("isComplete"+x);
                       butForEdit[x] = new JButton("Edit");
                        butForEdit[x].addActionListener(popupListener);
                        butForEdit[x].setActionCommand("editTask"+x);
@@ -126,6 +126,9 @@ public class TaskBoard extends JPanel{
                        butForTasks[x].setActionCommand("deleteTask"+x);
                         
                        one.setBorder(border);
+                       two.setBorder(border);
+                       three.setBorder(border);
+                       four.setBorder(border);
                         BottomPanel.add(one);
                         BottomPanel.add(two);
                         BottomPanel.add(three);
