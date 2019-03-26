@@ -9,6 +9,7 @@ import com.tiger.todolist.model.Board;
 import com.tiger.todolist.model.Task;
 import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
+import com.tiger.todolist.view.SubtaskBoard;
 import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.addTaskPopUp;
 import com.tiger.todolist.view.editTaskPopUp;
@@ -93,15 +94,22 @@ public class popupWindows implements ActionListener {
                     
                 }
                         
-                
+             
              
         }
+        else if(e.getActionCommand().equals("backButOnSub")){ 
+            subtaskWindow.getInstance().dispose();
+            subtaskWindow.getInstance().deleteObject(); 
+            taskWindow.getInstance();
+               }   
       
        else   
        for(int i = 0; i < listener.getTaskDetails(mainListener.pastList).length;i++){
            if(e.getActionCommand().equals("subTask"+i)){
-               System.out.println("Show subtask list please");
-               subtaskWindow.getInstance(); 
+               currentTask = i; 
+               taskWindow.getInstance().dispose();
+               taskWindow.deleteObject();
+               subtaskWindow.getInstance();
            }
            else if(e.getActionCommand().equals("deleteTask"+i)){
                Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
@@ -152,9 +160,10 @@ public class popupWindows implements ActionListener {
          return pn;
      }
      
-     public String[] getSubTaskDetails(int taskID){
-      
-         String[] SubtaskDetails = user.getList().get(mainListener.pastList).getTask().get(taskID).showSubTasks();
+     public String[] getSubTaskDetails(){
+         System.out.println("List = "+mainListener.pastList);
+         System.out.println("Task = "+currentTask);
+        String[] SubtaskDetails = user.getList().get(mainListener.pastList).getTask().get(currentTask).showSubTasks();
         return SubtaskDetails;
      }
  }

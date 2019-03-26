@@ -18,34 +18,30 @@ import javax.swing.JRadioButton;
  */
 public class SubtaskBoard extends JPanel{
 
-    private JLabel subTasks = new JLabel("Subtasks");
-    private JLabel taskName = new JLabel("");
-    private JLabel subTaskName = new JLabel();
-    private JCheckBox checkBox = new JCheckBox("Complete");
+    private JLabel subTasks = new JLabel("Subtasks");   //Top title
+    private JLabel taskName = new JLabel("");   // Name of the task it belongs
+    private JLabel subTaskName = new JLabel();  // The description of the task
+    private JCheckBox checkBox = new JCheckBox("Complete"); 
     private popupWindows listener = new popupWindows();
-    
-    private static SubtaskBoard instance = null;
-    
-    public static SubtaskBoard getInstance(){
-        if(SubtaskBoard.instance == null) SubtaskBoard.instance = new SubtaskBoard();
-                return SubtaskBoard.instance;
-    }
     
     public SubtaskBoard(){
         this.setLayout(new GridLayout(8,4));
         this.add(subTasks);
-        String[] subTaskDetails = listener.getSubTaskDetails(listener.currentTask);
+        String[] subTaskDetails = listener.getSubTaskDetails();     // an array of strings. ex array[0] = "taskName", "desc", "false"
  
-        for (int i=0; i<subTaskDetails.length;i++){
+        for (int i=0; i<subTaskDetails.length;i++){ 
         String splitElements = subTaskDetails[i];
-        String[] splitDetails = splitElements.split(",");
         
+        String[] splitDetails = splitElements.split(",");
         if(this.taskName.getText().equals("")){
             taskName.setText(splitDetails[0]);    
             this.add(taskName);    
         }
         subTaskName.setText(splitDetails[1]);
-        this.add(subTaskName);
+        JLabel one = new JLabel();
+        one.setText(subTaskName.getText());
+        this.add(one);
+        
         JCheckBox two = new JCheckBox();
         two.setText("Complete");
         two.setSelected(Boolean.valueOf(checkBox.getText()));
@@ -53,8 +49,6 @@ public class SubtaskBoard extends JPanel{
  
         
         }
-        
-      
         
     }
     

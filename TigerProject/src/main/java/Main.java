@@ -32,9 +32,14 @@ public class Main {
         Paul.getList().get(0).createTask(false, "Description: of task 0 ", "today", 5, "Task 0");            
         Paul.getList().get(0).createTask(false, "Description: of task 1 ", "Tomorrow", 1, "Task 1"); //Add two tasks to list "cat dates"
         Paul.getList().get(0).getTask().get(0).createSubTask(false, "get cat milk");
+        Paul.getList().get(0).getTask().get(0).createSubTask(false, "get stuff");
+        Paul.getList().get(0).getTask().get(0).createSubTask(false, "gedsfbhdfbdfb");
         
         Paul.getList().get(1).createTask(false, "EH RAW TASK 0 ", "today", 1, "Task 0");            
-        Paul.getList().get(1).createTask(false, "EH RAW TASK 1 ", "Tomorrow", 1, "Task 1"); //Add two tasks to list "cat dates"
+        Paul.getList().get(1).createTask(false, "EH RAW TASK 1 ", "Tomorrow", 1, "Task 1"); 
+        Paul.getList().get(1).getTask().get(0).createSubTask(false, "EH RAWWWWW");
+        Paul.getList().get(1).getTask().get(0).createSubTask(false, "MOAR EH RAWWWWW");
+        Paul.getList().get(1).getTask().get(0).createSubTask(false, "EVEN MOARRRR EH RAWWWWW");
         
         //Paul.getList().get(0).loadTasks();  //System prints out the tasks in list 0
         
