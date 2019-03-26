@@ -25,7 +25,6 @@ public class taskWindow extends JFrame {
     
     private JTextField search = new JTextField(10);
     private JButton searchBut = new JButton("Search!"); 
-    private JButton showSt = new JButton("Show Subtasks");
     private JButton addTask = new JButton("Add task");
     private JButton back = new JButton("Back");
     
@@ -53,7 +52,6 @@ public class taskWindow extends JFrame {
         LeftPanel.add(tb);
         LeftPanel.add(search);
         LeftPanel.add(searchBut);
-        LeftPanel.add(showSt);
         LeftPanel.add(addTask);
         LeftPanel.add(back);
         
@@ -63,6 +61,8 @@ public class taskWindow extends JFrame {
         addTask.setActionCommand("addTask");
         searchBut.addActionListener(listener);
         searchBut.setActionCommand("search");
+
+        
         this.add(LeftPanel, BorderLayout.LINE_END);
         
         this.setSize(500, 400);
@@ -76,7 +76,6 @@ public class taskWindow extends JFrame {
         LeftPanel.add(newTb);
         LeftPanel.add(search);
         LeftPanel.add(searchBut);
-        LeftPanel.add(showSt);
         LeftPanel.add(addTask);
         LeftPanel.add(back);
         

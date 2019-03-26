@@ -39,6 +39,7 @@ public class TaskBoard extends JPanel{
     
     private JButton[] butForTasks;
     private JButton[] butForEdit;
+    private JButton[] butForSubTasks;
 
     private popupWindows popupListener = new popupWindows();
     private mainListener listener = new mainListener(); 
@@ -49,8 +50,9 @@ public class TaskBoard extends JPanel{
         int listIndex = i;
                     
         String[] taskDetails =  listener.getTaskDetails(listIndex);
-        butForTasks = new JButton[taskDetails.length];
+        butForSubTasks = new JButton[taskDetails.length];
         butForEdit = new JButton[taskDetails.length];
+        butForTasks = new JButton[taskDetails.length];
         JPanel BottomPanel = new JPanel();
         JPanel middlePanel = new JPanel();
         middlePanel.setLayout( new GridLayout(1,4));
@@ -117,6 +119,11 @@ public class TaskBoard extends JPanel{
                       five.setSelected(Boolean.valueOf(checkBox.getText()));
                       five.addActionListener(popupListener);
                       five.setActionCommand("isComplete"+x);
+                      
+                      butForSubTasks[x] = new JButton("Show SubTask");
+                      butForSubTasks[x].addActionListener(popupListener);
+                      butForSubTasks[x].setActionCommand("subTask"+x);
+                       
                       butForEdit[x] = new JButton("Edit");
                        butForEdit[x].addActionListener(popupListener);
                        butForEdit[x].setActionCommand("editTask"+x);
@@ -134,8 +141,10 @@ public class TaskBoard extends JPanel{
                         BottomPanel.add(three);
                         BottomPanel.add(four); 
                         BottomPanel.add(five);
+                        BottomPanel.add(butForSubTasks[x]);
                         BottomPanel.add(butForTasks[x]);
                         BottomPanel.add(butForEdit[x]);
+                        
         }
         
         JPanel TopPanel = new JPanel();
@@ -154,6 +163,8 @@ public class TaskBoard extends JPanel{
      int listIndex = i;
                     
         String[] taskDetails =  listener.getTaskDetails(listIndex);
+        butForSubTasks = new JButton[taskDetails.length];
+        butForEdit = new JButton[taskDetails.length];
         butForTasks = new JButton[taskDetails.length];
         JPanel BottomPanel = new JPanel();
         JPanel middlePanel = new JPanel();
@@ -223,6 +234,15 @@ public class TaskBoard extends JPanel{
                       five.setSelected(Boolean.valueOf(checkBox.getText()));
                       five.addActionListener(popupListener);
                       five.setActionCommand("isComplete");
+                      
+                      butForSubTasks[x] = new JButton("Show SubTask");
+                      butForSubTasks[x].addActionListener(popupListener);
+                      butForSubTasks[x].setActionCommand("subTask"+x);
+                       
+                      butForEdit[x] = new JButton("Edit");
+                       butForEdit[x].addActionListener(popupListener);
+                       butForEdit[x].setActionCommand("editTask"+x);
+                       
                        butForTasks[x] = new JButton("Delete");
                        butForTasks[x].addActionListener(popupListener);
                        butForTasks[x].setActionCommand("deleteTask"+x);
@@ -233,6 +253,8 @@ public class TaskBoard extends JPanel{
                         BottomPanel.add(three);
                         BottomPanel.add(four); 
                         BottomPanel.add(five);
+                        BottomPanel.add(butForSubTasks[x]);
+                        BottomPanel.add(butForEdit[x]);
                         BottomPanel.add(butForTasks[x]);
                     }
         }
@@ -252,6 +274,8 @@ public class TaskBoard extends JPanel{
      int listIndex = i;
                     
         String[] taskDetails =  listener.getTaskDetails(listIndex);
+        butForSubTasks = new JButton[taskDetails.length];
+        butForEdit = new JButton[taskDetails.length];
         butForTasks = new JButton[taskDetails.length];
         JPanel BottomPanel = new JPanel();
         JPanel middlePanel = new JPanel();
@@ -321,6 +345,14 @@ public class TaskBoard extends JPanel{
                       five.setSelected(Boolean.valueOf(checkBox.getText()));
                       five.addActionListener(popupListener);
                       five.setActionCommand("isComplete");
+                       butForSubTasks[x] = new JButton("Show SubTask");
+                      butForSubTasks[x].addActionListener(popupListener);
+                      butForSubTasks[x].setActionCommand("subTask"+x);
+                       
+                      butForEdit[x] = new JButton("Edit");
+                       butForEdit[x].addActionListener(popupListener);
+                       butForEdit[x].setActionCommand("editTask"+x);
+                       
                        butForTasks[x] = new JButton("Delete");
                        butForTasks[x].addActionListener(popupListener);
                        butForTasks[x].setActionCommand("deleteTask"+x);
@@ -331,6 +363,8 @@ public class TaskBoard extends JPanel{
                         BottomPanel.add(three);
                         BottomPanel.add(four); 
                         BottomPanel.add(five);
+                        BottomPanel.add(butForSubTasks[x]);
+                        BottomPanel.add(butForEdit[x]);
                         BottomPanel.add(butForTasks[x]);
                     }
         }

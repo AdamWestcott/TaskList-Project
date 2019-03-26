@@ -13,6 +13,7 @@ import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.addTaskPopUp;
 import com.tiger.todolist.view.editTaskPopUp;
 import com.tiger.todolist.view.mainWindow;
+import com.tiger.todolist.view.subtaskWindow;
 import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -96,9 +97,13 @@ public class popupWindows implements ActionListener {
              
         }
       
-       else
+       else   
        for(int i = 0; i < listener.getTaskDetails(mainListener.pastList).length;i++){
-           if(e.getActionCommand().equals("deleteTask"+i)){
+           if(e.getActionCommand().equals("subTask"+i)){
+               System.out.println("Show subtask list please");
+               subtaskWindow.getInstance(); 
+           }
+           else if(e.getActionCommand().equals("deleteTask"+i)){
                Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
                System.out.println(taskId);
                if(user.getList().get(mainListener.pastList).getTask().contains(taskId)){

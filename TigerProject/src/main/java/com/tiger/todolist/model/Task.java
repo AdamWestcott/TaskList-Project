@@ -138,5 +138,9 @@ public class Task {
     
     return SubTaskName; 
     }
+     
+     public void createSubTask(boolean checkbox, String subTaskTitle){
+        SubTasks.add(new SubTask(subTaskTitle,checkbox));
+    }
     
 }
