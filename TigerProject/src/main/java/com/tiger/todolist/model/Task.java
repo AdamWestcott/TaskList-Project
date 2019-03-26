@@ -128,9 +128,13 @@ public class Task {
     //list.forEach((list) -> System.out.println(list.getTitle()));
     String storeName = "";
     for(int i = 0; i < SubTasks.size(); i++){
-        storeName += SubTasks.get(i).getName() + "," ; 
+        storeName += SubTasks.get(i).getName() + "," ;
+        storeName+= SubTasks.get(i).getSubTaskTitle()+",";
+        storeName+= SubTasks.get(i).getCheckBox();
+        storeName+="#";
+        
     }
-    String[] SubTaskName = storeName.split(",");
+    String[] SubTaskName = storeName.split("#");
     
     return SubTaskName; 
     }

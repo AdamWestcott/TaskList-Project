@@ -146,4 +146,10 @@ public class popupWindows implements ActionListener {
          String pn = SignIn.getInstance().getPassword().getText();
          return pn;
      }
+     
+     public String[] getSubTaskDetails(int taskID){
+      
+         String[] SubtaskDetails = user.getList().get(mainListener.pastList).getTask().get(taskID).showSubTasks();
+        return SubtaskDetails;
+     }
  }

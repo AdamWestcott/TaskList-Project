@@ -25,4 +25,19 @@ public class SubTask extends Task {
        
    }
    
+    public Boolean getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(Boolean checkBox) {
+        this.checkBox = checkBox;
+    }
+
+    public String getSubTaskTitle() {
+        return subTaskTitle;
+    }
+
+    public void setSubTaskTitle(String subTaskTitle) {
+        this.subTaskTitle = subTaskTitle;
+    }
 }

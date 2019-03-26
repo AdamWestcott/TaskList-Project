@@ -21,8 +21,9 @@ public class SubtaskBoard extends JPanel{
     
     
     public SubtaskBoard(){
-        this.setLayout(new GridLayout(2,1));
-        //super.add(getTaskTitle());
+        this.setLayout(new GridLayout(8,4));
+        
+        this.add(subTasks);
         this.add(taskName);
         this.add(checkBox);
         
