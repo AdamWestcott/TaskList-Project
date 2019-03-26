@@ -21,7 +21,7 @@ import javax.swing.WindowConstants;
     private JLabel addSubtask = new JLabel("Add SubTask");
 
    
-    private JTextField entTaskName = new JTextField();
+    private JTextField entSubtaskName = new JTextField();
     private JButton confirm = new JButton("Add task");
     
     private popupWindows listener = new popupWindows(); 
@@ -37,11 +37,12 @@ import javax.swing.WindowConstants;
     }
     
     public addSubPopUp(){
-        this.setLayout(new GridLayout(1,1));
+        this.setLayout(new GridLayout(3,1));
         
         this.add(addSubtask);
         confirm.addActionListener(listener);
         confirm.setActionCommand("addSub");
+        this.add(entSubtaskName);
         this.add(confirm);
         
         this.setSize(500,400);
@@ -50,9 +51,11 @@ import javax.swing.WindowConstants;
         
         
     }
-      public JTextField getEntTaskName() {
-          return entTaskName;
+
+    public JTextField getEntSubtaskName() {
+        return entSubtaskName;
     }
+      
 
    
 }

@@ -25,7 +25,7 @@ public class SubtaskBoard extends JPanel{
     private popupWindows listener = new popupWindows();
     
     public SubtaskBoard(){
-        this.setLayout(new GridLayout(8,4));
+        this.setLayout(new GridLayout(8,1));
         this.add(subTasks);
         String[] subTaskDetails = listener.getSubTaskDetails();     // an array of strings. ex array[0] = "taskName", "desc", "false"
  

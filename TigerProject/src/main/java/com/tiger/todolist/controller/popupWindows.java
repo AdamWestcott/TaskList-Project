@@ -105,6 +105,17 @@ public class popupWindows implements ActionListener {
                }   
         else if(e.getActionCommand().equals("addButOnSub")){ 
             addSubPopUp.getInstance();
+            subtaskWindow.getInstance().dispose();
+            subtaskWindow.getInstance().deleteObject(); 
+            
+        }
+        else if(e.getActionCommand().equals("addSub")){
+            String enteredVal = addSubPopUp.getInstance().getEntSubtaskName().getText();
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).createSubTask(false, enteredVal);
+            addSubPopUp.getInstance().dispose();
+            addSubPopUp.deleteObject();
+            subtaskWindow.getInstance();
+            
             
         }
         
