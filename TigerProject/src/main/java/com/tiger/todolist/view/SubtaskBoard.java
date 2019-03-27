@@ -7,6 +7,7 @@ package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.popupWindows;
 import java.awt.GridLayout;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,12 +23,15 @@ public class SubtaskBoard extends JPanel{
     private JLabel taskName = new JLabel("");   // Name of the task it belongs
     private JLabel subTaskName = new JLabel();  // The description of the task
     private JCheckBox checkBox = new JCheckBox("Complete"); 
+     private JButton[] butForSubEdit;
     private popupWindows listener = new popupWindows();
+   
     
     public SubtaskBoard(){
         this.setLayout(new GridLayout(8,1));
         this.add(subTasks);
         String[] subTaskDetails = listener.getSubTaskDetails();     // an array of strings. ex array[0] = "taskName", "desc", "false"
+        butForSubEdit = new JButton[subTaskDetails.length];
  
         for (int i=0; i<subTaskDetails.length;i++){ 
         String splitElements = subTaskDetails[i];
@@ -45,6 +49,9 @@ public class SubtaskBoard extends JPanel{
         JCheckBox two = new JCheckBox();
         two.setText("Complete");
         two.setSelected(Boolean.valueOf(checkBox.getText()));
+           butForSubEdit[i] = new JButton("Edit");
+           butForSubEdit[i].addActionListener(listener);
+           butForSubEdit[i].setActionCommand("editSubTask"+i);
         this.add(two);
  
         

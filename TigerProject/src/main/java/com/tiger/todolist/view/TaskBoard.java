@@ -124,7 +124,7 @@ public class TaskBoard extends JPanel{
                       butForSubTasks[x].addActionListener(popupListener);
                       butForSubTasks[x].setActionCommand("subTask"+x);
                        
-                      butForEdit[x] = new JButton("Edit");
+                       butForEdit[x] = new JButton("Edit");
                        butForEdit[x].addActionListener(popupListener);
                        butForEdit[x].setActionCommand("editTask"+x);
                        

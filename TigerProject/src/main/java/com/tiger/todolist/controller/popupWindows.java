@@ -136,14 +136,7 @@ public class popupWindows implements ActionListener {
                  taskWindow.deleteObject();
                  subtaskWindow.getInstance();
                }
-                
                  
-               
-                
-                  
-                
-                
-                
            }
            else if(e.getActionCommand().equals("deleteTask"+i)){
                Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
@@ -180,6 +173,16 @@ public class popupWindows implements ActionListener {
               System.out.println(user.getList().get(mainListener.pastList).getTask().get(i).isCheckbox()+"t");
        }
           }
+            else if(e.getActionCommand().equals("editSubTask"+i)){  
+            SubTask SubTaskId = user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(i);
+            //taskName = user.getList().get(mainListener.pastList).getTask().get(i).getName();
+            if(user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().contains(SubTaskId)){
+                taskWindow.getInstance().dispose();
+                taskWindow.deleteObject();
+                //editTaskPopUp.getInstance(taskName);  
+                
+            }
+            }
        }
     }
        
