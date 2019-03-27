@@ -14,6 +14,7 @@ import com.tiger.todolist.view.SubtaskBoard;
 import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.addSubPopUp;
 import com.tiger.todolist.view.addTaskPopUp;
+import com.tiger.todolist.view.editSubTaskPopUp;
 import com.tiger.todolist.view.editTaskPopUp;
 import com.tiger.todolist.view.mainWindow;
 import com.tiger.todolist.view.subtaskWindow;
@@ -31,6 +32,7 @@ public class popupWindows implements ActionListener {
     int currentUser = Board.getStatus().findUser(getUserName(),getPassword());
     User user = Board.getStatus().getUsers().get(currentUser);
     public static int currentTask = 0; 
+    public static int currentSubTask=0;
     @Override
     public void actionPerformed(ActionEvent e) {
        if(e.getActionCommand().equals("addTask") ){ //TaskBoard "Add list" button listener
@@ -157,9 +159,9 @@ public class popupWindows implements ActionListener {
                 taskWindow.deleteObject();
                 editTaskPopUp.getInstance(taskName);
                 
+                
             }
-           }
-           else if(e.getActionCommand().equals("isComplete"+i) ){
+             else if(e.getActionCommand().equals("isComplete"+i) ){
             boolean checkBox = user.getList().get(mainListener.pastList).getTask().get(i).isCheckbox();
             //System.out.println("you have clicked a checkbox 2");
               if(checkBox){
@@ -172,21 +174,37 @@ public class popupWindows implements ActionListener {
               taskWindow.getInstance().getTb().getCheckBox().setSelected(true);
               System.out.println(user.getList().get(mainListener.pastList).getTask().get(i).isCheckbox()+"t");
        }
-          }
-            else if(e.getActionCommand().equals("editSubTask"+i)){  
-            SubTask SubTaskId = user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(i);
-            //taskName = user.getList().get(mainListener.pastList).getTask().get(i).getName();
-            if(user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().contains(SubTaskId)){
-                taskWindow.getInstance().dispose();
-                taskWindow.deleteObject();
-                //editTaskPopUp.getInstance(taskName);  
-                
-            }
-            }
+           }
+           
        }
+       }
+       for(int i = 0; i < getSubTaskDetails().length;i++){
+  
+            if(e.getActionCommand().equals("editSubTask"+i)){
+                currentSubTask =i;
+                SubTask SubTask = user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask);
+                String SubtaskName = SubTask.getSubTaskTitle();
+                if(user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().contains(SubTask)){
+                    subtaskWindow.getInstance().dispose();
+                    subtaskWindow.deleteObject();
+                    editSubTaskPopUp.getInstance(SubtaskName,currentSubTask);  
+
+                }
+            }
+            
     }
-       
-     
+        if(e.getActionCommand().equals("subedit")){
+                editSubTaskPopUp.getInstance().dispose();
+            String newTaskName = editSubTaskPopUp.getInstance().getEntSubTaskName().getText();
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask).setSubTaskTitle(newTaskName);
+            
+            
+            
+            editSubTaskPopUp.deleteObject();
+            subtaskWindow.getInstance(); 
+            }
+    }
+    
     public String getUserName(){
          String un = SignIn.getInstance().getUserName().getText();
          return un;

@@ -52,6 +52,7 @@ public class SubtaskBoard extends JPanel{
            butForSubEdit[i] = new JButton("Edit");
            butForSubEdit[i].addActionListener(listener);
            butForSubEdit[i].setActionCommand("editSubTask"+i);
+           this.add(butForSubEdit[i]);
         this.add(two);
  
         
