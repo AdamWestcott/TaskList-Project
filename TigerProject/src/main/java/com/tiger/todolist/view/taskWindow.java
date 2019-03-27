@@ -8,6 +8,7 @@ package com.tiger.todolist.view;
 import com.tiger.todolist.controller.mainListener;
 import com.tiger.todolist.controller.popupWindows;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -65,9 +66,15 @@ public class taskWindow extends JFrame {
         
         this.add(LeftPanel, BorderLayout.LINE_END);
         
-        this.setSize(500, 400);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        Dimension newDim= new Dimension(1700,150);
+        
+        this.setPreferredSize(newDim);
+        this.setMaximumSize(newDim);
+        this.setSize(newDim);
+        this.revalidate();//Calling all is an instruction to tell the layout manager to reset based on the new component list 
+        this.setResizable(false);
         this.setVisible(true);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     public taskWindow(TaskBoard newTb){
         super("To Do List: Tasks");
@@ -87,9 +94,15 @@ public class taskWindow extends JFrame {
         searchBut.setActionCommand("search");
         this.add(LeftPanel, BorderLayout.LINE_END);
         
-        this.setSize(500, 400);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        Dimension newDim= new Dimension(1000,1500);
+        
+        this.setPreferredSize(newDim);
+        this.setMaximumSize(newDim);
+        this.setSize(newDim);
+        this.revalidate();//Calling all is an instruction to tell the layout manager to reset based on the new component list 
+        this.setResizable(false);
         this.setVisible(true);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     
     public TaskBoard getTb() {

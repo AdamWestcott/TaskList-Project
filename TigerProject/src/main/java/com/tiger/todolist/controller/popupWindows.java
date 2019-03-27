@@ -126,7 +126,6 @@ public class popupWindows implements ActionListener {
            if(e.getActionCommand().equals("subTask"+i)){
                currentTask = i;
                try{
-                //SubTask instance = user.getList().get(mainListener.pastList).getTask().get(i).getSubTasks().get(currentTask);
                 taskWindow.getInstance().dispose();
                   taskWindow.deleteObject();
                   subtaskWindow.getInstance();
