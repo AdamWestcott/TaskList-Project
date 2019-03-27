@@ -21,6 +21,7 @@ public class Task {
   private int priority; 
   private String name;
   private ArrayList<SubTask> SubTasks  = new ArrayList<SubTask>();
+
   private int id = 0;
 
   //CONSTRUCTORS
@@ -142,5 +143,17 @@ public class Task {
      public void createSubTask(boolean checkbox, String subTaskTitle){
         SubTasks.add(new SubTask(subTaskTitle,checkbox));
     }
+     
+     public void createDefaultSubTask(){
+        SubTasks.add(new SubTask());
+    }
     
+     
+    public ArrayList<SubTask> getSubTasks() {
+        return SubTasks;
+    }
+
+    public void setSubTasks(ArrayList<SubTask> SubTasks) {
+        this.SubTasks = SubTasks;
+    }
 }

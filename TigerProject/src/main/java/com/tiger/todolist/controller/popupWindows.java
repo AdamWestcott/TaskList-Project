@@ -6,6 +6,7 @@
 package com.tiger.todolist.controller;
 
 import com.tiger.todolist.model.Board;
+import com.tiger.todolist.model.SubTask;
 import com.tiger.todolist.model.Task;
 import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
@@ -123,10 +124,27 @@ public class popupWindows implements ActionListener {
        else   
        for(int i = 0; i < listener.getTaskDetails(mainListener.pastList).length;i++){
            if(e.getActionCommand().equals("subTask"+i)){
-               currentTask = i; 
-               taskWindow.getInstance().dispose();
-               taskWindow.deleteObject();
-               subtaskWindow.getInstance();
+               currentTask = i;
+               try{
+                //SubTask instance = user.getList().get(mainListener.pastList).getTask().get(i).getSubTasks().get(currentTask);
+                taskWindow.getInstance().dispose();
+                  taskWindow.deleteObject();
+                  subtaskWindow.getInstance();
+               }
+               catch(IndexOutOfBoundsException err){
+                 user.getList().get(mainListener.pastList).getTask().get(i).createDefaultSubTask();
+                 taskWindow.getInstance().dispose();
+                 taskWindow.deleteObject();
+                 subtaskWindow.getInstance();
+               }
+                
+                 
+               
+                
+                  
+                
+                
+                
            }
            else if(e.getActionCommand().equals("deleteTask"+i)){
                Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
