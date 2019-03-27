@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.tiger.todolist.model;
+import com.google.gson.Gson;
 import java.util.ArrayList; 
 /**
  *
@@ -60,9 +61,18 @@ public class Board {
                 int userIndex = i;
                 return userIndex;
             }
-            
-        
+    
     }
     return -1;
+    }
+    
+    public String getJson(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+    
+    public void updateFromJson(String json){
+        Gson gson = new Gson();
+        Board.status = gson.fromJson(json, Board.class);
     }
 }

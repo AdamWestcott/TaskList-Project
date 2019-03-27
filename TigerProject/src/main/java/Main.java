@@ -5,6 +5,7 @@
  */
 
 
+import com.google.gson.Gson;
 import com.tiger.todolist.controller.mainListener;
 import com.tiger.todolist.model.Board;
 import com.tiger.todolist.model.Category;
@@ -53,7 +54,14 @@ public class Main {
         SignIn.getInstance();    
         mainListener mainController = new mainListener(); 
        
+       Gson gson = new Gson();
+       String jsonCode = gson.toJson(Tim);
+       System.out.println(jsonCode);
        
+       String altText = "{\"username\":\"Jim\",\"password\":\"egg\",\"userLevel\":0,\"list\":[{\"title\":\"Jims dates\",\"task\":[],\"backupList\":[]},{\"title\":\"Works\",\"task\":[],\"backupList\":[]},{\"title\":\"Personal\",\"task\":[],\"backupList\":[]}]}";
+       
+      User ex = gson.fromJson(altText, User.class);
+      System.out.println(ex.getUsername()); 
     }
     
 }
