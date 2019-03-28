@@ -140,7 +140,7 @@ public class popupWindows implements ActionListener {
         }
         else if(e.getActionCommand().equals("addSub")){
             String enteredVal = addSubPopUp.getInstance().getEntSubtaskName().getText();
-            user.getList().get(mainListener.pastList).getTask().get(currentTask).createSubTask(false, enteredVal);
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).createSubTask(enteredVal,new Date(),2);
             addSubPopUp.getInstance().dispose();
             addSubPopUp.deleteObject();
             subtaskWindow.getInstance();
@@ -209,7 +209,7 @@ public class popupWindows implements ActionListener {
             if(e.getActionCommand().equals("editSubTask"+i)){
                 currentSubTask =i;
                 SubTask SubTask = user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask);
-                String SubtaskName = SubTask.getSubTaskTitle();
+                String SubtaskName = SubTask.getDescription();
                 if(user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().contains(SubTask)){
                     subtaskWindow.getInstance().dispose();
                     subtaskWindow.deleteObject();
@@ -233,7 +233,7 @@ public class popupWindows implements ActionListener {
         if(e.getActionCommand().equals("subedit")){
                 editSubTaskPopUp.getInstance().dispose();
             String newTaskName = editSubTaskPopUp.getInstance().getEntSubTaskName().getText();
-            user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask).setSubTaskTitle(newTaskName);
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask).setDescription(newTaskName);
             
             
             

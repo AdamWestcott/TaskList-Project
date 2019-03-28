@@ -130,8 +130,9 @@ public class Task {
     String storeName = "";
     for(int i = 0; i < SubTasks.size(); i++){
         storeName += this.getName() + "," ;
-        storeName+= SubTasks.get(i).getSubTaskTitle()+",";
-        storeName+= SubTasks.get(i).getCheckBox();
+        storeName+= SubTasks.get(i).getDescription()+",";
+        storeName+= SubTasks.get(i).getCompletionDate()+",";
+        storeName+= SubTasks.get(i).getPriorityOrder()+",";
         storeName+="#";
         
     }
@@ -140,8 +141,8 @@ public class Task {
     return SubTaskName; 
     }
      
-     public void createSubTask(boolean checkbox, String subTaskTitle){
-        SubTasks.add(new SubTask(subTaskTitle,checkbox));
+     public void createSubTask(String description, Date dueDate, int priority){
+        SubTasks.add(new SubTask(description,dueDate,priority));
     }
      
      public void createDefaultSubTask(){

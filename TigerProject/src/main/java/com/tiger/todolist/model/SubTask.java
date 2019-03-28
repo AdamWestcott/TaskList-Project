@@ -5,6 +5,8 @@
  */
 package com.tiger.todolist.model;
 
+import java.util.Date;
+
 /**
  *
  * @author k1746252
@@ -13,39 +15,50 @@ public class SubTask extends Task {
    
     //PROPERTIES
    private String task;
-   private Boolean checkBox;
-   private String subTaskTitle;
+   private String descriptions;
+   private Date completionDate;
+   private int priorityOrder;
    
    //FUNCTIONS
    public SubTask()
    {
        this.task=super.getName();
-       this.checkBox=false;
-       this.subTaskTitle="No Entry,Edit SubTask Title";
+       this.descriptions="No Entry,Edit SubTask Title";
        
    }
    
-    public SubTask(String subTaskTitle, boolean checkBox)
+    public SubTask(String description, Date completionDate, int priorityOrder)
    {
        this.task = super.getName();
-       this.checkBox = checkBox; 
-       this.subTaskTitle = subTaskTitle;
+       this.descriptions = description;
+       this.completionDate = completionDate;
+       this.priorityOrder = priorityOrder; 
        
    }
-   
-    public Boolean getCheckBox() {
-        return checkBox;
+
+    public String getDescription() {
+        return descriptions;
     }
 
-    public void setCheckBox(Boolean checkBox) {
-        this.checkBox = checkBox;
+    public void setDescription(String description) {
+        this.descriptions = description;
     }
 
-    public String getSubTaskTitle() {
-        return subTaskTitle;
+    public Date getCompletionDate() {
+        return completionDate;
     }
 
-    public void setSubTaskTitle(String subTaskTitle) {
-        this.subTaskTitle = subTaskTitle;
+    public void setCompletionDate(Date completionDate) {
+        this.completionDate = completionDate;
     }
+
+    public int getPriorityOrder() {
+        return priorityOrder;
+    }
+
+    public void setPriorityOrder(int priorityOrder) {
+        this.priorityOrder = priorityOrder;
+    }
+    
+    
 }

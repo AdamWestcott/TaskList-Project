@@ -54,7 +54,7 @@ public class mainListener implements ActionListener {
                     String inboundJson = FileUtils.readFileToString(fileToSave,"UTF-8");
                     Board.getStatus().updateFromJson(inboundJson);
                     mainWindow.getInstance(); 
-                } catch (IOException ex) {
+                } catch (IOException err) {
                     JOptionPane.showMessageDialog(null,"Unable to load");
                 }
             }
@@ -70,7 +70,7 @@ public class mainListener implements ActionListener {
                 File fileToSave = fc.getSelectedFile();
                 try {
                     FileUtils.writeStringToFile(fileToSave,Board.getStatus().getJson(),"UTF-8");
-                } catch (IOException ex) {
+                } catch (IOException err) {
                     JOptionPane.showMessageDialog(null,"Unable to save");
                 }
             }
