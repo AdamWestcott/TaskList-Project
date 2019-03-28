@@ -12,7 +12,11 @@ import com.tiger.todolist.view.mainWindow;
 import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import org.apache.commons.io.FileUtils;
 
 
 
@@ -39,10 +43,37 @@ public class mainListener implements ActionListener {
             else JOptionPane.showMessageDialog(null, "Incorrect login details");
         }
         else if(e.getActionCommand().equals("loadBut")){
-            System.out.println("load button");
+            JFileChooser fc = new JFileChooser();
+            fc.setDialogTitle("Load previous game");
+            int selection = fc.showOpenDialog(null);
+           
+            if (selection == JFileChooser.APPROVE_OPTION) // if OK is selected
+            {
+                try {
+                    File fileToSave = fc.getSelectedFile();
+                    String inboundJson = FileUtils.readFileToString(fileToSave,"UTF-8");
+                    Board.getStatus().updateFromJson(inboundJson);
+                    mainWindow.getInstance(); 
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null,"Unable to load");
+                }
+            }
         }
         else if(e.getActionCommand().equals("saveBut")){
-            System.out.println("save button");
+            JFileChooser fc = new JFileChooser();
+            fc.setDialogTitle("Save current task board");
+            int selection = fc.showSaveDialog(null);
+            
+            
+            if (selection == JFileChooser.APPROVE_OPTION)// if OK is selected
+            {
+                File fileToSave = fc.getSelectedFile();
+                try {
+                    FileUtils.writeStringToFile(fileToSave,Board.getStatus().getJson(),"UTF-8");
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null,"Unable to save");
+                }
+            }
         }
          //DISPLAYING USER TASKS
        else  for(int i = 0; i < getListNames().length; i++){
