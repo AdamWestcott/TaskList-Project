@@ -13,6 +13,7 @@ import com.tiger.todolist.model.Task;
 import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.mainWindow;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -30,14 +31,14 @@ public class Main {
         Paul.createList("EH RAW");
         Paul.createList("Work");
         
-        Paul.getList().get(0).createTask(false, "Description: of task 0 ", "today", 5, "Task 0");            
-        Paul.getList().get(0).createTask(false, "Description: of task 1 ", "Tomorrow", 1, "Task 1"); //Add two tasks to list "cat dates"
+        Paul.getList().get(0).createTask(false, "Description: of task 0 ",new Date(), 5, "Task 0");            
+        Paul.getList().get(0).createTask(false, "Description: of task 1 ", new Date(), 1, "Task 1"); //Add two tasks to list "cat dates"
         Paul.getList().get(0).getTask().get(0).createSubTask(false, "get cat milk");
         Paul.getList().get(0).getTask().get(0).createSubTask(false, "get stuff");
         Paul.getList().get(0).getTask().get(0).createSubTask(false, "gedsfbhdfbdfb");
         
-        Paul.getList().get(1).createTask(false, "EH RAW TASK 0 ", "today", 1, "Task 0");            
-        Paul.getList().get(1).createTask(false, "EH RAW TASK 1 ", "Tomorrow", 1, "Task 1"); 
+        Paul.getList().get(1).createTask(false, "EH RAW TASK 0 ", new Date(), 1, "Task 0");            
+        Paul.getList().get(1).createTask(false, "EH RAW TASK 1 ", new Date(), 1, "Task 1"); 
         Paul.getList().get(1).getTask().get(0).createSubTask(false, "EH RAWWWWW");
         Paul.getList().get(1).getTask().get(0).createSubTask(false, "MOAR EH RAWWWWW");
         Paul.getList().get(1).getTask().get(0).createSubTask(false, "EVEN MOARRRR EH RAWWWWW");
@@ -61,7 +62,7 @@ public class Main {
        String altText = "{\"username\":\"Jim\",\"password\":\"egg\",\"userLevel\":0,\"list\":[{\"title\":\"Jims dates\",\"task\":[],\"backupList\":[]},{\"title\":\"Works\",\"task\":[],\"backupList\":[]},{\"title\":\"Personal\",\"task\":[],\"backupList\":[]}]}";
        
       User ex = gson.fromJson(altText, User.class);
-      System.out.println(ex.getUsername()); 
+      System.out.println(ex.getUsername());
     }
     
 }

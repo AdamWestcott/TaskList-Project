@@ -16,8 +16,8 @@ public class Task {
     //PROPERTIES
   private boolean checkbox;
   private String description;
-  //private Date dueDate = new Date();
-  private String dueDate; 
+  private Date dueDate;
+  //private String dueDate; 
   private int priority; 
   private String name;
   private ArrayList<SubTask> SubTasks  = new ArrayList<SubTask>();
@@ -25,7 +25,7 @@ public class Task {
   private int id = 0;
 
   //CONSTRUCTORS
-  public Task (boolean checkbox, String description, String dueDate, int priority, String name){
+  public Task (boolean checkbox, String description, Date dueDate, int priority, String name){
       this.checkbox = checkbox;
       this.description = description;
       this.dueDate = dueDate;
@@ -76,11 +76,11 @@ public class Task {
     }
 
       
-    public String getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
     

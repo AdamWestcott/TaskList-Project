@@ -21,6 +21,10 @@ import com.tiger.todolist.view.subtaskWindow;
 import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -51,28 +55,50 @@ public class popupWindows implements ActionListener {
        else if(e.getActionCommand().equals("add")){
           String passTaskName = addTaskPopUp.getInstance().getEntTaskName().getText();
           String passTaskDesc = addTaskPopUp.getInstance().getEntDescript().getText();
-          String passDueDate = addTaskPopUp.getInstance().getEntDueDate().getText();
-          int passPriority = Integer.parseInt(addTaskPopUp.getInstance().getPriorities().getSelectedItem().toString());
-          user.getList().get(mainListener.pastList).createTask(false, passTaskDesc, passDueDate, passPriority, passTaskName);
-          addTaskPopUp.getInstance().dispose();
+          try{
+            String passDueDate = addTaskPopUp.getInstance().getEntDueDate().getText();
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Date convertTo = df.parse(passDueDate);
+            
+           
+            int passPriority = Integer.parseInt(addTaskPopUp.getInstance().getPriorities().getSelectedItem().toString());
+            user.getList().get(mainListener.pastList).createTask(false, passTaskDesc, convertTo, passPriority, passTaskName);
+            addTaskPopUp.getInstance().dispose();
           addTaskPopUp.deleteObject();
           taskWindow.getInstance(); 
+          }
+          catch(ParseException err){
+               JOptionPane.showMessageDialog(null, "Incorrect date format. Do as: 10/01/2020");
+          }
+          
+          
+          
           
         }
         else if(e.getActionCommand().equals("edit") ){
           String newTaskName = editTaskPopUp.getInstance().getEntTaskName().getText();
           String newTaskDesc = editTaskPopUp.getInstance().getEntDescript().getText();
-          String newDueDate = editTaskPopUp.getInstance().getEntDueDate().getText();
-          int passPriority = Integer.parseInt(editTaskPopUp.getInstance().getPriorities().getSelectedItem().toString());
+          try{
+            String newDueDate = editTaskPopUp.getInstance().getEntDueDate().getText();
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Date convertTo = df.parse(newDueDate);
+            
+            int passPriority = Integer.parseInt(editTaskPopUp.getInstance().getPriorities().getSelectedItem().toString());
           
-          user.getList().get(mainListener.pastList).getTask().get(currentTask).setName(newTaskName);
-          user.getList().get(mainListener.pastList).getTask().get(currentTask).setDescription(newTaskDesc);
-          user.getList().get(mainListener.pastList).getTask().get(currentTask).setDueDate(newDueDate);
-          user.getList().get(mainListener.pastList).getTask().get(currentTask).setPriority(passPriority);
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).setName(newTaskName);
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).setDescription(newTaskDesc);
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).setDueDate(convertTo);
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).setPriority(passPriority);
+
+            editTaskPopUp.getInstance().dispose();
+            editTaskPopUp.deleteObject();
+            taskWindow.getInstance();
+          }
+          catch(ParseException err){
+               JOptionPane.showMessageDialog(null, "Incorrect date format. Do as: 10/01/2020");
+          }
           
-          editTaskPopUp.getInstance().dispose();
-          editTaskPopUp.deleteObject();
-          taskWindow.getInstance(); 
+           
         }
         else if(e.getActionCommand().equals("search")){
             String input = taskWindow.getInstance().getSearch().getText();

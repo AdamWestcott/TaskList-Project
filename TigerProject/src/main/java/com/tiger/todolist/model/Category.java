@@ -5,6 +5,7 @@
  */
 package com.tiger.todolist.model;
 import java.util.ArrayList; 
+import java.util.Date;
 
 
 /**
@@ -39,7 +40,7 @@ public class Category {
         }
     }
     
-    public void createTask(boolean checkbox, String description, String dueDate, int priority, String name){
+    public void createTask(boolean checkbox, String description, Date dueDate, int priority, String name){
         task.add(new Task(checkbox,description,dueDate,priority,name));
     }
     
