@@ -18,16 +18,17 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
+
 
 /**
  *
  * @author k1732912
  */
 public class TaskBoard extends JPanel{
-    
     private JLabel currentList = new JLabel("");
     private JLabel tasks = new JLabel ("Tasks");
     private JLabel taskTitle = new JLabel ("Task title");
@@ -36,6 +37,7 @@ public class TaskBoard extends JPanel{
     private JLabel dueDate = new JLabel("A date");
     private JCheckBox checkBox = new JCheckBox();
     private JLabel storesTaskId = new JLabel();
+    private JScrollPane scrollPane = new JScrollPane();
     
     private JButton[] butForTasks;
     private JButton[] butForEdit;
@@ -57,7 +59,8 @@ public class TaskBoard extends JPanel{
         JPanel middlePanel = new JPanel();
         middlePanel.setLayout( new GridLayout(1,4));
         int GridNumber =0;
-
+        boolean flag = false;
+        JPanel master = new JPanel();
               taskTitle.setText("Task");      
               taskDescription.setText("Description");
               priority.setText("Priority");
@@ -80,10 +83,10 @@ public class TaskBoard extends JPanel{
               third.setFont(font);
               fourth.setFont(font);
 
-              middlePanel.add(first);
-              middlePanel.add(second);
-              middlePanel.add(third);
-              middlePanel.add(fourth);
+//              BottomPanel.add(first);
+//              BottomPanel.add(second);
+//              BottomPanel.add(third);
+//              BottomPanel.add(fourth);
                       
         for(int x = 0; x < taskDetails.length; x++){
                     String splitElements = taskDetails[x];
@@ -131,6 +134,32 @@ public class TaskBoard extends JPanel{
                        butForTasks[x] = new JButton("Delete");
                        butForTasks[x].addActionListener(popupListener);
                        butForTasks[x].setActionCommand("deleteTask"+x);
+                       if (flag == false){
+                           one.setFont(font);
+                           two.setFont(font);
+                           three.setFont(font);
+                           four.setFont(font);
+                           five.setFont(font);
+                           five.setVisible(false);
+                           BottomPanel.add(one);
+                           BottomPanel.add(two);
+                           BottomPanel.add(three);
+                           BottomPanel.add(four);
+                           
+                           taskTitle.setText("Task");      
+                           taskDescription.setText("Description");
+                           priority.setText("Priority");
+                           dueDate.setText("Due Date");
+                            one.setText(taskTitle.getText());
+                             two.setText(taskDescription.getText());
+                              three.setText(priority.getText());
+                             four.setText(dueDate.getText());
+                             
+                           
+                           
+                           
+                           
+                       }
                         
                        one.setBorder(border);
                        two.setBorder(border);
@@ -144,7 +173,13 @@ public class TaskBoard extends JPanel{
                         BottomPanel.add(butForSubTasks[x]);
                         BottomPanel.add(butForTasks[x]);
                         BottomPanel.add(butForEdit[x]);
-                        
+                        if (flag == false){
+                           x=x-1;
+                            flag = true; 
+                        }
+                        JScrollPane scrolly = new JScrollPane(BottomPanel);
+                        scrolly.setAutoscrolls(true);
+                        this.add(scrolly, BorderLayout.PAGE_END);
         }
         
         JPanel TopPanel = new JPanel();
@@ -152,9 +187,8 @@ public class TaskBoard extends JPanel{
                       
                         TopPanel.add(tasks);
                         TopPanel.add(currentList);
-                        this.add(TopPanel, BorderLayout.CENTER);
-                        this.add(middlePanel, BorderLayout.PAGE_START);
-                        this.add(BottomPanel, BorderLayout.PAGE_END);
+                        master.add(TopPanel, BorderLayout.CENTER);
+                        master.add(middlePanel, BorderLayout.PAGE_START);
  
         
         }
@@ -188,15 +222,15 @@ public class TaskBoard extends JPanel{
               fourth.setText(dueDate.getText());
 
 
-              first.setFont(font);
-              second.setFont(font);
-              third.setFont(font);
-              fourth.setFont(font);
-
-              middlePanel.add(first);
-              middlePanel.add(second);
-              middlePanel.add(third);
-              middlePanel.add(fourth);
+//              first.setFont(font);
+//              second.setFont(font);
+//              third.setFont(font);
+//              fourth.setFont(font);
+//
+//              middlePanel.add(first);
+//              middlePanel.add(second);
+//              middlePanel.add(third);
+//              middlePanel.add(fourth);
                       
         for(int x = 0; x < taskDetails.length; x++){
                     String splitElements = taskDetails[x];
@@ -248,6 +282,9 @@ public class TaskBoard extends JPanel{
                        butForTasks[x].setActionCommand("deleteTask"+x);
                         
                        one.setBorder(border);
+                       two.setBorder(border);
+                       three.setBorder(border);
+                       four.setBorder(border);;
                         BottomPanel.add(one);
                         BottomPanel.add(two);
                         BottomPanel.add(three);
@@ -308,6 +345,7 @@ public class TaskBoard extends JPanel{
               middlePanel.add(second);
               middlePanel.add(third);
               middlePanel.add(fourth);
+             
                       
         for(int x = 0; x < taskDetails.length; x++){
                     String splitElements = taskDetails[x];
@@ -345,7 +383,7 @@ public class TaskBoard extends JPanel{
                       five.setSelected(Boolean.valueOf(checkBox.getText()));
                       five.addActionListener(popupListener);
                       five.setActionCommand("isComplete");
-                       butForSubTasks[x] = new JButton("Show SubTask");
+                      butForSubTasks[x] = new JButton("Show SubTask");
                       butForSubTasks[x].addActionListener(popupListener);
                       butForSubTasks[x].setActionCommand("subTask"+x);
                        
@@ -357,7 +395,7 @@ public class TaskBoard extends JPanel{
                        butForTasks[x].addActionListener(popupListener);
                        butForTasks[x].setActionCommand("deleteTask"+x);
                         
-                       one.setBorder(border);
+                        one.setBorder(border);
                         BottomPanel.add(one);
                         BottomPanel.add(two);
                         BottomPanel.add(three);

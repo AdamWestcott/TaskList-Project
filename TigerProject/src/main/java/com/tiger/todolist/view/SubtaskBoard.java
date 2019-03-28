@@ -6,6 +6,7 @@
 package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.popupWindows;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -29,7 +30,9 @@ public class SubtaskBoard extends JPanel{
    
     
     public SubtaskBoard(){
-        this.setLayout(new GridLayout(8,1));
+        JPanel middlePanel = new JPanel();
+        this.setLayout(new FlowLayout());
+        middlePanel.setLayout( new GridLayout(1,1));
         this.add(subTasks);
         String[] subTaskDetails = listener.getSubTaskDetails();     // an array of strings. ex array[0] = "taskName", "desc", "false"
         butForSubEdit = new JButton[subTaskDetails.length];
@@ -45,11 +48,11 @@ public class SubtaskBoard extends JPanel{
         subTaskName.setText(splitDetails[1]);
         JLabel one = new JLabel();
         one.setText(subTaskName.getText());
-        this.add(one);
+        middlePanel.add(one);
         
-        JCheckBox two = new JCheckBox();
-        two.setText("Complete");
-        two.setSelected(Boolean.valueOf(checkBox.getText()));
+//        JCheckBox two = new JCheckBox();
+//        two.setText("Complete");
+//        two.setSelected(Boolean.valueOf(checkBox.getText()));
            butForSubEdit[i] = new JButton("Edit");
            butForSubEdit[i].addActionListener(listener);
            butForSubEdit[i].setActionCommand("editSubTask"+i);
@@ -57,9 +60,10 @@ public class SubtaskBoard extends JPanel{
            butForSubTasks[i] = new JButton("Delete");
            butForSubTasks[i].addActionListener(listener);
            butForSubTasks[i].setActionCommand("deleteSubTask"+i);
-           this.add(butForSubEdit[i]);
-           this.add(butForSubTasks[i]);
-           this.add(two);
+//           middlePanel.add(two);
+           middlePanel.add(butForSubEdit[i]);
+           middlePanel.add(butForSubTasks[i]);
+           this.add(middlePanel);
  
         
         }

@@ -31,7 +31,7 @@ public class addTaskPopUp extends JFrame{
     private JTextField entTaskName = new JTextField();
     private JTextArea entDescript = new JTextArea();
     private JTextField entDueDate = new JTextField();
-    private String[] priotityLvls = new String[]{"1","2","3","4","5","6","7","8","9","10"}; 
+    private String[] priotityLvls = new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"}; 
     private JComboBox<String>  priorities = new JComboBox<String>(priotityLvls);
     private JButton confirm = new JButton("Add task");
     

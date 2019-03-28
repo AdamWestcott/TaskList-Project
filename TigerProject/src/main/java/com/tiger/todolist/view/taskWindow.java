@@ -14,6 +14,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 /**
@@ -21,7 +22,6 @@ import javax.swing.JTextField;
  * @author k1732912
  */
 public class taskWindow extends JFrame {
-    
     private TaskBoard tb = new TaskBoard(mainListener.pastList); 
     
     private JTextField search = new JTextField(10);
@@ -51,10 +51,11 @@ public class taskWindow extends JFrame {
         this.setLayout(new GridLayout(1,10));
         JPanel LeftPanel = new JPanel();
         LeftPanel.add(tb);
-        LeftPanel.add(search);
-        LeftPanel.add(searchBut);
-        LeftPanel.add(addTask);
-        LeftPanel.add(back);
+        LeftPanel.add(search,BorderLayout.SOUTH);
+        LeftPanel.add(searchBut,BorderLayout.SOUTH);
+        LeftPanel.add(addTask,BorderLayout.SOUTH);
+        LeftPanel.add(back,BorderLayout.SOUTH);
+        JScrollPane scrPane = new JScrollPane(LeftPanel);
         
         back.addActionListener(listener); 
         back.setActionCommand("back");
@@ -64,27 +65,23 @@ public class taskWindow extends JFrame {
         searchBut.setActionCommand("search");
 
         
-        this.add(LeftPanel, BorderLayout.LINE_END);
+        this.add(scrPane, BorderLayout.LINE_END);
         
-        Dimension newDim= new Dimension(1700,150);
-        
-        this.setPreferredSize(newDim);
-        this.setMaximumSize(newDim);
-        this.setSize(newDim);
+        this.pack();
         this.revalidate();//Calling all is an instruction to tell the layout manager to reset based on the new component list 
-        this.setResizable(false);
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     public taskWindow(TaskBoard newTb){
         super("To Do List: Tasks");
-        this.setLayout(new GridLayout(1,10));
         JPanel LeftPanel = new JPanel();
+    this.setLayout(new GridLayout(1,10));
         LeftPanel.add(newTb);
         LeftPanel.add(search);
         LeftPanel.add(searchBut);
         LeftPanel.add(addTask);
         LeftPanel.add(back);
+        JScrollPane scrPane = new JScrollPane(LeftPanel);
         
         back.addActionListener(listener); 
         back.setActionCommand("back");
@@ -92,15 +89,10 @@ public class taskWindow extends JFrame {
         addTask.setActionCommand("addTask");
         searchBut.addActionListener(listener);
         searchBut.setActionCommand("search");
-        this.add(LeftPanel, BorderLayout.LINE_END);
+        this.add(scrPane, BorderLayout.LINE_END);
         
-        Dimension newDim= new Dimension(1000,1500);
-        
-        this.setPreferredSize(newDim);
-        this.setMaximumSize(newDim);
-        this.setSize(newDim);
+        this.pack();
         this.revalidate();//Calling all is an instruction to tell the layout manager to reset based on the new component list 
-        this.setResizable(false);
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }

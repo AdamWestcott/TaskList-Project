@@ -187,6 +187,7 @@ public class popupWindows implements ActionListener {
                 
                 
             }
+           }
              else if(e.getActionCommand().equals("isComplete"+i) ){
             boolean checkBox = user.getList().get(mainListener.pastList).getTask().get(i).isCheckbox();
             //System.out.println("you have clicked a checkbox 2");
@@ -202,7 +203,6 @@ public class popupWindows implements ActionListener {
        }
            }
            
-       }
        }
        for(int i = 0; i < getSubTaskDetails().length;i++){
   
