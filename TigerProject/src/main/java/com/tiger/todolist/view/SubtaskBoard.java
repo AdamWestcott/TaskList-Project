@@ -23,7 +23,8 @@ public class SubtaskBoard extends JPanel{
     private JLabel taskName = new JLabel("");   // Name of the task it belongs
     private JLabel subTaskName = new JLabel();  // The description of the task
     private JCheckBox checkBox = new JCheckBox("Complete"); 
-     private JButton[] butForSubEdit;
+    private JButton[] butForSubEdit;
+    private JButton[] butForSubTasks;
     private popupWindows listener = new popupWindows();
    
     
@@ -32,7 +33,7 @@ public class SubtaskBoard extends JPanel{
         this.add(subTasks);
         String[] subTaskDetails = listener.getSubTaskDetails();     // an array of strings. ex array[0] = "taskName", "desc", "false"
         butForSubEdit = new JButton[subTaskDetails.length];
- 
+        butForSubTasks= new JButton[subTaskDetails.length];
         for (int i=0; i<subTaskDetails.length;i++){ 
         String splitElements = subTaskDetails[i];
         
@@ -52,8 +53,13 @@ public class SubtaskBoard extends JPanel{
            butForSubEdit[i] = new JButton("Edit");
            butForSubEdit[i].addActionListener(listener);
            butForSubEdit[i].setActionCommand("editSubTask"+i);
+           
+           butForSubTasks[i] = new JButton("Delete");
+           butForSubTasks[i].addActionListener(listener);
+           butForSubTasks[i].setActionCommand("deleteSubTask"+i);
            this.add(butForSubEdit[i]);
-        this.add(two);
+           this.add(butForSubTasks[i]);
+           this.add(two);
  
         
         }
