@@ -22,6 +22,8 @@ import javax.swing.WindowConstants;
 public class mainWindow extends JFrame{
     
     private JTextField search = new JTextField("Search");
+    private JButton saveData = new JButton("Save");
+    private JButton loadData = new JButton("Load file");
     private JButton signInButton = new JButton("Sign in");
     private JButton addList = new JButton("Add List");
     private JButton editList = new JButton("Edit List");
@@ -43,13 +45,15 @@ public class mainWindow extends JFrame{
     public mainWindow(){
         super("To Do List");
         this.setLayout(new FlowLayout());
-        this.add(search, new FlowLayout(FlowLayout.LEFT)); 
+        this.add(search, new FlowLayout(FlowLayout.LEFT));
+        this.add(saveData, new FlowLayout(FlowLayout.RIGHT));
+        this.add(loadData, new FlowLayout(FlowLayout.RIGHT));
         this.add(addList,new FlowLayout(FlowLayout.RIGHT));
         this.add(editList,new FlowLayout(FlowLayout.RIGHT));
         this.add(removeList,new FlowLayout(FlowLayout.RIGHT));
         this.add(signInButton,new FlowLayout(FlowLayout.RIGHT));
         
-        this.setLayout(new GridLayout(10,1));
+        this.setLayout(new GridLayout(12,1));
         this.add(list);
         
         
@@ -63,7 +67,10 @@ public class mainWindow extends JFrame{
             this.add(name);
         } 
         
-        
+        saveData.addActionListener(listener);
+        saveData.setActionCommand("saveBut");
+        loadData.addActionListener(listener);
+        loadData.setActionCommand("loadBut");
         addList.addActionListener(listener);
         addList.setActionCommand("addListBut");
         signInButton.addActionListener(listener);

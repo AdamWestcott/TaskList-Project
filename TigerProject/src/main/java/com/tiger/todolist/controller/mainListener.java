@@ -37,7 +37,13 @@ public class mainListener implements ActionListener {
                 SignIn.getInstance().setVisible(false); 
             }
             else JOptionPane.showMessageDialog(null, "Incorrect login details");
-        }    
+        }
+        else if(e.getActionCommand().equals("loadBut")){
+            System.out.println("load button");
+        }
+        else if(e.getActionCommand().equals("saveBut")){
+            System.out.println("save button");
+        }
          //DISPLAYING USER TASKS
        else  for(int i = 0; i < getListNames().length; i++){
                 if(e.getActionCommand().equals("thisList"+i)){
