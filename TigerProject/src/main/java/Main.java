@@ -6,17 +6,21 @@
 
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.tiger.todolist.controller.mainListener;
 import com.tiger.todolist.model.Board;
 import com.tiger.todolist.model.Category;
+import com.tiger.todolist.model.SubTask;
 import com.tiger.todolist.model.Task;
 import com.tiger.todolist.model.Translator;
+import com.tiger.todolist.model.Translator.Subtask;
 import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.mainWindow;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -85,8 +89,13 @@ public class Main {
 
 	BufferedReader rd = new BufferedReader(
 		new InputStreamReader(response.getEntity().getContent()));
-
-        Translator[] results = gson.fromJson(rd,Translator[].class);
+        
+ //       Type founderListType = new TypeToken<ArrayList<Task>>(){}.getType();
+//        ArrayList<Translator> results = gson.fromJson(rd,founderListType);
+        
+       Translator[] results = gson.fromJson(rd,Translator[].class);
+       //ArrayList<Translator> results = new ArrayList(Arrays.asList(results));
+       
         for (Translator result : results){
             //Adding a new user
             int userListPos ; //Position of the new user added to the list.
@@ -100,19 +109,31 @@ public class Main {
                 User Uobj = Board.getStatus().getUsers().get(userListPos);
                 Uobj.createList(Uobj.getUsername()+"'s List");                        //Creating a defualt list for user
                 
-                int i = 0;
+                int taskNumber = 0;
                 for(Translator task : results){
-                //PASSING NEW TASK
-                //if(result.getUser().getName().equals(Uobj) ){
+                //PASSING NEW TASK FOR EACH USER
+                if(task.getUser().getName().equals(Uobj.getUsername()) ){
+                    int tasksAdded = 0;
                     String newTaskName = task.getDescription();
                     Date newDueDate = task.getCompletionDate();
                     int newPriority = task.getPriorityOrder();
-                
-                    ArrayList newSubTasks = task.getSubtasks();
-                
+
+                    //ArrayList<Subtask> newSubTasks = task.getSubtasks();
+                    
                     Uobj.getList().get(0).createTask(false,newTaskName,newDueDate,newPriority,"Task");
+                    
+                    for(int x = 0; x< result.getSubtasks().size();x++){
+ 
+                        String subDesc = result.getSubtasks().get(x).getDescription();
+                        Date subDueDate = result.getSubtasks().get(x).getCompletionDate();
+                        int subPri = result.getSubtasks().get(x).getPriorityOrder();
+                        Uobj.getList().get(0).getTask().get(taskNumber).createSubTask(subDesc, subDueDate, subPri);
+                         
+                    }
+                    taskNumber++;
+                    
                     //Uobj.getList().get(0).getTask().get(i).setSubTasks(newSubTasks);
-                    i++;
+                    
                     }
                 
                 }
@@ -125,6 +146,6 @@ public class Main {
             
         }
         
-    //}
+    }
     
 }

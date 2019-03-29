@@ -15,7 +15,7 @@ public class SubTask extends Task {
    
     //PROPERTIES
    private String task;
-   private String descriptions;
+   private String description;
    private Date completionDate;
    private int priorityOrder;
    
@@ -23,25 +23,27 @@ public class SubTask extends Task {
    public SubTask()
    {
        this.task=super.getName();
-       this.descriptions="No Entry,Edit SubTask Title";
+       this.description="No Entry,Edit SubTask Title";
+       this.completionDate= new Date();
+       this.priorityOrder = 2;
        
    }
    
     public SubTask(String description, Date completionDate, int priorityOrder)
    {
        this.task = super.getName();
-       this.descriptions = description;
+       this.description = description;
        this.completionDate = completionDate;
        this.priorityOrder = priorityOrder; 
        
    }
 
     public String getDescription() {
-        return descriptions;
+        return description;
     }
 
     public void setDescription(String description) {
-        this.descriptions = description;
+        this.description = description;
     }
 
     public Date getCompletionDate() {

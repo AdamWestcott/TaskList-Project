@@ -32,7 +32,7 @@ public class SubtaskBoard extends JPanel{
     public SubtaskBoard(){
         JPanel middlePanel = new JPanel();
         this.setLayout(new FlowLayout());
-        middlePanel.setLayout( new GridLayout(1,1));
+        middlePanel.setLayout( new GridLayout(100,2));
         this.add(subTasks);
         String[] subTaskDetails = listener.getSubTaskDetails();     // an array of strings. ex array[0] = "taskName", "desc", "false"
         butForSubEdit = new JButton[subTaskDetails.length];

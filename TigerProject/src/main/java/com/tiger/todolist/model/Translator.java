@@ -18,7 +18,7 @@ public class Translator {
     private User user;
     private Date completionDate;
     private int priorityOrder;
-    private ArrayList<Task> subtasks;
+    private ArrayList<Subtask> subtasks;
 
     public String getDescription() {
         return description;
@@ -52,14 +52,14 @@ public class Translator {
         this.priorityOrder = priorityOrder;
     }
 
-    public ArrayList<Task> getSubtasks() {
+    public ArrayList<Subtask> getSubtasks() {
         return subtasks;
     }
 
-    public void setSubtasks(ArrayList<Task> subtasks) {
+    public void setSubtasks(ArrayList<Subtask> subtasks) {
         this.subtasks = subtasks;
     }
-   
+
     public class User {
     private String name;    
     private String password;
@@ -90,7 +90,12 @@ public class Translator {
     }
     
     
+    }
+    public class Subtask extends Translator {   
+   
+    }
 }
 
 
-  }
+    
+
