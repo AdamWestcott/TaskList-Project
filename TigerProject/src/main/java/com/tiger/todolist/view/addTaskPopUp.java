@@ -7,6 +7,7 @@ package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.mainListener;
 import com.tiger.todolist.controller.popupWindows;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -64,7 +65,14 @@ public class addTaskPopUp extends JFrame{
         confirm.setActionCommand("add");
         this.add(confirm);
         
+        Dimension newDim= new Dimension(500,150);
+        
         this.setSize(500,400);
+        this.setPreferredSize(newDim);
+        this.setMaximumSize(newDim);
+        this.setSize(newDim);
+        this.revalidate();//Calling all is an instruction to tell the layout manager to reset based on the new component list 
+        this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setVisible(true);
         

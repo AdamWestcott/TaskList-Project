@@ -40,7 +40,7 @@ public class SignIn extends JFrame {
     public SignIn(){
         this.setTitle("Sign In");
         JPanel form = new JPanel();
-        form.setLayout(new GridLayout(3,1));
+        form.setLayout(new GridLayout(4,1));
         form.add(userName);
         form.add(password);
         form.add(SignInButton);
@@ -52,7 +52,7 @@ public class SignIn extends JFrame {
         pullWebService.setActionCommand("pullWebService");
         
         
-        Dimension newDim= new Dimension(300,150);
+        Dimension newDim= new Dimension(500,150);
         
         this.setPreferredSize(newDim);
         this.setMaximumSize(newDim);

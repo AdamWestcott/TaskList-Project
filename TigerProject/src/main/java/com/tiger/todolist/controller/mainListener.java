@@ -196,7 +196,7 @@ public class mainListener implements ActionListener {
               
            } 
               if(flag == false){
-              JOptionPane.showMessageDialog(null, "Incorrect detailas, list does not exist!");
+              JOptionPane.showMessageDialog(null, "Incorrect details, list does not exist!");
               }
          }
             
