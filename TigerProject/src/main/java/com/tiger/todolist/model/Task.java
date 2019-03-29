@@ -126,7 +126,6 @@ public class Task {
     
      public String[] showSubTasks(){
         
-    //list.forEach((list) -> System.out.println(list.getTitle()));
     String storeName = "";
     for(int i = 0; i < SubTasks.size(); i++){
         storeName += this.getName() + "," ;

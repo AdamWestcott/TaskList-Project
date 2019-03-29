@@ -23,7 +23,9 @@ public class SubtaskBoard extends JPanel{
     private JLabel subTasks = new JLabel("Subtasks");   //Top title
     private JLabel taskName = new JLabel("");   // Name of the task it belongs
     private JLabel subTaskName = new JLabel();  // The description of the task
-    private JCheckBox checkBox = new JCheckBox("Complete"); 
+    private JLabel subDate = new JLabel();      
+    private JLabel subPriority = new JLabel();
+    
     private JButton[] butForSubEdit;
     private JButton[] butForSubTasks;
     private popupWindows listener = new popupWindows();
@@ -46,9 +48,19 @@ public class SubtaskBoard extends JPanel{
             this.add(taskName);    
         }
         subTaskName.setText(splitDetails[1]);
-        JLabel one = new JLabel();
-        one.setText(subTaskName.getText());
-        middlePanel.add(one);
+        subDate.setText(splitDetails[2]);
+        subPriority.setText(splitDetails[3]); 
+        JLabel subDesc = new JLabel();
+        JLabel subDateNew = new JLabel();
+        JLabel subPriorityNew = new JLabel();
+        
+        subDesc.setText(subTaskName.getText());
+        subDateNew.setText(subDate.getText());
+        subPriorityNew.setText(subPriority.getText());
+        
+        middlePanel.add(subDesc);
+        middlePanel.add(subDateNew);
+        middlePanel.add(subPriorityNew);
         
 //        JCheckBox two = new JCheckBox();
 //        two.setText("Complete");
@@ -94,11 +106,4 @@ public class SubtaskBoard extends JPanel{
         this.taskName = taskName;
     }
 
-    public JCheckBox getCheckBox() {
-        return checkBox;
-    }
-
-    public void setCheckBox(JCheckBox checkBox) {
-        this.checkBox = checkBox;
-    }
 }

@@ -285,8 +285,6 @@ public class popupWindows implements ActionListener {
      }
      
      public String[] getSubTaskDetails(){
-         System.out.println("List = "+mainListener.pastList);
-         System.out.println("Task = "+currentTask);
         String[] SubtaskDetails = user.getList().get(mainListener.pastList).getTask().get(currentTask).showSubTasks();
         return SubtaskDetails;
      }
