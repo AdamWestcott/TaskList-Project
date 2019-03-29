@@ -6,6 +6,7 @@
 package com.tiger.todolist.controller;
 
 import com.tiger.todolist.model.Board;
+import com.tiger.todolist.model.Category;
 import com.tiger.todolist.model.SubTask;
 import com.tiger.todolist.model.Task;
 import com.tiger.todolist.model.User;
@@ -15,6 +16,7 @@ import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.addListPopUp;
 import com.tiger.todolist.view.addSubPopUp;
 import com.tiger.todolist.view.addTaskPopUp;
+import com.tiger.todolist.view.deleteListPopUp;
 import com.tiger.todolist.view.editSubTaskPopUp;
 import com.tiger.todolist.view.editTaskPopUp;
 import com.tiger.todolist.view.mainWindow;
@@ -156,6 +158,14 @@ public class popupWindows implements ActionListener {
         }
         
         
+        else if(e.getActionCommand().equals("removeListButton")){
+            deleteListPopUp.getInstance();
+            mainWindow.getInstance().dispose();
+            mainWindow.deleteObject(); 
+            
+        }
+        
+        
         
       
        else   
@@ -175,7 +185,21 @@ public class popupWindows implements ActionListener {
                }
                  
            }
-           else if(e.getActionCommand().equals("deleteTask"+i)){
+       
+           
+//           else if(e.getActionCommand().equals("deleteList")){
+//               Category listId = user.getList().get(mainListener.pastList);
+//               System.out.println(listId);
+//               if(Board.getStatus().getUsers().contains(listId)){
+//                   Board.getStatus().getUsers().remove(listId);
+//                   mainWindow.getInstance().dispose();
+//                   mainWindow.deleteObject();
+//                   mainWindow.getInstance(); 
+//               }
+//               }
+             
+           
+           else if(e.getActionCommand().equals("deleteTask")){
                Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
                System.out.println(taskId);
                if(user.getList().get(mainListener.pastList).getTask().contains(taskId)){

@@ -78,6 +78,8 @@ public class mainWindow extends JFrame{
         addList.setActionCommand("addListBut");
         signInButton.addActionListener(listener);
         signInButton.setActionCommand("signOutButton");
+        removeList.addActionListener(listenerpop);
+        removeList.setActionCommand("removeListButton");
         JScrollPane scrPane = new JScrollPane(main);
         this.add(scrPane);
         this.setSize(500,400);

@@ -6,7 +6,6 @@
 package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.mainListener;
-import com.tiger.todolist.controller.popupWindows;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,41 +17,39 @@ import javax.swing.WindowConstants;
  *
  * @author k1746252
  */
-public class addListPopUp extends JFrame {
-    private JLabel addList = new JLabel("Add List");
+public class deleteListPopUp extends JFrame {
+     private JLabel deleteList = new JLabel("Delete List");
 
    
     private JTextField entListName = new JTextField();
-    private JButton confirm = new JButton("Add List");
+    private JButton confirm = new JButton("delete List");
     private mainListener Mainlistener = new mainListener(); 
-    private static addListPopUp instance = null; 
+    private static deleteListPopUp instance = null; 
     
-    public static addListPopUp getInstance(){
-        if(addListPopUp.instance == null) addListPopUp.instance = new addListPopUp();
-                return addListPopUp.instance; 
+    public static deleteListPopUp getInstance(){
+        if(deleteListPopUp.instance == null) deleteListPopUp.instance = new deleteListPopUp();
+                return deleteListPopUp.instance; 
     }
     
     public static void deleteObject(){
-         addListPopUp.instance = null; 
+         deleteListPopUp.instance = null; 
     }
     
-    public addListPopUp(){
-        this.setLayout(new GridLayout(3,1));
-        
-        this.add(addList);
+    public deleteListPopUp(){
+         this.setLayout(new GridLayout(3,1));
+        this.add(deleteList);
         confirm.addActionListener(Mainlistener);
-        confirm.setActionCommand("addList");
+        confirm.setActionCommand("deleteList");
         this.add(entListName);
         this.add(confirm);
         
         this.setSize(500,400);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setVisible(true);
-        
-        
     }
-
+    
     public JTextField getEntListName() {
         return entListName;
     }
 }
+

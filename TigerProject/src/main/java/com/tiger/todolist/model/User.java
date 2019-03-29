@@ -85,6 +85,7 @@ public class User {
         this.list.remove(list); 
     }
     
+    
     public String[] showLists(){
         
     String storeName = "";

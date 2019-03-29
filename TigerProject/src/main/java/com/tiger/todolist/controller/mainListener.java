@@ -6,10 +6,13 @@
 package com.tiger.todolist.controller;
 
 import com.tiger.todolist.model.Board;
+import com.tiger.todolist.model.Category;
+import com.tiger.todolist.model.Task;
 import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.addListPopUp;
 import com.tiger.todolist.view.addSubPopUp;
+import com.tiger.todolist.view.deleteListPopUp;
 import com.tiger.todolist.view.mainWindow;
 import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
@@ -92,6 +95,23 @@ public class mainListener implements ActionListener {
             mainWindow.getInstance();
             
         }
+         
+         else if(e.getActionCommand().equals("deleteList")){
+            int userIndex = Board.getStatus().findUser(getUserName(),getPassword());
+            String enteredVal = addListPopUp.getInstance().getEntListName().getText();
+            
+            Category categoryId = Board.getStatus().getUsers().get(userIndex).getList().get(1);
+            if(Board.getStatus().getUsers().get(userIndex).getList().contains(enteredVal))
+            {
+             
+             Board.getStatus().getUsers().get(userIndex).removeList(categoryId);
+            }
+            deleteListPopUp.getInstance().dispose();
+            mainWindow.getInstance().dispose();
+            mainWindow.deleteObject(); 
+            
+        }
+         
         
         
          //DISPLAYING USER TASKS
@@ -105,8 +125,6 @@ public class mainListener implements ActionListener {
                     
                     }
                 }  
-        
-        
         
     }
     
