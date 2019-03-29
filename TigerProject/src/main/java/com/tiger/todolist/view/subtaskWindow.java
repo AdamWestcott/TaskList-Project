@@ -7,8 +7,11 @@ package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.popupWindows;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -37,17 +40,18 @@ public class subtaskWindow extends JFrame {
     
     public subtaskWindow(){
         super("To Do List: Subtasks");
-        setLayout(new FlowLayout());
-        
-        this.add(sTboard);
+        setLayout(new GridLayout(1,1));
+        JPanel stmain = new JPanel();
+        stmain.add(sTboard);
         addBut.addActionListener(listener);
         addBut.setActionCommand("addButOnSub");
         backBut.addActionListener(listener);
         backBut.setActionCommand("backButOnSub");
-        this.add(addBut);
-        this.add(backBut);
+        stmain.add(addBut);
+        stmain.add(backBut);
+        JScrollPane main = new JScrollPane(stmain);
         
-        
+        this.add(main);
         this.setSize(500, 400);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setVisible(true);
