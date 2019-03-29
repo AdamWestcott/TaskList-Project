@@ -12,6 +12,8 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -29,6 +31,7 @@ public class mainWindow extends JFrame{
     private JButton editList = new JButton("Edit List");
     private JButton removeList = new JButton("Remove List");
     private JLabel list= new JLabel ("Lists");
+    private  int lengthofWindow =7;
     
     private mainListener listener = new mainListener(); 
     private popupWindows listenerpop = new popupWindows();
@@ -45,17 +48,15 @@ public class mainWindow extends JFrame{
     
     public mainWindow(){
         super("To Do List");
-        this.setLayout(new FlowLayout());
-        this.add(saveData, new FlowLayout(FlowLayout.RIGHT));
-        this.add(loadData, new FlowLayout(FlowLayout.RIGHT));
-        this.add(addList,new FlowLayout(FlowLayout.RIGHT));
-        this.add(editList,new FlowLayout(FlowLayout.RIGHT));
-        this.add(removeList,new FlowLayout(FlowLayout.RIGHT));
-        this.add(signInButton,new FlowLayout(FlowLayout.RIGHT));
-        
-        this.setLayout(new GridLayout(12,1));
-        this.add(list);
-        
+        JPanel main= new JPanel();
+        main.setLayout(new FlowLayout());
+        main.add(saveData, new FlowLayout(FlowLayout.RIGHT));
+        main.add(loadData, new FlowLayout(FlowLayout.RIGHT));
+        main.add(addList,new FlowLayout(FlowLayout.RIGHT));
+        main.add(editList,new FlowLayout(FlowLayout.RIGHT));
+        main.add(removeList,new FlowLayout(FlowLayout.RIGHT));
+        main.add(signInButton,new FlowLayout(FlowLayout.RIGHT));
+        main.add(list);
         
         String[] listsNames = listener.getListNames();
         for(int i = 0; i < listsNames.length; i++){
@@ -64,7 +65,9 @@ public class mainWindow extends JFrame{
             name.setText(listsNames[i]);
             name.addActionListener(listener);
             name.setActionCommand("thisList"+i);
-            this.add(name);
+            this.lengthofWindow++;
+             main.setLayout(new GridLayout(lengthofWindow,1));
+            main.add(name);
         } 
         
         saveData.addActionListener(listener);
@@ -74,8 +77,9 @@ public class mainWindow extends JFrame{
         addList.addActionListener(listenerpop);
         addList.setActionCommand("addListBut");
         signInButton.addActionListener(listener);
-        signInButton.setActionCommand("signOutButton"); 
-        
+        signInButton.setActionCommand("signOutButton");
+        JScrollPane scrPane = new JScrollPane(main);
+        this.add(scrPane);
         this.setSize(500,400);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setVisible(true); 
