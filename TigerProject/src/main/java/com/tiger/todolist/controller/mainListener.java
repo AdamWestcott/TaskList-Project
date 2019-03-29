@@ -202,14 +202,21 @@ public class mainListener implements ActionListener {
          //DISPLAYING USER TASKS
        else  for(int i = 0; i < getListNames().length; i++){
                 if(e.getActionCommand().equals("thisList"+i)){
-                    //JOptionPane.showMessageDialog(null, i+": This list clicked");
-                    mainWindow.getInstance().dispose();
-                    mainWindow.deleteObject(); 
-                    pastList = i;
-                    taskWindow.getInstance(); 
-                    }
-                }  
-        
+                int userIndex = Board.getStatus().findUser(getUserName(),getPassword());
+               try{
+                        mainWindow.getInstance().dispose();
+                        mainWindow.deleteObject(); 
+                        pastList = i;
+                        taskWindow.getInstance(); 
+               }
+               catch(IndexOutOfBoundsException err){
+                   Board.getStatus().getUsers().get(userIndex).getList().get(i).createDefaultTask();
+                   mainWindow.getInstance().dispose();
+                        mainWindow.deleteObject(); 
+                        taskWindow.getInstance(); 
+               }
+                }
+        }
     }
     
     public String getListTitle(int listId){

@@ -93,15 +93,13 @@ public class TaskBoard extends JPanel{
                     String[] specificDetails = splitElements.split(",");
                     GridNumber++;
                     BottomPanel.setLayout( new GridLayout(GridNumber,1)); 
+                        
+                    
                     if(this.currentList.getText().equals("")){
                         this.currentList.setText(specificDetails[0]);
                         
                     }
-                     if(this.currentList.getText().equals("")){
-                        this.currentList.setText(specificDetails[0]);
-                        
-                    }
-                    
+     
                       taskTitle.setText(specificDetails[1]);      
                       taskDescription.setText(specificDetails[2]);
                       dueDate.setText(specificDetails[3]);
@@ -153,12 +151,7 @@ public class TaskBoard extends JPanel{
                             one.setText(taskTitle.getText());
                              two.setText(taskDescription.getText());
                               three.setText(priority.getText());
-                             four.setText(dueDate.getText());
-                             
-                           
-                           
-                           
-                           
+                             four.setText(dueDate.getText());   
                        }
                         
                        one.setBorder(border);
@@ -180,8 +173,8 @@ public class TaskBoard extends JPanel{
                         JScrollPane scrolly = new JScrollPane(BottomPanel);
                         scrolly.setAutoscrolls(true);
                         this.add(scrolly, BorderLayout.PAGE_END);
-        }
-        
+                        }
+            
         JPanel TopPanel = new JPanel();
         TopPanel.setLayout( new GridLayout(2,1));
                       

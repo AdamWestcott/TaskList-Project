@@ -255,8 +255,6 @@ public class popupWindows implements ActionListener {
             String newTaskName = editSubTaskPopUp.getInstance().getEntSubTaskName().getText();
             user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask).setDescription(newTaskName);
             
-            
-            
             editSubTaskPopUp.deleteObject();
             subtaskWindow.getInstance(); 
             }

@@ -44,6 +44,10 @@ public class Category {
         task.add(new Task(checkbox,description,dueDate,priority,name));
     }
     
+     public void createDefaultTask(){
+        task.add(new Task(false,"Default Task",new Date(),20,"DefualtTask"));
+    }
+    
     public String[] showTasks(){
         
     String storeName = "";
