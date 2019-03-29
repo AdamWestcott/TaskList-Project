@@ -48,17 +48,16 @@ public class mainListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-         //int currentUser = Board.getStatus().findUser(getUserName(),getPassword());
-        
          //SIGN IN FUNCTIONALITY
         if(e.getActionCommand().equals("confirm")){
             
             if(Board.getStatus().findUser(getUserName(),getPassword()) != -1){
                 mainWindow.getInstance();
-                SignIn.getInstance().setVisible(false); 
+                SignIn.getInstance().setVisible(false);
             }
             else JOptionPane.showMessageDialog(null, "Incorrect login details");
         }
+        //JSON FUNCTIONALITY
         else if(e.getActionCommand().equals("pullWebService")){
             Gson gson = new Gson();
              try{
@@ -67,21 +66,17 @@ public class mainListener implements ActionListener {
 	HttpClient client = HttpClientBuilder.create().build();
 	HttpGet request = new HttpGet(url);
 
-	// add request header
-	request.addHeader("User-Agent", USER_AGENT);
+	
+	request.addHeader("User-Agent", USER_AGENT);    // add request header
 	HttpResponse response = client.execute(request);
 
 	BufferedReader rd = new BufferedReader(
 		new InputStreamReader(response.getEntity().getContent()));
-        
- //       Type founderListType = new TypeToken<ArrayList<Task>>(){}.getType();
-//        ArrayList<Translator> results = gson.fromJson(rd,founderListType);
-        
-       Translator[] results = gson.fromJson(rd,Translator[].class);
-       //ArrayList<Translator> results = new ArrayList(Arrays.asList(results));
+       
+        Translator[] results = gson.fromJson(rd,Translator[].class);
        
         for (Translator result : results){
-            //Adding a new user
+            //ADDING A NEW USER
             int userListPos ; //Position of the new user added to the list.
             
                 //PASSING NEW USER
@@ -102,9 +97,7 @@ public class mainListener implements ActionListener {
                     Date newDueDate = task.getCompletionDate();
                     int newPriority = task.getPriorityOrder();
 
-                    //ArrayList<Subtask> newSubTasks = task.getSubtasks();
-                    
-                    Uobj.getList().get(0).createTask(false,newTaskName,newDueDate,newPriority,"Task");
+                    Uobj.getList().get(0).createTask(false,newTaskName,newDueDate,newPriority,"Task");  //PASSING THE JSON TASK TO OUR DATA MODEL
                     
                     for(int x = 0; x< result.getSubtasks().size();x++){
  
@@ -116,17 +109,17 @@ public class mainListener implements ActionListener {
                     }
                     taskNumber++;
                     
-                    //Uobj.getList().get(0).getTask().get(i).setSubTasks(newSubTasks);
-                    
                     }
                 
                 }
              }
+        JOptionPane.showMessageDialog(null, "Sucessfully Pulled Data from Web Service. \n You can now log in using an web service user! ");
          }
              catch(IOException err){
                  
              }
         }
+        //LOAD FILE FUNCTIONALITY
         else if(e.getActionCommand().equals("loadBut")){
             JFileChooser fc = new JFileChooser();
             fc.setDialogTitle("Load previous game");
@@ -144,11 +137,11 @@ public class mainListener implements ActionListener {
                 }
             }
         }
+        //SAVE FILE FUNCTIONALITY
         else if(e.getActionCommand().equals("saveBut")){
             JFileChooser fc = new JFileChooser();
             fc.setDialogTitle("Save current task board");
             int selection = fc.showSaveDialog(null);
-            
             
             if (selection == JFileChooser.APPROVE_OPTION)// if OK is selected
             {
@@ -160,6 +153,11 @@ public class mainListener implements ActionListener {
                 }
             }
         }
+        //CLOSE BUTTON ON SIGN IN PAGE
+        else if(e.getActionCommand().equals("closeApp")){
+            System.exit(0); 
+        }
+        //SIGN OUT FUNCTIONALITY ON TASKWINDOW
         else if(e.getActionCommand().equals("signOutButton")){
             SignIn.getInstance().setVisible(true);
             mainWindow.getInstance().dispose();
@@ -200,17 +198,6 @@ public class mainListener implements ActionListener {
               }
          }
             
-            
-            
-           
-           
-           
-          
-           
-           
-         
-         
-        
         
          //DISPLAYING USER TASKS
        else  for(int i = 0; i < getListNames().length; i++){
@@ -220,7 +207,6 @@ public class mainListener implements ActionListener {
                     mainWindow.deleteObject(); 
                     pastList = i;
                     taskWindow.getInstance(); 
-                    
                     }
                 }  
         

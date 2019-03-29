@@ -185,12 +185,7 @@ public class popupWindows implements ActionListener {
                }
                  
            }
-       
-           
-
-               
-             
-           
+         
            else if(e.getActionCommand().equals("deleteTask"+i)){
                Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
                System.out.println(taskId);

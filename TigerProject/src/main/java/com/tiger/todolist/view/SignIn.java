@@ -26,8 +26,9 @@ public class SignIn extends JFrame {
      
     private JTextField userName = new JTextField("");
     private JPasswordField password = new JPasswordField("");
-    private JButton SignInButton = new JButton("Submit");
-    private JButton pullWebService = new JButton("Pull from Web Service");
+    private JButton SignInButton = new JButton("Sign In");
+    private JButton pullWebService = new JButton("Pull Data from Web Service");
+    private JButton closeApp = new JButton("Close"); 
     
     mainListener listener = new mainListener();
     private static SignIn instance = null;
@@ -35,21 +36,28 @@ public class SignIn extends JFrame {
     public static SignIn getInstance(){
         if(SignIn.instance == null) SignIn.instance = new SignIn();
                 return SignIn.instance; 
-    } 
+    }
+    
+    public static void destroyObject(){
+        SignIn.instance = null; 
+    }
     
     public SignIn(){
         this.setTitle("Sign In");
         JPanel form = new JPanel();
-        form.setLayout(new GridLayout(4,1));
+        form.setLayout(new GridLayout(5,1));
         form.add(userName);
         form.add(password);
         form.add(SignInButton);
         form.add(pullWebService);
+        form.add(closeApp);
         
         SignInButton.addActionListener(listener);
         SignInButton.setActionCommand("confirm");
         pullWebService.addActionListener(listener);
         pullWebService.setActionCommand("pullWebService");
+        closeApp.addActionListener(listener);
+        closeApp.setActionCommand("closeApp");
         
         
         Dimension newDim= new Dimension(500,150);
