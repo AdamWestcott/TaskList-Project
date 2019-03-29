@@ -75,6 +75,19 @@ public class mainListener implements ActionListener {
                 }
             }
         }
+        else if(e.getActionCommand().equals("signOutButton")){
+            SignIn.getInstance().setVisible(true);
+            mainWindow.getInstance().dispose();
+            mainWindow.deleteObject(); 
+            
+        }
+        else if(e.getActionCommand().equals("addListBut")){
+            SignIn.getInstance().setVisible(true);
+            mainWindow.getInstance().dispose();
+            mainWindow.deleteObject(); 
+            
+        }
+        
          //DISPLAYING USER TASKS
        else  for(int i = 0; i < getListNames().length; i++){
                 if(e.getActionCommand().equals("thisList"+i)){

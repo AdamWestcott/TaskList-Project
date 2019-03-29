@@ -24,7 +24,7 @@ public class mainWindow extends JFrame{
     private JTextField search = new JTextField("Search");
     private JButton saveData = new JButton("Save");
     private JButton loadData = new JButton("Load file");
-    private JButton signInButton = new JButton("Sign in");
+    private JButton signInButton = new JButton("Sign out");
     private JButton addList = new JButton("Add List");
     private JButton editList = new JButton("Edit List");
     private JButton removeList = new JButton("Remove List");
@@ -74,7 +74,7 @@ public class mainWindow extends JFrame{
         addList.addActionListener(listener);
         addList.setActionCommand("addListBut");
         signInButton.addActionListener(listener);
-        signInButton.setActionCommand("signInButton"); 
+        signInButton.setActionCommand("signOutButton"); 
         
         this.setSize(500,400);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
