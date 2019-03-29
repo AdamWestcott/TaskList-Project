@@ -16,6 +16,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -24,7 +25,7 @@ import javax.swing.WindowConstants;
 public class SignIn extends JFrame {
      
     private JTextField userName = new JTextField("");
-    private JTextField password = new JTextField("");
+    private JPasswordField password = new JPasswordField("");
     private JButton SignInButton = new JButton("Submit");
     private JButton pullWebService = new JButton("Pull from Web Service");
     
@@ -75,7 +76,7 @@ public class SignIn extends JFrame {
         return password;
     }
 
-    public  void setPassword(JTextField password) {
+    public  void setPassword(JPasswordField password) {
         this.password = password;
     }
 

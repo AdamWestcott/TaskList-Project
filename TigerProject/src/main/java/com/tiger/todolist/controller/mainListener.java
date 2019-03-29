@@ -178,19 +178,37 @@ public class mainListener implements ActionListener {
          
          else if(e.getActionCommand().equals("deleteList")){
             int userIndex = Board.getStatus().findUser(getUserName(),getPassword());
-            String enteredVal = addListPopUp.getInstance().getEntListName().getText();
+            String enteredVal = deleteListPopUp.getInstance().getEntListName().getText();
             
-            Category categoryId = Board.getStatus().getUsers().get(userIndex).getList().get(1);
-            if(Board.getStatus().getUsers().get(userIndex).getList().contains(enteredVal))
-            {
-             
-             Board.getStatus().getUsers().get(userIndex).removeList(categoryId);
-            }
-            deleteListPopUp.getInstance().dispose();
-            mainWindow.getInstance().dispose();
-            mainWindow.deleteObject(); 
+            User currentUser = Board.getStatus().getUsers().get(userIndex);
+           
+             boolean flag = false;
+              for(int i = 0; i < currentUser.getList().size();i++){
+               Category categoryId = currentUser.getList().get(i);
+               if(enteredVal.equals(categoryId.getTitle())){
+                   currentUser.getList().remove(i);
+                   deleteListPopUp.getInstance().dispose();
+                    deleteListPopUp.deleteObject(); 
+                    mainWindow.getInstance();
+                    flag = true;
+                    
+               }  
+              
+           } 
+              if(flag == false){
+              JOptionPane.showMessageDialog(null, "Incorrect detailas, list does not exist!");
+              }
+         }
             
-        }
+            
+            
+           
+           
+           
+          
+           
+           
+         
          
         
         
