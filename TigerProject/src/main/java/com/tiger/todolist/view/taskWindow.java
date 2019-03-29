@@ -8,8 +8,6 @@ package com.tiger.todolist.view;
 import com.tiger.todolist.controller.mainListener;
 import com.tiger.todolist.controller.popupWindows;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;

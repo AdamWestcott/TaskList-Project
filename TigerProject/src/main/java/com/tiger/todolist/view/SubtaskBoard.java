@@ -6,13 +6,11 @@
 package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.popupWindows;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+
 
 /**
  *
@@ -32,9 +30,7 @@ public class SubtaskBoard extends JPanel{
    
     
     public SubtaskBoard(){
-        JPanel middlePanel = new JPanel();
-        this.setLayout(new FlowLayout());
-        middlePanel.setLayout( new GridLayout(100,2));
+        this.setLayout(new GridLayout(100,1));
         this.add(subTasks);
         String[] subTaskDetails = listener.getSubTaskDetails();     // an array of strings. ex array[0] = "taskName", "desc", "false"
         butForSubEdit = new JButton[subTaskDetails.length];
@@ -57,14 +53,11 @@ public class SubtaskBoard extends JPanel{
         subDesc.setText(subTaskName.getText());
         subDateNew.setText(subDate.getText());
         subPriorityNew.setText(subPriority.getText());
+
+        this.add(subDesc);
+        this.add(subDateNew);
+        this.add(subPriorityNew);
         
-        middlePanel.add(subDesc);
-        middlePanel.add(subDateNew);
-        middlePanel.add(subPriorityNew);
-        
-//        JCheckBox two = new JCheckBox();
-//        two.setText("Complete");
-//        two.setSelected(Boolean.valueOf(checkBox.getText()));
            butForSubEdit[i] = new JButton("Edit");
            butForSubEdit[i].addActionListener(listener);
            butForSubEdit[i].setActionCommand("editSubTask"+i);
@@ -72,10 +65,9 @@ public class SubtaskBoard extends JPanel{
            butForSubTasks[i] = new JButton("Delete");
            butForSubTasks[i].addActionListener(listener);
            butForSubTasks[i].setActionCommand("deleteSubTask"+i);
-//           middlePanel.add(two);
-           middlePanel.add(butForSubEdit[i]);
-           middlePanel.add(butForSubTasks[i]);
-           this.add(middlePanel);
+
+            this.add(butForSubEdit[i]);
+            this.add(butForSubTasks[i]);
  
         
         }

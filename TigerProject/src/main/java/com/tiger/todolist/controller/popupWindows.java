@@ -233,12 +233,12 @@ public class popupWindows implements ActionListener {
               if(checkBox){
                     user.getList().get(mainListener.pastList).getTask().get(i).setCheckbox(false);
                     taskWindow.getInstance().getTb().getCheckBox().setSelected(false);
-                    System.out.println(user.getList().get(mainListener.pastList).getTask().get(i).isCheckbox()+"f");
+                    
                           }
               else if(!checkBox) {
               user.getList().get(mainListener.pastList).getTask().get(i).setCheckbox(true);
               taskWindow.getInstance().getTb().getCheckBox().setSelected(true);
-              System.out.println(user.getList().get(mainListener.pastList).getTask().get(i).isCheckbox()+"t");
+           
        }
            }
            
@@ -258,7 +258,6 @@ public class popupWindows implements ActionListener {
             }
             else if(e.getActionCommand().equals("deleteSubTask"+i)){
                SubTask SubtaskId = user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(i);
-               System.out.println(SubtaskId );
                if(user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().contains(SubtaskId)){
                    if(user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().size() > 1){
                      user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().remove(SubtaskId);

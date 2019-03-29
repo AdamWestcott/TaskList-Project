@@ -70,7 +70,6 @@ public class Category {
             storeTask += task.get(i).isCheckbox()+ ",";
             storeTask += task.get(i).getId();
             storeTask += "#";
-//            System.out.println(storeTask);
         }
         String[] taskNames = storeTask.split("#");
         
