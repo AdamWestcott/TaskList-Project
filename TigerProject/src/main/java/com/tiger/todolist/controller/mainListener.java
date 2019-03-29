@@ -5,9 +5,12 @@
  */
 package com.tiger.todolist.controller;
 
+import com.google.gson.Gson;
 import com.tiger.todolist.model.Board;
 import com.tiger.todolist.model.Category;
 import com.tiger.todolist.model.Task;
+import com.tiger.todolist.model.Translator;
+import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.addListPopUp;
@@ -17,11 +20,19 @@ import com.tiger.todolist.view.mainWindow;
 import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+import static org.apache.http.protocol.HTTP.USER_AGENT;
 
 
 
@@ -38,7 +49,8 @@ public class mainListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
          //int currentUser = Board.getStatus().findUser(getUserName(),getPassword());
-         
+        
+         //SIGN IN FUNCTIONALITY
         if(e.getActionCommand().equals("confirm")){
             
             if(Board.getStatus().findUser(getUserName(),getPassword()) != -1){
@@ -46,6 +58,74 @@ public class mainListener implements ActionListener {
                 SignIn.getInstance().setVisible(false); 
             }
             else JOptionPane.showMessageDialog(null, "Incorrect login details");
+        }
+        else if(e.getActionCommand().equals("pullWebService")){
+            Gson gson = new Gson();
+             try{
+                  String url = "http://www.nooblab.com/p2.json";
+
+	HttpClient client = HttpClientBuilder.create().build();
+	HttpGet request = new HttpGet(url);
+
+	// add request header
+	request.addHeader("User-Agent", USER_AGENT);
+	HttpResponse response = client.execute(request);
+
+	BufferedReader rd = new BufferedReader(
+		new InputStreamReader(response.getEntity().getContent()));
+        
+ //       Type founderListType = new TypeToken<ArrayList<Task>>(){}.getType();
+//        ArrayList<Translator> results = gson.fromJson(rd,founderListType);
+        
+       Translator[] results = gson.fromJson(rd,Translator[].class);
+       //ArrayList<Translator> results = new ArrayList(Arrays.asList(results));
+       
+        for (Translator result : results){
+            //Adding a new user
+            int userListPos ; //Position of the new user added to the list.
+            
+                //PASSING NEW USER
+                String newUserName = result.getUser().getName();
+                String newUserPass = result.getUser().getPassword();
+                int newLevel = result.getUser().getUserLevel();
+                Board.getStatus().createUser(newUserName, newUserPass, newLevel);   //Creating a new user from passed data
+                userListPos =  Board.getStatus().getUsers().size()-1;       
+                User Uobj = Board.getStatus().getUsers().get(userListPos);
+                Uobj.createList(Uobj.getUsername()+"'s List");                        //Creating a defualt list for user
+                
+                int taskNumber = 0;
+                for(Translator task : results){
+                //PASSING NEW TASK FOR EACH USER
+                if(task.getUser().getName().equals(Uobj.getUsername()) ){
+                    int tasksAdded = 0;
+                    String newTaskName = task.getDescription();
+                    Date newDueDate = task.getCompletionDate();
+                    int newPriority = task.getPriorityOrder();
+
+                    //ArrayList<Subtask> newSubTasks = task.getSubtasks();
+                    
+                    Uobj.getList().get(0).createTask(false,newTaskName,newDueDate,newPriority,"Task");
+                    
+                    for(int x = 0; x< result.getSubtasks().size();x++){
+ 
+                        String subDesc = result.getSubtasks().get(x).getDescription();
+                        Date subDueDate = result.getSubtasks().get(x).getCompletionDate();
+                        int subPri = result.getSubtasks().get(x).getPriorityOrder();
+                        Uobj.getList().get(0).getTask().get(taskNumber).createSubTask(subDesc, subDueDate, subPri);
+                         
+                    }
+                    taskNumber++;
+                    
+                    //Uobj.getList().get(0).getTask().get(i).setSubTasks(newSubTasks);
+                    
+                    }
+                
+                }
+             }
+         }
+             catch(IOException err){
+                 
+             }
         }
         else if(e.getActionCommand().equals("loadBut")){
             JFileChooser fc = new JFileChooser();

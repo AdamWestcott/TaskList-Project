@@ -36,7 +36,7 @@ import static org.apache.http.protocol.HTTP.USER_AGENT;
  */
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         
      
         User Paul = new User("Paul","Neve",0);
@@ -69,83 +69,7 @@ public class Main {
         SignIn.getInstance();    
         mainListener mainController = new mainListener(); 
        
-       Gson gson = new Gson();
-      // String jsonCode = gson.toJson(Tim);
-       //System.out.println(jsonCode);
-       
-       String altText = "{\"username\":\"Jim\",\"password\":\"egg\",\"userLevel\":0,\"list\":[{\"title\":\"Jims dates\",\"task\":[],\"backupList\":[]},{\"title\":\"Works\",\"task\":[],\"backupList\":[]},{\"title\":\"Personal\",\"task\":[],\"backupList\":[]}]}";
-       
-      //User ex = gson.fromJson(altText, User.class);
-      //System.out.println(ex.getUsername());
-      
-      String url = "http://www.nooblab.com/p2.json";
 
-	HttpClient client = HttpClientBuilder.create().build();
-	HttpGet request = new HttpGet(url);
-
-	// add request header
-	request.addHeader("User-Agent", USER_AGENT);
-	HttpResponse response = client.execute(request);
-
-	BufferedReader rd = new BufferedReader(
-		new InputStreamReader(response.getEntity().getContent()));
-        
- //       Type founderListType = new TypeToken<ArrayList<Task>>(){}.getType();
-//        ArrayList<Translator> results = gson.fromJson(rd,founderListType);
-        
-       Translator[] results = gson.fromJson(rd,Translator[].class);
-       //ArrayList<Translator> results = new ArrayList(Arrays.asList(results));
-       
-        for (Translator result : results){
-            //Adding a new user
-            int userListPos ; //Position of the new user added to the list.
-            
-                //PASSING NEW USER
-                String newUserName = result.getUser().getName();
-                String newUserPass = result.getUser().getPassword();
-                int newLevel = result.getUser().getUserLevel();
-                Board.getStatus().createUser(newUserName, newUserPass, newLevel);   //Creating a new user from passed data
-                userListPos =  Board.getStatus().getUsers().size()-1;       
-                User Uobj = Board.getStatus().getUsers().get(userListPos);
-                Uobj.createList(Uobj.getUsername()+"'s List");                        //Creating a defualt list for user
-                
-                int taskNumber = 0;
-                for(Translator task : results){
-                //PASSING NEW TASK FOR EACH USER
-                if(task.getUser().getName().equals(Uobj.getUsername()) ){
-                    int tasksAdded = 0;
-                    String newTaskName = task.getDescription();
-                    Date newDueDate = task.getCompletionDate();
-                    int newPriority = task.getPriorityOrder();
-
-                    //ArrayList<Subtask> newSubTasks = task.getSubtasks();
-                    
-                    Uobj.getList().get(0).createTask(false,newTaskName,newDueDate,newPriority,"Task");
-                    
-                    for(int x = 0; x< result.getSubtasks().size();x++){
- 
-                        String subDesc = result.getSubtasks().get(x).getDescription();
-                        Date subDueDate = result.getSubtasks().get(x).getCompletionDate();
-                        int subPri = result.getSubtasks().get(x).getPriorityOrder();
-                        Uobj.getList().get(0).getTask().get(taskNumber).createSubTask(subDesc, subDueDate, subPri);
-                         
-                    }
-                    taskNumber++;
-                    
-                    //Uobj.getList().get(0).getTask().get(i).setSubTasks(newSubTasks);
-                    
-                    }
-                
-                }
-                
-             
-            
-            
-            
-            
-            
-        }
-        
-    }
+   }
     
 }

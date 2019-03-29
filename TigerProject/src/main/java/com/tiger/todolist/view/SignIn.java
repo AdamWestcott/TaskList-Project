@@ -26,6 +26,8 @@ public class SignIn extends JFrame {
     private JTextField userName = new JTextField("");
     private JTextField password = new JTextField("");
     private JButton SignInButton = new JButton("Submit");
+    private JButton pullWebService = new JButton("Pull from Web Service");
+    
     mainListener listener = new mainListener();
     private static SignIn instance = null;
     
@@ -41,9 +43,12 @@ public class SignIn extends JFrame {
         form.add(userName);
         form.add(password);
         form.add(SignInButton);
+        form.add(pullWebService);
         
         SignInButton.addActionListener(listener);
         SignInButton.setActionCommand("confirm");
+        pullWebService.addActionListener(listener);
+        pullWebService.setActionCommand("pullWebService");
         
         
         Dimension newDim= new Dimension(300,150);
