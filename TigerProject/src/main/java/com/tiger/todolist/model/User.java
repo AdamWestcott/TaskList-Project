@@ -72,11 +72,11 @@ public class User {
    //FUNCTIONS
     
     public void createList(String title){
-        addList(new Category(title));
+        this.list.add(new Category(title));
     }
     
     public void addList(Category listName){      // Adding a instance of list.
-        this.list.add(listName);  
+        this.list.add(listName);
             System.out.println(list.size());
         
     }

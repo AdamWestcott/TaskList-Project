@@ -6,6 +6,7 @@
 package com.tiger.todolist.view;
 
 import com.tiger.todolist.controller.mainListener;
+import com.tiger.todolist.controller.popupWindows;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -21,7 +22,6 @@ import javax.swing.WindowConstants;
 // Contains lists and sign in.
 public class mainWindow extends JFrame{
     
-    private JTextField search = new JTextField("Search");
     private JButton saveData = new JButton("Save");
     private JButton loadData = new JButton("Load file");
     private JButton signInButton = new JButton("Sign out");
@@ -31,6 +31,7 @@ public class mainWindow extends JFrame{
     private JLabel list= new JLabel ("Lists");
     
     private mainListener listener = new mainListener(); 
+    private popupWindows listenerpop = new popupWindows();
     private static mainWindow instance = null;
     
     public static mainWindow getInstance(){
@@ -45,7 +46,6 @@ public class mainWindow extends JFrame{
     public mainWindow(){
         super("To Do List");
         this.setLayout(new FlowLayout());
-        this.add(search, new FlowLayout(FlowLayout.LEFT));
         this.add(saveData, new FlowLayout(FlowLayout.RIGHT));
         this.add(loadData, new FlowLayout(FlowLayout.RIGHT));
         this.add(addList,new FlowLayout(FlowLayout.RIGHT));
@@ -71,7 +71,7 @@ public class mainWindow extends JFrame{
         saveData.setActionCommand("saveBut");
         loadData.addActionListener(listener);
         loadData.setActionCommand("loadBut");
-        addList.addActionListener(listener);
+        addList.addActionListener(listenerpop);
         addList.setActionCommand("addListBut");
         signInButton.addActionListener(listener);
         signInButton.setActionCommand("signOutButton"); 

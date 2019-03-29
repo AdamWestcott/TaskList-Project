@@ -8,6 +8,8 @@ package com.tiger.todolist.controller;
 import com.tiger.todolist.model.Board;
 import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.TaskBoard;
+import com.tiger.todolist.view.addListPopUp;
+import com.tiger.todolist.view.addSubPopUp;
 import com.tiger.todolist.view.mainWindow;
 import com.tiger.todolist.view.taskWindow;
 import java.awt.event.ActionEvent;
@@ -81,12 +83,16 @@ public class mainListener implements ActionListener {
             mainWindow.deleteObject(); 
             
         }
-        else if(e.getActionCommand().equals("addListBut")){
-            SignIn.getInstance().setVisible(true);
-            mainWindow.getInstance().dispose();
-            mainWindow.deleteObject(); 
+         else if(e.getActionCommand().equals("addList")){
+           int userIndex = Board.getStatus().findUser(getUserName(),getPassword());
+           String enteredVal = addListPopUp.getInstance().getEntListName().getText();
+           Board.getStatus().getUsers().get(userIndex).createList(enteredVal);
+            addListPopUp.getInstance().dispose();
+            addListPopUp.deleteObject(); 
+            mainWindow.getInstance();
             
         }
+        
         
          //DISPLAYING USER TASKS
        else  for(int i = 0; i < getListNames().length; i++){
@@ -99,6 +105,7 @@ public class mainListener implements ActionListener {
                     
                     }
                 }  
+        
         
         
     }

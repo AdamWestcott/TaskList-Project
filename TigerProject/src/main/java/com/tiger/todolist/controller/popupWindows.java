@@ -12,6 +12,7 @@ import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
 import com.tiger.todolist.view.SubtaskBoard;
 import com.tiger.todolist.view.TaskBoard;
+import com.tiger.todolist.view.addListPopUp;
 import com.tiger.todolist.view.addSubPopUp;
 import com.tiger.todolist.view.addTaskPopUp;
 import com.tiger.todolist.view.editSubTaskPopUp;
@@ -147,6 +148,14 @@ public class popupWindows implements ActionListener {
             
             
         }
+        else if(e.getActionCommand().equals("addListBut")){
+            addListPopUp.getInstance();
+            mainWindow.getInstance().dispose();
+            mainWindow.deleteObject(); 
+            
+        }
+        
+        
         
       
        else   
