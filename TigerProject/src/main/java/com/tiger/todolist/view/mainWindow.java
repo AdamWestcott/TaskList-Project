@@ -24,13 +24,12 @@ import javax.swing.WindowConstants;
 // Contains lists and sign in.
 public class mainWindow extends JFrame{
     
-    private JButton saveData = new JButton("Save");
-    private JButton loadData = new JButton("Load file");
-    private JButton signInButton = new JButton("Sign out");
+    private JButton saveData = new JButton("Save File");
+    private JButton loadData = new JButton("Load File");
+    private JButton signInButton = new JButton("Sign Out");
     private JButton addList = new JButton("Add List");
-    private JButton editList = new JButton("Edit List");
     private JButton removeList = new JButton("Remove List");
-    private JLabel list= new JLabel ("Lists");
+    private JLabel list= new JLabel ("Your Lists");
     private  int lengthofWindow =7;
     
     private mainListener listener = new mainListener(); 
@@ -53,7 +52,6 @@ public class mainWindow extends JFrame{
         main.add(saveData, new FlowLayout(FlowLayout.RIGHT));
         main.add(loadData, new FlowLayout(FlowLayout.RIGHT));
         main.add(addList,new FlowLayout(FlowLayout.RIGHT));
-        main.add(editList,new FlowLayout(FlowLayout.RIGHT));
         main.add(removeList,new FlowLayout(FlowLayout.RIGHT));
         main.add(signInButton,new FlowLayout(FlowLayout.RIGHT));
         main.add(list);
