@@ -142,10 +142,22 @@ public class popupWindows implements ActionListener {
         }
         else if(e.getActionCommand().equals("addSub")){
             String enteredVal = addSubPopUp.getInstance().getEntSubtaskName().getText();
-            user.getList().get(mainListener.pastList).getTask().get(currentTask).createSubTask(enteredVal,new Date(),2);
-            addSubPopUp.getInstance().dispose();
-            addSubPopUp.deleteObject();
-            subtaskWindow.getInstance();
+            try{
+                String passDueDate = addSubPopUp.getInstance().getEntSubTaskDate().getText();
+                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                Date convertTo = df.parse(passDueDate);
+                
+                int passPriority = Integer.parseInt(addSubPopUp.getInstance().getPriorities().getSelectedItem().toString());
+                
+                user.getList().get(mainListener.pastList).getTask().get(currentTask).createSubTask(enteredVal,convertTo,passPriority);
+                addSubPopUp.getInstance().dispose();
+                addSubPopUp.deleteObject();
+                subtaskWindow.getInstance();
+            }
+            catch(ParseException err){
+               JOptionPane.showMessageDialog(null, "Incorrect date format. Do as: 10/01/2020");
+          }
+            
             
             
         }

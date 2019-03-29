@@ -54,7 +54,6 @@ import javax.swing.WindowConstants;
         
         confirm.addActionListener(listener);
         confirm.setActionCommand("addSub");
-        this.add(entSubtaskName);
         this.add(confirm);
         
         
@@ -72,6 +71,14 @@ import javax.swing.WindowConstants;
 
     public JTextField getEntSubtaskName() {
         return entSubtaskName;
+    }
+
+    public JTextField getEntSubTaskDate() {
+        return entSubTaskDate;
+    }
+
+    public JComboBox<String> getPriorities() {
+        return priorities;
     }
       
 
