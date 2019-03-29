@@ -110,22 +110,24 @@ public class popupWindows implements ActionListener {
             catch(NumberFormatException err){
                     isNumber = false;    
             }
-                if(isNumber && inputAsInt <= 10 &&  inputAsInt >0) {//Its a priority
-                    taskWindow.getInstance().dispose();
-                    taskWindow.deleteObject();
-                    TaskBoard tb = new TaskBoard(mainListener.pastList,inputAsInt);
-                    taskWindow.getInstance(tb);    
-                }
-                else{
-                    taskWindow.getInstance().dispose();
-                    taskWindow.deleteObject();
-                    TaskBoard tb = new TaskBoard(mainListener.pastList,input);
-                    taskWindow.getInstance(tb);
-                    
-                }
-                        
-             
-             
+            
+            if(isNumber && inputAsInt <= 20 &&  inputAsInt >0 ) {//Its a priority
+                taskWindow.getInstance().dispose();
+                taskWindow.deleteObject();
+                TaskBoard tb = new TaskBoard(mainListener.pastList,inputAsInt);
+                taskWindow.getInstance(tb);    
+            }
+            else if(input.length() < 15 && !input.equals("")){
+                taskWindow.getInstance().dispose();
+                taskWindow.deleteObject();
+                TaskBoard tb = new TaskBoard(mainListener.pastList,input);
+                taskWindow.getInstance(tb); 
+            }
+        }
+         else if(e.getActionCommand().equals("displayAllTasks")){
+            taskWindow.getInstance().dispose();
+            taskWindow.deleteObject();
+            taskWindow.getInstance();
         }
         else if(e.getActionCommand().equals("backButOnSub")){ 
             subtaskWindow.getInstance().dispose();
@@ -273,6 +275,7 @@ public class popupWindows implements ActionListener {
             subtaskWindow.getInstance(); 
             }
     }
+    
     
     public String getUserName(){
          String un = SignIn.getInstance().getUserName().getText();

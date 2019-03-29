@@ -95,6 +95,8 @@ public class taskWindow extends JFrame {
         this.revalidate();//Calling all is an instruction to tell the layout manager to reset based on the new component list 
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+        
     }
     
     public TaskBoard getTb() {
