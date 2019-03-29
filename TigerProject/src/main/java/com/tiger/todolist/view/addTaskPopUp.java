@@ -55,6 +55,7 @@ public class addTaskPopUp extends JFrame{
         this.add(taskName);
         this.add(entTaskName);
         this.add(description);
+        entDescript.setLineWrap(true);
         this.add(entDescript);
         this.add(dueDate);
         this.add(entDueDate);
@@ -65,7 +66,7 @@ public class addTaskPopUp extends JFrame{
         confirm.setActionCommand("add");
         this.add(confirm);
         
-        Dimension newDim= new Dimension(500,150);
+        Dimension newDim= new Dimension(500,300);
         
         this.setSize(500,400);
         this.setPreferredSize(newDim);

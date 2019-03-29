@@ -9,6 +9,7 @@ import com.tiger.todolist.controller.popupWindows;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -21,8 +22,14 @@ import javax.swing.WindowConstants;
 public class editSubTaskPopUp extends JFrame {
     private JLabel editSubTask = new JLabel("Edit SubTask");
     private JLabel SubtaskName = new JLabel("Edit SubTask Name");
+    private JLabel subDate = new JLabel();      
+    private JLabel subPriority = new JLabel();
+     private JLabel priority = new JLabel("Change Priority:");
     
     private JTextField entSubTaskName = new JTextField();
+    private JTextField entSubTaskDate = new JTextField(); 
+    private String[] priotityLvls = new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"}; 
+    private JComboBox<String>  priorities = new JComboBox<String>(priotityLvls);
      private JButton Subconfirm = new JButton("Confirm Edit");
     
     private popupWindows listener = new popupWindows();
@@ -46,7 +53,7 @@ public class editSubTaskPopUp extends JFrame {
      public editSubTaskPopUp(){}
      
     public editSubTaskPopUp(String subTaskName,int subTaskId){
-    this.setLayout(new GridLayout(10,1));
+    this.setLayout(new GridLayout(5,1));
     String[] SubtaskDetails =  listener.getSubTaskDetails();
     this.add(editSubTask);
    
@@ -57,22 +64,20 @@ public class editSubTaskPopUp extends JFrame {
                 this.add(SubtaskName);
                 entSubTaskName.setText(specificDetails[1]);
                 this.add(entSubTaskName);
+                entSubTaskDate.setText(specificDetails[2]);
+                this.add(entSubTaskDate);
+                this.add(priority);
+                this.add(priorities);
+                
+                
  
               }
-            
-//                entSubTaskName.setText(specificDetails[1]);
-//                JTextField one = new JTextField();
-//                
-//                one.setText(entSubTaskName.getText());
-//                this.add(one);
-  
-    
         Subconfirm.addActionListener(listener);
         Subconfirm.setActionCommand("subedit");
         
         this.add(Subconfirm);
         
-        Dimension newDim= new Dimension(500,150);
+        Dimension newDim= new Dimension(500,300);
         this.setSize(500,400);
         this.setPreferredSize(newDim);
         this.setMaximumSize(newDim);
@@ -97,6 +102,24 @@ public class editSubTaskPopUp extends JFrame {
     public void setEntSubTaskName(JTextField entSubTaskName) {
         this.entSubTaskName = entSubTaskName;
     }
+
+    public JTextField getEntSubTaskDate() {
+        return entSubTaskDate;
+    }
+
+    public void setEntSubTaskDate(JTextField entSubTaskDate) {
+        this.entSubTaskDate = entSubTaskDate;
+    }
+
+    public JComboBox<String> getPriorities() {
+        return priorities;
+    }
+
+    public void setPriorities(JComboBox<String> priorities) {
+        this.priorities = priorities;
+    }
+    
+    
     
     
 }

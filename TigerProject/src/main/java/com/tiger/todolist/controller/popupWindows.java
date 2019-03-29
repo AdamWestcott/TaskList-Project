@@ -267,12 +267,27 @@ public class popupWindows implements ActionListener {
             
     }
         if(e.getActionCommand().equals("subedit")){
-                editSubTaskPopUp.getInstance().dispose();
-            String newTaskName = editSubTaskPopUp.getInstance().getEntSubTaskName().getText();
-            user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask).setDescription(newTaskName);
             
+            String newSubTaskDesc = editSubTaskPopUp.getInstance().getEntSubTaskName().getText();
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask).setDescription(newSubTaskDesc);
+            try{
+            String newDueDate = editSubTaskPopUp.getInstance().getEntSubTaskDate().getText();
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Date convertTo = df.parse(newDueDate);
+            int passPriority = Integer.parseInt(editSubTaskPopUp.getInstance().getPriorities().getSelectedItem().toString());
+          
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask).setDescription(newSubTaskDesc);
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask).setCompletionDate(convertTo);
+            user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(currentSubTask).setPriorityOrder(passPriority);
+            editSubTaskPopUp.getInstance().dispose();
             editSubTaskPopUp.deleteObject();
             subtaskWindow.getInstance(); 
+            }
+          catch(ParseException err){
+               JOptionPane.showMessageDialog(null, "Incorrect date format. Do as: 10/01/2020");
+          }
+            
+            
             }
     }
     
