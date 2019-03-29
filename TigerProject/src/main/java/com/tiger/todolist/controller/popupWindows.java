@@ -6,12 +6,10 @@
 package com.tiger.todolist.controller;
 
 import com.tiger.todolist.model.Board;
-import com.tiger.todolist.model.Category;
 import com.tiger.todolist.model.SubTask;
 import com.tiger.todolist.model.Task;
 import com.tiger.todolist.model.User;
 import com.tiger.todolist.view.SignIn;
-import com.tiger.todolist.view.SubtaskBoard;
 import com.tiger.todolist.view.TaskBoard;
 import com.tiger.todolist.view.addListPopUp;
 import com.tiger.todolist.view.addSubPopUp;
@@ -27,7 +25,6 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -188,14 +185,23 @@ public class popupWindows implements ActionListener {
          
            else if(e.getActionCommand().equals("deleteTask"+i)){
                Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
-               System.out.println(taskId);
-               if(user.getList().get(mainListener.pastList).getTask().contains(taskId)){
-                   user.getList().get(mainListener.pastList).getTask().remove(taskId);
-                   taskWindow.getInstance().dispose();
-                   taskWindow.deleteObject();
-                   taskWindow.getInstance(); 
+               
+                   if(user.getList().get(mainListener.pastList).getTask().size() > 1){
+                        user.getList().get(mainListener.pastList).getTask().remove(taskId);
+                        taskWindow.getInstance().dispose();
+                        taskWindow.deleteObject();
+                        taskWindow.getInstance();  
+                   }
+                   else{
+                        user.getList().get(mainListener.pastList).getTask().remove(taskId);
+                        user.getList().get(mainListener.pastList).createDefaultTask(); 
+                        taskWindow.getInstance().dispose();
+                        taskWindow.deleteObject();
+                        mainWindow.getInstance();  
+                      
+                   }  
                }
-             }
+               
            else if(e.getActionCommand().equals("editTask"+i)){ 
                currentTask = i; 
             Task taskId = user.getList().get(mainListener.pastList).getTask().get(i);
@@ -210,7 +216,6 @@ public class popupWindows implements ActionListener {
            }
              else if(e.getActionCommand().equals("isComplete"+i) ){
             boolean checkBox = user.getList().get(mainListener.pastList).getTask().get(i).isCheckbox();
-            //System.out.println("you have clicked a checkbox 2");
               if(checkBox){
                     user.getList().get(mainListener.pastList).getTask().get(i).setCheckbox(false);
                     taskWindow.getInstance().getTb().getCheckBox().setSelected(false);
@@ -240,11 +245,20 @@ public class popupWindows implements ActionListener {
             else if(e.getActionCommand().equals("deleteSubTask"+i)){
                SubTask SubtaskId = user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().get(i);
                System.out.println(SubtaskId );
-               if(user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().contains(SubtaskId )){
-                   user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().remove(SubtaskId);
-                   subtaskWindow.getInstance().dispose();
-                   subtaskWindow.deleteObject();
-                   subtaskWindow.getInstance(); 
+               if(user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().contains(SubtaskId)){
+                   if(user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().size() > 1){
+                     user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().remove(SubtaskId);
+                     subtaskWindow.getInstance().dispose();
+                     subtaskWindow.deleteObject();
+                     subtaskWindow.getInstance();  
+                   }
+                   else{
+                     user.getList().get(mainListener.pastList).getTask().get(currentTask).getSubTasks().remove(SubtaskId);
+                     subtaskWindow.getInstance().dispose();
+                     subtaskWindow.deleteObject();
+                     taskWindow.getInstance();
+                   }
+                    
                }
        }
                     
